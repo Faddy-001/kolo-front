@@ -1,0 +1,212 @@
+.add-project-title{
+    padding-bottom:0px !important;
+    color: #616161;
+  
+}
+
+::ng-deep .mat-dialog-container{
+    background:#fff;
+    overflow-x: hidden;
+}
+
+.close-icon{
+    position:absolute;
+    right:0px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+#hidden_content {
+    display: none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: #68bfbb;
+    color: #00000070;
+}
+
+.Intrest-cls {
+    display: none;
+}
+
+// mat-icon-stepper selected color change 
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #68BFBB!important;
+}
+
+// input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #68BFBB!important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #68BFBB!important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: red!important;
+    opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: #68BFBB!important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    caret-color: red!important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: #68BFBB !important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #68BFBB!important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: red!important;
+}
+
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #68BFBB;
+}
+
+::ng-deep .mat-select-arrow {
+    color: #68BFBB !important;
+}
+
+//datepicker customization
+mat-datepicker-toggle {
+    color: #68BFBB !important;
+}
+
+ ::ng-deep.mat-calendar-body-selected {
+    background-color: #68BFBB !important;
+}
+
+ ::ng-deep.mat-expansion-panel {
+    margin: 16px 0 !important;
+}
+
+ ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #68BFBB;
+}
+
+ ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #b3dfdc;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+    
+  }
+
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+    
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .mat-error {
+    display: block;
+    margin-top: 0px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #68BFBC;
+    border-color: #68bfbb;
+}
+
+.xyz
+{
+ width: 44%;
+ position: relative;
+ left: 18.1rem;
+}
+
+
+.nav{
+    display:list-item;
+}
+
+.selected-properties{
+    padding: 10px;
+    background-color: #bdbdbd;
+    border-radius: 6px;
+    margin: 12px;
+    color:#fff;
+}
+
+.close-property{
+    color: #a90000 !important;
+    font-size: 17px;
+    padding-left: 17px;
+    cursor: pointer;
+}
+
+::ng-deep.mat-form-field-wrapper{
+    padding-bottom:2px !important;
+}
+
+.existing-token-dropdown{
+ box-shadow: 0 1px 5px #bfb8b8;
+ padding: 10px;
+ border-radius: 4px;
+ ul{
+     li{
+         padding: 4px;
+     }
+     li:hover{
+         cursor:pointer;
+         background: #b9b9b9;
+         color: white;
+         border-radius: 3px;
+         padding: 4px;
+     }
+ }
+}
+
+.no_record{
+    color:#c51f1f;
+}
+
+.mat-error {
+    display: block;
+    margin: 13px;
+}

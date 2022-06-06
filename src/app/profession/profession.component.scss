@@ -1,0 +1,305 @@
+.fa-chalkboard-teacher {
+        font-size: 20px;
+        color: #68bfbb;
+     }
+textarea:focus,
+input:focus {
+    outline: none !important;
+}
+
+
+.clickable_row {
+    cursor: pointer;
+}
+
+.close-td{
+    display: flex;
+    justify-content: right;
+}
+.edit-div
+{
+    margin-right:20px;
+    
+}
+@media only screen and (min-width: 200px) and (max-width: 1024px) 
+{
+    .edit-div
+    {
+        margin-right:0px;
+    }
+    .i_edit
+    {
+        color: #68BFBB;
+         margin-top: 5px !important;
+        font-size: 18px;
+    }
+    .mat-icon {
+       
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+    }
+    .searchBox
+    {
+        margin-top:-50px;
+    }
+   .mobile_card
+   {
+       padding-top:60px;
+   }
+   
+}
+.i_edit
+{
+    
+    color: #68BFBB;
+    margin-top: -11px;
+    font-size: 18px;
+}
+.close-btn {
+    display: none !important;
+}
+
+.prof:hover {
+
+    box-shadow: 0px 2px 12px #bfbfbf!important;
+
+    .close-btn {
+        display: block !important;
+    }
+}
+
+td.details-control {
+    background: url("/assets/images/details_open.png") no-repeat center center;
+    /*Plus Image easily find on intent and I have stored this image into my scr/assets folder*/
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+
+    background: url('/assets/images/details_close.png') no-repeat center center;
+    /*Minus Image easily find on intent and I have stored this image into my scr/assets folder*/
+
+}
+
+table {
+    table-layout: fixed;
+    .details-control {
+        padding: 22px !important;
+    }
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    thead {
+
+        background: #A1A1A1;
+
+        th {
+            color: #fff;
+            font-weight: 300;
+            // padding: 7px 122px 7px 52px;
+            padding: 8px 0px 7px 20px;
+        }
+    }
+    tbody {
+        background-color: #fff;
+
+        tr {
+            box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 25%);
+            cursor: pointer;
+            border-radius: 6px 6px 6px 6px;
+            td {
+                // padding: 7px 122px 7px 52px;
+                padding: 8px 0px 7px 20px;
+            }
+        }
+    }
+}
+
+td:first-child{
+    padding: 8px 0px 7px 52px;
+}
+
+th:first-child{
+    padding: 8px 0px 7px 52px;
+}
+
+tfoot,
+th:first-child,
+td:first-child,
+.showNew,
+thead {
+    border-radius: 6px 0px 0px 6px;
+}
+
+tfoot,
+th:last-child,
+td:last-child,
+.showNew,
+tr,
+thead {
+    border-radius: 0px 6px 6px 0px;
+}
+
+.searchBox {
+    float: right;
+    position: relative;
+    left: 0.3rem;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1.9px solid #68bfbb;
+    height: 33px;
+    width: 190px;
+    
+}
+
+// td, th {  min-width: 170px; }
+// tr { display: block; }
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+       
+    }
+  
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        display: none;
+    }
+
+    tr {
+        margin: 0 0 1rem 0;
+    }
+    tr:nth-child(odd) {
+        background: #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50% !important;
+        padding-top: 7px !important;
+        padding-right: 0px !important;
+        padding-bottom: 7px !important;
+        @media only screen and (max-width: 384px) {
+            padding-left: 55% !important;
+        }
+        @media only screen and (max-width: 340px) {
+            padding-left: 60% !important;
+        }
+        @media only screen and (max-width: 314px) {
+            padding-left: 65% !important;
+        }
+        @media only screen and (max-width: 296px) {
+            padding-left: 69% !important;
+        }
+        @media only screen and (max-width: 242px) {
+            padding-left: 78% !important;
+        }
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        left: 20px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+      Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+      */
+    td:nth-of-type(1):before {
+        content: "Name";
+    }
+    td:nth-of-type(2):before {
+        content: "Description";
+    }
+}
+
+.mat-icon {
+    font-size: 18px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    color: white;
+    height: 18px;
+    width: 18px;
+    background-color: #d21212;
+    border-radius: 50px;
+    margin-left: -9px;
+    margin-top: -12px;
+}
+
+
+
+
+// @media only screen and (min-width: 200px) and (max-width: 1024px) {
+//     .td-cross {
+//         float: right;
+//         position: relative;
+//         top: 3px;
+//         left: 6px;
+//     }
+//     .table-margin {
+//         margin-top: 4rem;
+//     }
+// }
+
+::ng-deep.ngx-pagination .current {
+    background-color: #68bfbb !important;
+    border-radius: 50% !important;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 3px;
+}
+
+::ng-deep span.ng-star-inserted {
+    position: inherit;
+    right: 4px;
+    bottom: 3px;
+}
+// ::ng-deep.ngx-pagination .disabled {
+//     color: #56a9a5 !important;
+// }
+::ng-deep.ngx-pagination a,
+.ngx-pagination button {
+    color: #68bfbb !important;
+}
+.deactive_record
+{
+    border: 1px solid #68BFBB;
+    text-align: center;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height:36px;
+}
+.SortIcon
+{
+    position: absolute;
+    background-color: #a1a1a1 !important;
+    justify-content: center;
+    margin-top: 1px;
+    cursor: pointer;
+    margin-left: 3px;
+  //  display:none;
+}
+// th:hover .SortIcon
+// {
+//      display:block;
+// }

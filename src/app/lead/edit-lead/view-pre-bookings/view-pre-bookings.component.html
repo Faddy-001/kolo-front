@@ -1,0 +1,217 @@
+<div class="app-main__inner">
+    <!-- <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Prebookings
+            </div>
+            <i class="pe-7s-close close-icon"></i>
+        </div>
+    </div> -->
+    <div class="tab-content">
+        <mat-icon class="plusIcon" aria-hidden="false" aria-label="Example home icon" (click)="close()">add</mat-icon>
+
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> -->
+                        <div id="carouselExampleIndicators"  class="carousel slide" data-interval="false">
+                        <div class="carousel-inner">
+                            <ng-container *ngFor="let data of newPrebookingData">
+                            
+                                 <div *ngIf="data==index" class="carousel-item active">
+                                  
+                                    <div class="main-card mb-6 card PrebookingCard">
+                                        <div class="card-body" style="cursor: pointer;" (click)="closeView(data.id)" #Tick>
+                                            <!-- <p class="ID" ></p> -->
+                                            <!-- <section class="titled"> -->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4>Property No :</h4>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                       <p class="PropertyNo">{{data.flatname}}</p>
+                                                    </div>
+                                               </div>
+                                                <!-- <h4>Property Number :</h4> -->
+                                            <!-- <p class="PropertyNo">{{data.flatname}}</p> -->
+                                            <!-- </section> -->
+
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <h4>Payment Type :</h4>
+                                                </div>
+                                                <div class="col-md-5">
+                                                   <p class="payment">{{data.paymentType}}</p>
+                                                </div>
+                                           </div>
+                                           <div class="row">
+                                            <div class="col-md-7">
+                                                <h4 class="propertyPrice"> Finalized Price :</h4>
+                                            </div>
+                                            <div class="col-md-5">
+                                               <p  class="price">₹ {{data.Propertyprice}}</p>
+                                            </div>
+                                       </div>
+
+                                            
+                                            <section class="titled">
+                                            <h4>Offers Applied :</h4>
+                                            <ol>
+                                            <!-- <li><p class="offer">{{data.offerName}}</p></li> -->
+                                            <li *ngFor="let offers of data.offers"><p class="offer1">{{offers.name}}</p></li>
+                                            </ol>
+                                            </section> 
+
+                                            <section class="titled">
+                                            <h4>commitment :</h4>
+                                            <p class="commitment">{{data.commitment}}</p>
+                                            </section>
+
+                                        
+
+                                            <!-- <hr class="separation"> -->
+                                            <div class="row img-margin">
+                                                <div class="col-md-4 doc-img-col"
+                                                    *ngFor='let url of data.images; let i = index'>
+                                                    <img class="doc-img" [src]="url.url" title="{{url.name}}" alt=""
+                                                        width="60" height="60">
+
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- <i class="fas fa-check-circle" style="cursor: pointer;"  (click)="Tick.click()"></i> -->
+                                    </div>
+
+                                </div>
+                            
+                                <div *ngIf="data!=index" class="carousel-item">
+                                    <div class="main-card mb-6 card PrebookingCard">
+                                        <div class="card-body table-responsive" style="cursor: pointer;" (click)="closeView(data.id)" #Tick>
+                                          <div class="row">
+                                                <div class="col-md-6">
+                                                    <h4>Property No :</h4>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <p class="PropertyNo">{{data.flatname}}</p>
+                                                </div>
+                                           </div>
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <h4>Payment Type :</h4>
+                                            </div>
+                                            <div class="col-md-5">
+                                               <p class="payment">{{data.paymentType}}</p>
+                                            </div>
+                                       </div>
+                                       <div class="row">
+                                        <div class="col-md-7">
+                                            <h4 class="propertyPrice"> Finalized Price :</h4>
+                                        </div>
+                                        <div class="col-md-5">
+                                           <p class="price">₹ {{data.Propertyprice}}</p>
+                                        </div>
+                                   </div>
+                                        <section class="titled">
+                                        <h4>Offers Applied :</h4>
+                                        <ol>
+                                        <li *ngFor="let offers of data.offers"><p class="offer1">{{offers.name}}</p></li>
+                                        <!-- <li *ngFor="let offers of data.offer.name "><p class="offer">{{offers.name?offers.name:''}}</p></li> -->
+                                        </ol>
+                                        </section> 
+
+                                        <section class="titled">
+                                        <h4>commitment :</h4>
+                                        <p class="commitment">{{data.commitment}}</p>
+                                        </section>
+                                           
+                                            <!-- <hr class="separation"> -->
+                                             <div class="row img-margin"> 
+                                                <div class="col-md-4 doc-img-col"
+                                                    *ngFor='let url of data.images; let i = index'>
+                                                    <img class="doc-img" [src]="url.url" title="{{url.name}}" alt=""
+                                                        width="60" height="60">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <i class="fas fa-check-circle"  style="cursor: pointer;"  (click)="Tick.click()"></i> -->
+                                    </div>
+
+                                </div>
+                            </ng-container>
+                        </div>
+                        <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a> -->
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <mat-icon style="position: relative;left: 42px;font-size: 35px;" aria-hidden="false" aria-label="Example home icon">navigate_next</mat-icon>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- <div class="col-md-5">
+                    <div class="main-card mb-3 card PrebookingCard">
+                        <div class="card-body">
+                            <p class="PropertyNo">#S111</p>
+                            <p class="payment">Installment</p>
+                            <p class="offer">Cash Prize</p>
+                            <p class="commitment">We are giving discount of him.</p>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3 imgDiv">
+
+                                </div>
+                                <div class="col-md-3 imgDiv2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <ng-container *ngFor="let niki of nik">
+                            <div *ngIf="niki==index" class="carousel-item active">
+                                <div class="main-card mb-3 card PrebookingCard">
+                                    <div class="card-body">
+                                        <p class="PropertyNo">#S111</p>
+                                        <p class="payment">Installment</p>
+                                        <p class="offer">Cash Prize</p>
+                                        <p class="commitment">We are giving discount of him.</p>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3 imgDiv">
+
+                                            </div>
+                                            <div class="col-md-3 imgDiv2">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="niki!=index" class="carousel-item">
+                                <span>{{niki.dds}}</span>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+</div>

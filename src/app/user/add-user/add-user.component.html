@@ -1,0 +1,235 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Add User
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <!-- <div class="row"> -->
+            <!-- <div class="col-md-12"> -->
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+
+                    <form [formGroup]="addUserForm" (ngSubmit)="submit(addUserForm.value)">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 col-xs-12 profile-col">
+                                <div class="profile-div">
+                                    <!-- <i class="fas fa-user-circle" class="display:none"></i> -->
+                                    <mat-icon class="highlight" (click)="deleteImg()" style="cursor:pointer;">highlight_off</mat-icon>
+                                    <img id="blah" alt="" src="assets/images/PngItem_1503945.png" />
+                                    <input type="file" style="display: none;" (change)="userImage($event)" #file />
+                                    <mat-icon class="camera-icon" (click)="file.click()">camera_enhance</mat-icon>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="col-md-9 col-sm-12">
+                                <div class="row">
+                                    <div class="form-group col-xl-4 col-lg-4 col-md-6
+                                        col-sm-12">
+                                        <mat-form-field appearance="outline" id="NameField">
+                                            <mat-label>Name<span class="starmandatory">*</span></mat-label>
+                                            <input matInput formControlName="name" placeholder="">
+                                            <mat-error *ngIf="addUserForm.get('name')?.touched">Name is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-xl-4 col-lg-4 col-md-6
+                                        col-sm-12">
+                                        <mat-form-field appearance="outline" id="gender">
+                                            <mat-label>Gender<span class="starmandatory">*</span></mat-label>
+                                            <mat-select formControlName="gender">
+                                                <mat-option>Select Gender</mat-option>
+                                                <mat-option value="Male">Male</mat-option>
+                                                <mat-option value="Female">Female</mat-option>
+                                                <mat-option value="Others">Others</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="addUserForm.get('gender')?.touched">Gender is required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-xl-4 col-lg-4 col-md-6
+                                        col-sm-12">
+                                        <mat-form-field appearance="outline" id="EmailField">
+                                            <mat-label>Email<span class="starmandatory">*</span></mat-label>
+                                            <input matInput formControlName="email" placeholder="">
+                                            <mat-error *ngIf="addUserForm.get('email')?.touched">Email is required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-xl-3 col-lg-3 col-md-6
+                                        col-sm-12">
+                                        <mat-form-field appearance="outline" id="PhoneField">
+                                            <mat-label>Phone No.<span class="starmandatory">*</span></mat-label>
+                                            <input (keypress)="numberOnly($event)" maxlength="10" matInput formControlName="phone" placeholder="">
+                                            <mat-error *ngIf="addUserForm.get('phone')?.touched">Phone is required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-xl-3 col-lg-3 col-md-6
+                                        col-sm-12">
+                                        <mat-form-field appearance="outline" id="AltPhoneField">
+                                            <mat-label> Alternate Phone No.</mat-label>
+                                            <input (keypress)="numberOnly($event)"  maxlength="10" matInput formControlName="alternate_phone" placeholder="">
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="form-group col-xl-3 col-lg-3 col-md-6
+                                        col-sm-12">
+                                        <mat-form-field appearance="outline" id="PasswordField">
+                                            <mat-label>Enter password<span class="starmandatory">*</span></mat-label>
+                                            <input matInput [type]="hide ?
+                                                'password' : 'text'" formControlName="password">
+                                            <button style="border:
+                                                none;background-color: white;" mat-icon-button matSuffix (click)="hide= !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                <mat-icon>{{hide ?
+                                                    'visibility_off' :
+                                                    'visibility'}}</mat-icon>
+                                            </button>
+                                            <mat-error *ngIf="addUserForm.get('password')?.touched">Password is required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-xl-3 col-lg-3 col-sm-12">
+                                        <mat-form-field appearance="outline" id="RoleField">
+                                            <mat-label>Select Role<span class="starmandatory">*</span></mat-label>
+                                            <mat-select formControlName="role_id">
+                                                <mat-option>None</mat-option>
+                                                <mat-option *ngFor="let Role of
+                                                    roles" value="{{Role.id}}">{{Role.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="addUserForm.get('role_id')?.touched">Role is required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col">
+                                <div class="row">
+                                    <ng-container  formArrayName="projects">
+                                            <ng-container *ngFor="let fields of projectDepts().controls; let i=index" [formGroupName]="i">
+                                                <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-12"></div>  
+
+                                            <!-- <div  >  -->
+                                                <ng-container *ngIf="i<projects.length">
+                                                       <div  class="form-group col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                                                     <mat-form-field appearance="outline" id="ProjectField">
+                                                        <mat-label>Select Project<span class="starmandatory">*</span></mat-label>
+                                                        <mat-select formControlName="id"  (selectionChange)="GetProject($event,i)">
+                                                            <mat-option>None</mat-option>
+                                                            <mat-option *ngFor="let project of projects" value="{{project.id}}">
+                                                                {{project.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="addUserForm.get('projects')?.touched">Project is required!</mat-error>
+                                                    </mat-form-field>   
+                                                </div>                                    
+                                                <div *ngIf="i<projects.length" class="form-group col-lg-3 col-md-6 col-sm-12">
+                                                      <mat-form-field appearance="outline" id="DepartmentField" (click)="showMsg()">
+                                                        <mat-label>Select Department<span class="starmandatory">*</span></mat-label>
+                                                        <mat-select  multiple formControlName="departments" [disabled]="disabledept">
+                                                                <mat-option *ngFor="let dept of projects[projectIdIndex[i]].Departments" value="{{dept.id}}">
+                                                                    {{dept.name}}
+                                                                </mat-option>                                               
+                                                        </mat-select>
+                                                        <mat-error *ngIf="addUserForm.get('department_id')?.touched">Department is required!</mat-error>
+                                                    </mat-form-field>
+                                                    <span id="deptErr" style="display: none;">please select project first !</span>
+                                                </div>
+                                                                                        
+                                                <div *ngIf="i!=0" class="text-center form-group col-lg-1 col-sm-12 ">
+                                                    <button  mat-mini-fab type="button" color="warn"  (click)="removeField(i)"
+                                                        aria-label="Example icon button with a menu icon">
+                                                        <mat-icon>clear</mat-icon>
+                                                    </button>
+                                                </div>
+                                                </ng-container>
+                                             
+                                            <!-- </div>                                                                                                                                                                             -->
+                                        </ng-container>
+                                    </ng-container>
+                                    <div class="form-group col-lg-1 col-sm-12">
+                                        <button [disabled]="isAddDisabled" (click)="addProject()" mat-mini-fab type="button" color="primary"
+                                            aria-label="Example icon button with a menu icon">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </div>                                                             
+                                </div>
+
+
+                                <ng-container formGroupName="address">
+                                    <div class="row">
+                                        <div class="form-group col-xl-3 col-lg-3 col-md-6
+                                            col-sm-12"></div>
+                                       
+                                        <div class="form-group col-xl-6 col-lg-6 col-md-6
+                                            col-sm-12">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Address<span class="starmandatory">*</span></mat-label>
+                                                <textarea rows="1" matInput placeholder="" formControlName="address"></textarea>
+                                                <mat-error *ngIf="addUserForm.get('address')?.touched">Address is required!</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-lg-3 col-md-6
+                                            col-sm-12">
+                                            <mat-form-field appearance="outline" id="PinField">
+                                                <mat-label>Pin Code<span class="starmandatory">*</span></mat-label>
+                                                <input matInput formControlName="postal_code" #pinCode [(ngModel)]="pinValue" (ngModelChange)="onChange($event)" placeholder="">
+                                                <mat-error *ngIf="addUserForm.get('address.postal_code')?.touched">Pin Code is required!</mat-error>
+                                            </mat-form-field>
+                                            <p *ngIf="postalError">{{postalMsg}}</p>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3"></div>
+
+
+
+                                        <div class="form-group col-lg-3 col-md-6
+                                            col-sm-12">
+                                            <mat-form-field appearance="outline" id="CityField">
+                                                <mat-label> City</mat-label>
+                                                <input matInput formControlName="city" placeholder="">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="form-group col-lg-3 col-md-6
+                                            col-sm-12">
+                                            <mat-form-field appearance="outline" id="StateField">
+                                                <mat-label>State</mat-label>
+                                                <input matInput formControlName="state" placeholder="">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="form-group col-lg-3
+                                            col-sm-12">
+                                            <mat-form-field appearance="outline" id="CountryField">
+                                                <mat-label> Country</mat-label>
+                                                <input matInput formControlName="country" placeholder="">
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+
+                                <button type="submit" style="float: right;" [disabled]="!addUserForm.valid"  class="mt-1 btn btn-primary button-width">Save</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- </div> -->
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

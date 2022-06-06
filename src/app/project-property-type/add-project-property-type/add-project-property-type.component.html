@@ -1,0 +1,108 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Add Project Property Type
+            </div>
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+            <!-- <i class="pe-7s-close close-icon" (click)="close()"></i> -->
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <p class="uniqeErr">{{propertyerr}}</p>
+                            <form [formGroup]="AddProjectPropertyTypeForm" (ngSubmit)="submit(AddProjectPropertyTypeForm.value)">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Project<span class="starmandatory">*</span></mat-label>
+                                    <mat-select formControlName="project_id">
+                                        <mat-option value="">none</mat-option>
+                                        <mat-option *ngFor="let projects of project" [value]="projects.id">{{projects.name}}</mat-option>
+                                    </mat-select>
+                                    <!-- <input matInput formControlName="project" placeholder=" " >  -->
+                                    <mat-error *ngIf="AddProjectPropertyTypeForm.get('project_id')?.touched">Project is required!</mat-error>
+                                </mat-form-field>
+<div class="row">
+    <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Select Property Type<span class="starmandatory">*</span></mat-label>
+                                    <mat-select multiple formControlName="propertyType_id">
+                                        <mat-option *ngFor="let type of properties" [value]="type.id">
+                                            {{type.name}}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="AddProjectPropertyTypeForm.get('propertyType_id')?.touched">PropertyType is required!</mat-error>
+
+                                </mat-form-field>
+                            </div>
+                                <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Area Type<span class="starmandatory">*</span></mat-label>
+                                    <mat-select formControlName="area_type" >
+                                        <mat-option value="">Select</mat-option>
+                                        
+                                        <mat-option value="Saleable" >Saleable
+                                        </mat-option>
+                                        <mat-option value="Non-Saleable">Non-Saleable
+                                        </mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                            
+                                    <mat-form-field appearance="outline" >
+                                        <mat-label>Lenght(sq.ft)<span class="starmandatory">*</span></mat-label>
+                                        <input matInput (keypress)="numberOnly($event)" formControlName="area_length" placeholder="Length" name="area_length" (ngModelChange)="getArea();" id="area_length">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                
+                                    <mat-form-field appearance="outline" >
+                                        <mat-label>Width(sq.ft)<span class="starmandatory">*</span></mat-label>
+                                        <input matInput (keypress)="numberOnly($event)" formControlName="area_breadth" placeholder="Breadth" name="area_breadth" (ngModelChange)="getArea();" id="area_breadth">
+                                    </mat-form-field>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Area(sq/ft)<span class="starmandatory">*</span></mat-label>
+                                        <input formControlName="unit_area" matInput placeholder="Enter total area" (keypress)="numberOnly($event)" id="unit_area" value="unit_area" (ngModelChange)="unitArea();"  [(ngModel)]="area">
+                                        <!-- <mat-error *ngIf="addPropertyForm.get('property_size')?.touched">Total area is required!
+                                        </mat-error> -->
+                                    </mat-form-field>
+                                </div>
+                            
+                        </div>
+                        <div class="row">
+                       
+                        <div class="col-md-6">
+                            
+                            <mat-form-field appearance="outline" >
+                                <mat-label>No.of Property<span class="starmandatory">*</span></mat-label>
+                                <input matInput formControlName="units" maxlength="2" (keypress)="numberOnly($event)" placeholder="Enter Rate" id="units" value="unit" (keyup)="Unit($event);" >
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                                <mat-form-field appearance="outline" >
+                                    <mat-label>Total Area<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="total_area" (keypress)="numberOnly($event)" matInput value="Totalarea" id="totalarea" (keyup)="getTotalArea($event)" >
+                                
+                                </mat-form-field>
+                            </div>
+                            </div>
+                            
+                                <button type="submit" [disabled]="!AddProjectPropertyTypeForm.valid" class="mt-1 btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

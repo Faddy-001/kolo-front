@@ -1,0 +1,674 @@
+.fa-user-check {
+    font-size: 20px;
+    color: #68bfbb;
+}
+
+.clickable_row {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    thead {
+        background: #a1a1a1;
+        th {
+            color: #fff;
+            font-weight: 300;
+            padding: 7px 7px 7px 7px;
+        }
+    }
+    tbody {
+        background-color: #fff;
+        tr {
+            box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 25%);
+            cursor: pointer;
+            border-radius: 6px 6px 6px 6px;
+            td {
+                padding: 7px 7px 7px 7px;
+            }
+        }
+    }
+}
+
+tfoot,
+th:first-child,
+thead {
+    border-radius: 6px 0px 0px 6px;
+}
+
+tfoot,
+th:last-child,
+tr,
+thead {
+    border-radius: 0px 6px 6px 0px;
+}
+
+// td, th {  min-width: 170px; }
+// tr { display: block; }
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin: 0 0 1rem 0;
+    }
+
+    tr:nth-child(odd) {
+        background: #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        // padding-left: 50% !important;
+        padding-top: 7px !important;
+        padding-right: 0px !important;
+        padding-bottom: 7px !important;
+        @media only screen and (max-width: 384px) {
+            // padding-left: 55% !important;
+        }
+        @media only screen and (max-width: 340px) {
+            padding-left: 60% !important;
+        }
+        @media only screen and (max-width: 314px) {
+            padding-left: 65% !important;
+        }
+        @media only screen and (max-width: 296px) {
+            padding-left: 69% !important;
+        }
+        @media only screen and (max-width: 242px) {
+            padding-left: 78% !important;
+        }
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        left: 20px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+      Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+      */
+
+   
+}
+  .cust:hover{
+    box-shadow: 0px 2px 12px #bfbfbf!important;
+ }
+
+ .btn {
+    color: #fff;
+    background-color: #68BFBC;
+    border-color: #68bfbb;
+}
+
+
+.button {
+    border: none;
+    color: white;
+   // padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+   // font-size: 16px;
+    //margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+
+.button1 {
+        border: none;
+        text-decoration: none;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        color: #fff; 
+        background-color: #68bfbb;
+        border-color: #68bfbb;
+        border-radius: 5px;
+  }
+  
+  .button1:hover {
+    background-color:black;
+    color: white;
+  }
+
+
+  .button2 {
+    background-color:blue; 
+    color: White; 
+   // border: 2px solid #4CAF50;
+  }
+  
+  .button2:hover {
+    background-color:black;
+    color: white;
+  }
+
+  
+.tableData {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50% !important;
+    padding-top: 7px !important;
+    padding-right: 0px !important;
+    padding-bottom: 7px !important;
+    @media only screen and (max-width: 384px) {
+        padding-left: 55% !important;
+    }
+    @media only screen and (max-width: 340px) {
+        padding-left: 60% !important;
+    }
+    @media only screen and (max-width: 314px) {
+        padding-left: 65% !important;
+    }
+    @media only screen and (max-width: 296px) {
+        padding-left: 69% !important;
+    }
+    @media only screen and (max-width: 242px) {
+        padding-left: 78% !important;
+    }
+}
+
+.tableData:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    left: 20px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+.phone a {
+    color: #529a97;
+}
+
+//   mat-progress-spinner{
+    //   position:relative;
+    //   width:70px !important;
+    //   height:70px !important;
+    //  // stroke:#ccc; 
+    //   border:7px solid #ccc!important;
+    //   border-radius: 50%;      
+   // position: relative;
+  // stroke:#ccc; 
+       // width:85px !important;
+     //  height:85px !important;
+    //  border: 6px solid #673ab7!important;
+     // border-radius: 50%;
+  
+ // }
+
+//   mat-progress-spinner
+//   {
+//     margin:auto !important;
+//   }
+
+  .example-margin {
+    // margin: 0 10px;
+    margin-bottom: 8px !important;
+    margin-top: 8px !important;
+  }
+
+.perc{
+
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    text-align: center;
+    top: 45%;
+}
+.graph{
+    position: relative;
+  }
+  
+  .ng-star-inserted{
+    position: relative;
+  }
+  
+
+
+// .percentage{
+//     // border:solid 1px red!important;
+    
+//     ::ng-deep
+//     .mat-progress-spinner circle{
+//       stroke-width: 6% !important;
+//     }
+  
+//     ::ng-deep
+//     .mat-progress-spinner svg {
+//       position: absolute !important;
+//       transform: rotate(-90deg)  !important;
+//       top: -10px !important;
+//       left: -10px !important;
+//       transform-origin: center  !important;
+//       overflow: visible  !important;
+//       width:78px !important;
+//       height:78px !important;
+//     }
+   
+//     circle{
+//       stroke-width: 11%;
+//     }
+//   }
+
+
+
+
+
+
+
+
+
+
+ .percentage{
+     position:relative;  
+   }
+
+//   .percentage{
+//     ::ng-deep
+//     .mat-progress-spinner circle{
+//       stroke-width: 6% !important;
+//     }
+//       ::ng-deep
+//     .mat-progress-spinner svg {
+//       position: absolute !important;
+//       transform: rotate(-90deg)  !important;
+//       top: -5px !important;
+//       left: -5px !important;
+//       transform-origin: center  !important;
+//       overflow: visible  !important;
+//       width:78px !important;
+//       height:78px !important;
+//     }
+  
+  
+//     circle{
+//       stroke-width: 11%;
+//     }
+//   }
+.example-section {
+    margin: 12px 0;
+  }
+  
+  .example-margin {
+    margin: 0 12px;
+  }
+  .mat-sort-header.mat-header-cell.cdk-header-cell.ng-tns-c27-7.cdk-column-percentage.mat-column-percentage.ng-star-inserted{
+    width:148px!important;
+  }
+
+  .filter-buttons:hover {
+    background-color: #68bfbb !important;
+    border-color: #68bfbb;
+}
+
+.project-btn{
+    margin:11px;
+}
+\.add-project-title{
+    padding-bottom:0px !important;
+    color: #616161;
+  
+}
+
+::ng-deep .mat-dialog-container{
+    background:#fff;
+    overflow-x: hidden;
+}
+
+.close-icon{
+    position:absolute;
+    right:0px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+#hidden_content {
+    display: none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: #68bfbb;
+    color: #00000070;
+}
+
+.Intrest-cls {
+    display: none;
+}
+
+.selected-properties{
+        padding: 10px;
+        background-color: #bdbdbd;
+        border-radius: 6px;
+        margin: 12px;
+        color:#fff;
+}
+
+.close-property{
+    color: #a90000 !important;
+    font-size: 17px;
+    padding-left: 17px;
+}
+
+// mat-icon-stepper selected color change 
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #68BFBB!important;
+}
+
+// input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #68BFBB!important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #68BFBB!important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: red!important;
+    opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: #68BFBB!important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    caret-color: red!important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: #68BFBB !important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #68BFBB!important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: red!important;
+}
+
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #68BFBB;
+}
+
+::ng-deep .mat-select-arrow {
+    color: #68BFBB !important;
+}
+
+//datepicker customization
+mat-datepicker-toggle {
+    color: #68BFBB !important;
+}
+
+ ::ng-deep.mat-calendar-body-selected {
+    background-color: #68BFBB !important;
+}
+
+ ::ng-deep.mat-expansion-panel {
+    margin: 16px 0 !important;
+}
+
+ ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #68BFBB;
+}
+
+ ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #b3dfdc;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+    
+  }
+
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+    
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #68BFBC;
+    border-color: #68bfbb;
+}
+.mat-error {
+    color: #f44336;
+    margin-top: 1px;
+}
+.xyz
+{
+ width: 44%;
+ position: relative;
+ left: 18.1rem;
+}
+
+
+.nav{
+    display:list-item;
+}
+
+::ng-deep.mat-form-field-wrapper{
+    padding-bottom:2px !important;
+}
+
+.existing-token-dropdown{
+ box-shadow: 0 1px 5px #bfb8b8;
+ padding: 10px;
+ border-radius: 4px;
+ ul{
+     li{
+         padding: 4px;
+     }
+     li:hover{
+         cursor:pointer;
+         background: #b9b9b9;
+         color: white;
+         border-radius: 3px;
+         padding: 4px;
+     }
+ }
+}
+
+.no_record{
+    color:#c51f1f;
+}
+.close-btn {
+    // padding: 2px;
+  //   border-radius: 42px;
+     color: black;
+    // font-size: 14px;
+    // position: absolute;
+    // bottom: 49px;
+    // left: 65px;
+    cursor: pointer;
+}
+
+.mat-error {
+    display: block;
+    margin: 13px;
+}
+.btn-width
+{
+    width: 100%;
+    height: 100%;
+}
+// @media only screen and (max-width: 400px) 
+   
+// {
+
+//     .chart1
+//     {
+//         height:200px !important
+//     }
+    
+// }
+
+
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+  
+  [class*="col-"] {
+    padding: 5px;
+  }
+
+
+  .chart-legend li span {
+   // width: 1em;
+  //  height: 50px !important;
+   // display: inline;
+    margin-right: .5em;
+}
+
+.chart-legend li {
+    list-style-type: none;
+}
+
+.chart-legend {
+    // position: relative;
+    // bottom: 5px;
+    width: 100% !important;
+    border:1px solid grey;
+    border-radius: 10px;
+}
+.arrownext
+{
+    color: #46a29d;
+    font-weight: 500;
+    font-size: 35px;
+}
+.arrowprevious
+{
+    color: #46a29d;
+    font-weight: 500;
+    font-size: 35px;
+}
+
+@media only screen and (max-width: 390px) 
+{
+    .chart-legend{
+        position: relative;
+        height: 250px !important;
+       // width: 800px !important;
+        border-radius: 5px;
+    }
+    .arrownext
+    {
+        color: #46a29d;
+        font-weight: 500;
+        font-size: 35px;
+        position: relative;
+        right: 15px;
+    }
+
+    .arrowprevious
+        {
+            color: #46a29d;
+            font-weight: 500;
+            font-size: 35px;
+            position: relative;
+            left: 1px;
+        }
+}   
+
+
+
+  /* For mobile phones: */
+// [class*="col-"] {
+//     width: 100%;
+//   }
+  
+
+  
+  
+  

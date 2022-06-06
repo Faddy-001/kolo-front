@@ -1,0 +1,520 @@
+.clickable_row {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    thead {
+        background: #a1a1a1;
+        th {
+            color: #fff;
+            font-weight: 300;
+            padding: 7px 7px 7px 7px;
+        }
+    }
+    tbody {
+        background-color: #fff;
+        tr {
+            box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 25%);
+            cursor: pointer;
+            border-radius: 6px 6px 6px 6px;
+            td {
+                padding: 7px 7px 7px 7px;
+            }
+        }
+    }
+}
+
+tfoot,
+th:first-child,
+thead {
+    border-radius: 6px 0px 0px 6px;
+}
+
+tfoot,
+th:last-child,
+tr,
+thead {
+    border-radius: 0px 6px 6px 0px;
+}
+
+// td, th {  min-width: 170px; }
+// tr { display: block; }
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin: 0 0 1rem 0;
+    }
+
+    tr:nth-child(odd) {
+        background: #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50% !important;
+        padding-top: 7px !important;
+        padding-right: 0px !important;
+        padding-bottom: 7px !important;
+        @media only screen and (max-width: 384px) {
+            padding-left: 55% !important;
+        }
+        @media only screen and (max-width: 340px) {
+            padding-left: 60% !important;
+        }
+        @media only screen and (max-width: 314px) {
+            padding-left: 65% !important;
+        }
+        @media only screen and (max-width: 296px) {
+            padding-left: 69% !important;
+        }
+        @media only screen and (max-width: 242px) {
+            padding-left: 78% !important;
+        }
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        left: 20px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+      Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+      */
+
+    td:nth-of-type(1):before {
+        content: "First Name";
+    }
+    td:nth-of-type(2):before {
+        content: "Email";
+    }
+    td:nth-of-type(3):before {
+        content: "Gender";
+    }
+    td:nth-of-type(4):before {
+        content: "Phone";
+    }
+    td:nth-of-type(5):before {
+        content: "Alternate Phone";
+    }
+    td:nth-of-type(6):before {
+        content: "Project";
+    }
+    td:nth-of-type(7):before {
+        content: "Department";
+    }
+    td:nth-of-type(8):before {
+        content: "Role";
+    }
+    td:nth-of-type(9):before {
+        content: "Password";
+    }
+    td:nth-of-type(10):before {
+        content: "Address";
+    }
+}
+
+.font_color {
+    color: grey;
+}
+.title {
+    text-align: left;
+    font-weight: bold;
+    color: grey;
+}
+.line {
+    height: 3px;
+    background-color: whitesmoke;
+    margin-bottom: 5px;
+}
+.edit-button {
+    text-align: right;
+    background: transparent;
+    border: none;
+    color: #35c5be;
+    position: relative;
+    // bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.close-icon {
+    position: relative;
+    right: 0px;
+    font-size: 28px;
+    cursor: pointer;
+}
+.tag {
+    color: #271a1ad1 !important;
+}
+
+.set-icon {
+    margin: 0.3rem 1rem 1rem 1rem;
+}
+.titled {
+    display: flex;
+    margin: 0.5rem 1rem;
+}
+.title {
+    color: #60afac;
+    font-weight: 500;
+}
+
+.heading-info {
+    margin: 2rem !important;
+    text-align: left;
+    font-size: 18px;
+    color: white;
+    background-color: #a1a1a1;
+    padding: 1rem;
+    border-radius: 5px;
+}
+.card-body {
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem 1rem;
+    
+}
+::ng-deep.mat-expansion-panel {
+    margin-bottom: 2rem !important;
+}
+.content {
+    width: 104%;
+    margin: auto;
+    max-width: 100%;
+    margin-bottom: 0px;
+}
+
+
+@media only screen and (min-width: 200px) and (max-width: 991px) {
+    ::ng-deep.mat-dialog-container {
+        height: 80vh;
+    }
+    .card-body {
+        margin: 0rem;
+    }
+}
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .titled {
+        display: block;
+        margin: 1rem 1rem;
+    }
+    .content {
+        width: 100%;
+    }
+    .card-body {
+        margin: 0rem;
+    }
+}
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 16px;
+    margin-bottom: 3px;
+    font-size: medium;
+}
+#get-all{
+  position: fixed;
+  right:10px;
+  top:35px;
+    z-index: 99;
+    width: auto;
+}
+.dashboard_search{
+    cursor: pointer;
+    span{
+        &:hover{
+           color: #673ab7;
+        }    
+    }
+    
+}
+
+form{
+    .form-group{
+        margin-bottom:0;
+    }
+}
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
+  
+.card-content{
+    font-size:16px;
+    margin-top:12px !important;
+    color:#fff;
+}
+
+.heading{
+    margin:0px !important;
+    color:#fff;
+}
+
+.card-customers{
+    background-color: #28a745;
+}
+
+.card-effect:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.total-overdue{
+    cursor: pointer;
+}
+.total-balance{
+    cursor: pointer;
+}
+.total-received{
+    cursor: pointer;
+}
+
+.card-icon{
+    color:rgba(0,0,0,.15);
+    position: absolute;
+    font-size: 57px;
+    right: 50px;
+    top: 18px;
+}
+
+.card-staff{
+    background-color: #17a2b8;
+
+}
+
+.card-property{
+    background-color: #ffc107;
+
+}
+
+.card-available-property{
+    background-color: #dc3545;
+}
+
+.v1{
+    border-left: 2px solid rgba(0,0,0,.15);
+    height: 60px;
+    position: absolute;
+    right: 189px;
+    top: 17px;
+}
+
+.total-property{
+    position: absolute;
+    right: 81px;
+    top: 18px;
+}
+.total-received span{
+    position:absolute;
+    top:40px;
+    color:#4caf50;
+    font-size:14px;
+}
+
+.total-balance span{
+    position:absolute;
+    top:40px;
+    color:#17a2b8;
+    font-size:14px;
+}
+
+
+.total-overdue span{
+    position:absolute;
+    top:40px;
+    color:#f56954;
+    font-size:14px;
+}
+
+mat-list-item{
+    position: relative;
+    .mini-fav-button{
+        position: absolute;
+        right: 0px;
+        top: 2px;
+    }
+   
+    
+}
+#get-all{
+    position: fixed;
+    right:10px;
+    top:35px;
+      z-index: 99;
+      width: auto;
+  }
+  .dashboard_search{
+      cursor: pointer;
+      span{
+          &:hover{
+             color: #673ab7;
+          }    
+      }
+      
+  }
+  
+  form{
+      .form-group{
+          margin-bottom:0;
+      }
+  }
+  .example-additional-selection {
+      opacity: 0.75;
+      font-size: 0.75em;
+    }
+    
+  .card-content{
+      font-size:16px;
+      margin-top:12px !important;
+      color:#fff;
+  }
+  
+  .heading{
+      margin:0px !important;
+      color:#fff;
+  }
+  
+  .card-customers{
+      background-color: #28a745;
+  }
+  
+  .card-effect:hover{
+      cursor: pointer;
+      transform: scale(1.01);
+      box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+  
+  .total-overdue{
+      cursor: pointer;
+  }
+  .total-balance{
+      cursor: pointer;
+  }
+  .total-received{
+      cursor: pointer;
+  }
+  
+  .card-icon{
+      color:rgba(0,0,0,.15);
+      position: absolute;
+      font-size: 57px;
+      right: 50px;
+      top: 18px;
+  }
+  
+  .card-staff{
+      background-color: #17a2b8;
+  
+  }
+  
+  .card-property{
+      background-color: #ffc107;
+  
+  }
+  
+  .card-available-property{
+      background-color: #dc3545;
+  }
+  
+  .v1{
+      border-left: 2px solid rgba(0,0,0,.15);
+      height: 60px;
+      position: absolute;
+      right: 189px;
+      top: 17px;
+  }
+  
+  .total-property{
+      position: absolute;
+      right: 81px;
+      top: 18px;
+  }
+  .total-received span{
+      position:absolute;
+      top:40px;
+      color:#4caf50;
+      font-size:14px;
+  }
+  
+  .total-balance span{
+      position:absolute;
+      top:40px;
+      color:#17a2b8;
+      font-size:14px;
+  }
+  
+  
+  .total-overdue span{
+      position:absolute;
+      top:40px;
+      color:#f56954;
+      font-size:14px;
+  }
+  
+  mat-list-item{
+      position: relative;
+      .mini-fav-button{
+          position: absolute;
+          right: 0px;
+          top: 2px;
+      }
+     
+      
+  }
+  .mat-card{
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: absolute;
+    padding: 14px;
+    margin-left: -40px;
+    height: 200px;
+    border-radius: 4px;
+}
+
+.pie{
+    
+        display: block;
+        width: 625px;
+        height: 162px;
+        float: left;
+        margin-left: 220px;
+        margin-top: -264px;
+        position: flex;
+        
+    
+}
+
+

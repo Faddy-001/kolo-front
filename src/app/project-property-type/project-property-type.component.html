@@ -1,0 +1,221 @@
+<!-- <div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div>Project Property Type
+                    <div class="page-title-subheading">Tables are the backbone of almost all web applications.
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+
+                <div class="d-inline-block dropdown">
+                    <ng-container *ngFor="let feature of projectPropertyTypeFeature"> 
+                    <button type="button" *ngIf="feature.create==true" aria-haspopup="true" (click)="openDialog()" aria-expanded="false" class="btn-shadow btn btn-info">
+                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <i class="fa fa-business-time fa-w-20"></i>
+                        </span>
+                        Add Project Property Type
+                    </button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <input type="text" class="searchBox" name="projectS" [(ngModel)]="valueToSearch"
+                     (ngModelChange)="Search()"  placeholder="Search...">
+                    <table id="example" role="table" class="table-margin">
+                        <thead role="rowgroup">
+                            <tr role="row">
+                                <th role="columnheader">Project</th>
+                                <th role="columnheader">Property Type</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody role="rowgroup">
+                            <tr *ngFor="let ppt of newPPT | paginate: { itemsPerPage: 5, currentPage: p }" role="row" class="projectt">
+                                <div *ngIf="showCrossicon" class="td-cross" style="margin-bottom: 20px;">
+                                    <mat-icon class="material-icons-outlined close-btn" (click)="openDelete(ppt.id)">
+                                        clear
+                                    </mat-icon>
+                                </div>
+                                <td role="cell" (click)="EditProjectPropertyType(ppt.id)">{{ppt.name}}</td>
+                                <td role="cell" (click)="EditProjectPropertyType(ppt.id)">{{ppt.property}}</td>
+
+                                <td class="close-td" *ngIf="showCrossicon==false">
+                                    <mat-icon class="material-icons-outlined close-btn" (click)="openDelete(ppt.id)">
+                                        clear
+                                    </mat-icon>
+                                </td>
+                                
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="pagination-part" style="float: right;">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <!-- <i class="fas fa-user-tag"></i> -->
+                    <mat-icon style="background: white;color: #68bfbb;font-size: larger;position: relative;left: 5px;bottom: 5px;">domain</mat-icon>
+                </div>
+                <div>Project Property Type
+                    <div class="page-title-subheading">Tables are the backbone of almost all web applications.
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+
+                <div class="d-inline-block dropdown">
+                    <ng-container *ngFor="let feature of projectPropertyTypeFeature"> 
+                        <button type="button" *ngIf="feature.create==true" aria-haspopup="true" (click)="openDialog()" aria-expanded="false" class="btn-shadow btn btn-info">
+                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                                <!-- <i class="fa fa-business-time fa-w-20"></i> -->
+                                <mat-icon style="background-color: transparent;color:white;position: relative;top:4px">business_center</mat-icon>
+                            </span>
+                            Add Project Property Type
+                        </button>
+                        </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <input type="text" class="searchBox" name="projectS" [(ngModel)]="valueToSearch"
+                     (ngModelChange)="Search()"  placeholder="Search...">
+                    <table id="example" role="table" class="table-margin">
+                        <thead role="rowgroup">
+                            <tr role="row">
+                                <th colspan="2" role="columnheader">Project
+                                    <mat-icon class="SortIcon" (click)="sortProject(ascIcon)" *ngIf = "showProject">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortProject(desIcon)" *ngIf = "showProject== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th colspan="2" role="columnheader">Property Type
+                                    <mat-icon class="SortIcon" (click)="sortPropertyType(ascIcon)" *ngIf = "showPropertyType">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortPropertyType(desIcon)" *ngIf = "showPropertyType== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th colspan="2" role="columnheader">Area Type
+                                    <mat-icon class="SortIcon" (click)="sortAreaType(ascIcon)" *ngIf = "showAreaType">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortAreaType(desIcon)" *ngIf = "showAreaType== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th colspan="2" role="columnheader">Area
+                                    <mat-icon class="SortIcon" (click)="sortArea(ascIcon)" *ngIf = "showArea">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortArea(desIcon)" *ngIf = "showArea== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th colspan="2" role="columnheader">No.of Property
+                                    <mat-icon class="SortIcon" (click)="sortNoOfProperty(ascIcon)" *ngIf = "showNoOfProp">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortNoOfProperty(desIcon)" *ngIf = "showNoOfProp== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th colspan="2" role="columnheader">Total Area
+                                    <mat-icon class="SortIcon" (click)="sortTotalArea(ascIcon)" *ngIf = "showTotalArea">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortTotalArea(desIcon)" *ngIf = "showTotalArea== false" >arrow_upward</mat-icon>
+                                </th>
+
+
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody role="rowgroup">
+                            <tr *ngFor="let ppt of newPPT | paginate: { itemsPerPage: 10, currentPage: p }" role="row" class="projectt">
+                                <div *ngIf="showCrossicon" class="td-cross" style="margin-bottom: 20px;">
+                                    <mat-icon class="material-icons-outlined close-btn cut-icon"
+                                        (click)="openDelete(ppt.id)">
+                                        clear
+                                    </mat-icon>
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit close-btn " (click)="EditProjectPropertyType(ppt.id)"></i>
+                                    </div>
+                                </div>
+                                <td colspan="2" role="cell" >{{ppt.name}}</td>
+                                <td colspan="2" role="cell" >{{ppt.property}} </td>
+                                <td colspan="2" role="cell" >{{ppt.area_type}}</td>
+                                <td colspan="2" role="cell" >{{ppt.unit_area}}</td>
+                                <td colspan="2" role="cell" >{{ppt.units}}</td>
+                                <td colspan="2" role="cell" >{{ppt.total_area}}</td>
+
+                                <td *ngIf="showCrossicon==false" class="close-td">
+                                    <!-- <div class="edit-div">
+                                        <mat-icon class="material-icons-outlined close-btn" style="background-color:#3F6AD8;" (click)="EditProjectPropertyType(ppt.id)">edit
+                                        </mat-icon>
+                                    </div>  -->
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit close-btn " (click)="EditProjectPropertyType(ppt.id)"></i>
+                                    </div> 
+                                    <mat-icon class="material-icons-outlined close-btn" (click)="openDelete(ppt.id)">
+                                        clear</mat-icon>
+                                    </td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="pagination-part" style="float: right;">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div> -->
+
+                    <div class="container">
+                        <div class="row">
+                           
+                            <div class="col-sm-12 col-md-5 d-flex justify-content-start">
+                                 <div class="deactive_record rounded-pill" *ngIf = "totalRecords > 0">
+                                   
+                                     <span *ngIf = "totalRecords > 0 && totalRecords <= 10; else elseBlock">
+                                        1 - {{totalRecords}} of {{totalRecords}}
+                                       
+                                     </span>
+                                     <ng-template  #elseBlock>
+                                         <span *ngIf = "totalRecords > 10 && (totalRecords % 10) == 0; else nestedOne">
+                                             {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : p*10}} of {{totalRecords}}
+                                            
+                                          </span>
+                                          <ng-template #nestedOne>
+                                             <span *ngIf="(totalRecords > (p*10)); else nestedBlock">
+                                                 {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : p*10}} of {{totalRecords}}
+                                                
+                                            </span>
+ 
+                                          </ng-template>
+                                             <ng-template #nestedBlock>
+                                                 {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : totalRecords}} of {{totalRecords}}
+                                                 
+                                             </ng-template>
+                                     </ng-template>
+                                    
+                                 </div>
+                            </div>
+                          
+                            <div class=" col-sm-12 col-md-7 d-flex justify-content-end " > 
+                                <div class="pagination-part" style="float: right;">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                </div> 
+                                     
+                             </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

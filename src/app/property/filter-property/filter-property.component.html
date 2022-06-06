@@ -1,0 +1,42 @@
+<div class="container">
+    <div id="content">
+        <div id="main-content">
+            <mat-tab-group #tabGroup [selectedIndex]="selectedTab">
+                <mat-tab label="Project">
+                   <div class="xyz" *ngFor="let project of projectData">
+                        <!-- <input type="checkbox" #checkboxes id="getCheck" [(ngModel)]="salesExc.isSelected" (change)="getSalesExc($event)" value="{{salesExc.id}}" class="input-class regular-checkbox"> {{salesExc.name}} <br> -->
+                        <input type="checkbox" (change)="getProjects($event)" 
+                         [(ngModel)]="project.isSelected" #checkboxes id="getCheck" 
+                         value="{{project.id}}" class="input-class regular-checkbox radio">
+                         {{project.name}} <br>
+                    </div> 
+                </mat-tab>
+                   
+                        <!-- <mat-tab labels1="Testing" class="test">
+
+                        </mat-tab> -->
+                   
+                <mat-tab label="Property Type">
+                    <div class="xyz" [style.display]="showProperties">
+                         <!-- <input type="checkbox"  (change)="getPropertyTypes($event)"  [(ngModel)]="property.isSelected" #checkboxes id="getCheck" value="{{property.id}}" class="input-class regular-checkbox">{{property.name}} <br> -->
+                        <p style="color: red;font-size: 15px;font-family: Arial, Helvetica, sans-serif;">Please Select Project First!!</p>
+                        </div> 
+                     <div class="xyz" [style.display]="showPropertiesProject_Wise" *ngFor="let property of new1p">
+                        <input type="checkbox"  (change)="getPropertyTypes($event)"  [(ngModel)]="property.isSelected" #checkboxes id="getCheck" value="{{property.id}}" class="input-class regular-checkbox">{{property.name}} <br>
+                    </div>
+                  </mat-tab>
+
+                 <mat-tab label="Status">
+                    <div class="xyz">                
+                        <input type="checkbox" #checkboxes (change)="Status1($event)"  [(ngModel)]="Booked"     value="Booked"      class="input-class regular-checkbox">Booked <br>
+                        <input type="checkbox" #checkboxes (change)="Status2($event)"  [(ngModel)]="PreBooked"  value="Pre-Booked"  class="input-class regular-checkbox">Pre-Booked<br>
+                        <input type="checkbox" #checkboxes (change)="Status3($event)"  [(ngModel)]="Registered" value="Registered"  class="input-class regular-checkbox">Registered<br>
+                        <input type="checkbox" #checkboxes (change)="Status4($event)"  [(ngModel)]="Stock"      value="Stock"       class="input-class regular-checkbox">Stock<br>
+                    </div>
+                </mat-tab>
+               </mat-tab-group>
+        </div>
+    </div>
+</div>
+<button (click)="applyFilter($event)" style="float:right; position: relative; bottom: 1rem;" type="submit" class="applyBtn mt-1 btn btn-primary">Apply</button>
+<button (click)="clearAll($event)"  style="float:right;position: relative; bottom: 1rem;"  type="submit" class="mt-1 btn btn-primary">Clear All</button>

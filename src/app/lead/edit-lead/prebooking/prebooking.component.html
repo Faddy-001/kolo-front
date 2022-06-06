@@ -1,0 +1,192 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Prebooking
+            </div>
+            <!-- <i class="pe-7s-close close-icon" (click)="close()"></i> -->
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <form [formGroup]="PreeBookingForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Property Number *</mat-label>
+                                            <input formControlName="search" matInput type="text" class="searchBox" [value]="prop_number"
+                                                placeholder="Search..." (click)="$event.stopPropagation()"
+                                                (keyup)="search_PropertyNo($event)" autocomplete="off">
+                                                <mat-error style="position: relative;margin-top: 10px;" *ngIf="PreeBookingForm.get('search')?.touched">Property Number is required!
+                                                </mat-error>
+                                        </mat-form-field>
+                                        <div *ngIf="isProperty" class="existing-token-dropdown">
+                                            <ul class="nav" *ngFor="let prop_name of newProperties">
+                                                <li class="nav-item exist-token-list"
+                                                    (click)="GetPropertyPrice(prop_name)">{{prop_name.number}}</li>
+                                            </ul>
+                                        </div>
+                                        <p class="no_record" *ngIf="noRecords">No record found!</p>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Payment Type * </mat-label>
+                                            <mat-select formControlName="Payment_Type" (selectionChange)="getType($event)">
+                                                <mat-option value="Full">Full</mat-option>
+                                                <mat-option value="Instalment">Instalment</mat-option>
+                                            </mat-select>
+                                            <mat-error style="position: relative;margin-top: 10px;" *ngIf="PreeBookingForm.get('Payment_Type')?.touched">Payment Type is required!
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row" style="height: 1rem;"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button [style.display]="showBtn" (click)="showPropertyDetails()" class="mt-1 btn btn-primary" type="button">Show Property Details</button>
+                                    </div>
+                                </div>
+                                    <div [style.display]="showPropertyDetail">
+                                      <mat-accordion>
+                                        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                                            <mat-expansion-panel-header class="toggleheight">
+                                                <mat-panel-title>
+                                                    # {{PropertyNumber}}
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                          
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table>
+                                                                <tr>
+                                                                    <td class="showPropertytTitle">Project : </td>
+                                                                    <td class="showPropertyDetails"> {{PropertyProject}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="showPropertytTitle">Property Name : </td>
+                                                                    <td class="showPropertyDetails"> {{PropertyName}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="showPropertytTitle">Property Type : </td>
+                                                                    <td class="showPropertyDetails"> {{PropertyPropertyType}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="showPropertytTitle">Property Length : </td>
+                                                                    <td class="showPropertyDetails"> {{PropertyLength}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="showPropertytTitle">Property Breadth : </td>
+                                                                    <td class="showPropertyDetails"> {{PropertyBreadth}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="showPropertytTitle">Total Area : </td>
+                                                                    <td class="showPropertyDetails"> {{PropertySize}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="showPropertytTitle">Rate per Sq/Ft : </td>
+                                                                    <td class="showPropertyDetails">₹ {{PropertyRatePerSqFt}}</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                            </mat-expansion-panel>
+                                     </mat-accordion>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Commitment</mat-label>
+                                            <textarea (change)="commitDesc($event)" matInput
+                                                class="remarkField"></textarea>
+                                            <input type="file" (change)="getImage($event)" style="display: none;"
+                                                class="form-control-file" id="exampleFormControlFile1" #file />
+                                            <span class="material-icons" (click)="file.click()"
+                                                style="float: right; position: relative;bottom:30px;right: 20px;;font-size: 20px;color:#68bfbb">
+                                                attach_file
+                                            </span>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 doc-img-col" *ngFor='let url of images; let i = index'>
+                                        <img class="doc-img" [src]="url.url" title="{{url.name}}" alt="" width="60"
+                                            height="60">
+                                        <span>
+                                            <mat-icon (click)="deleteImg(i)" class="close-btn">close</mat-icon>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button type="button" mat-button (click)="showOffer();" [disabled]="viewOffers"
+                                        style="text-decoration: underline;color: #1c5351; margin-bottom:2rem;">View
+                                        Offers</button>
+                                </div>
+                                <span *ngIf="spanerr"
+                                    style="color: #ce7575;position:relative;top:4px;left: 10px;">Please Select
+                                    Property!!</span>
+                                <div class="table-responsive" [style.display]="show_offer" >
+                                    <table class="table" style="font-family: arial, sans-serif;border-collapse: collapse;width: 100%;">
+                                        <tr style="background-color: #68bfbb;">
+                                            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" ></th>
+                                            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >Number</th>
+                                            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >Name</th>
+                                            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >Type</th>
+                                            <th style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >Benefit</th>
+                                          </tr>
+                                          <tr  *ngFor="let offers of offerDetail">
+                                            <td style=" border: 1px solid #dddddd;text-align: left;padding: 8px;"> <input type="checkbox" id="getCheck" (change)="selectOffer($event,offers.type);"
+                                                 name="checkOffer" value="{{offers.id}}" class="example-margin"> </td>
+                                            <td  style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >{{offers.number}}</td>
+                                            <td  style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >{{offers.name}}</td>
+                                            <td  style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >{{offers.type}}</td>
+                                            <td  style=" border: 1px solid #dddddd;text-align: left;padding: 8px;" >{{offers.benefit}}</td>  
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                 <div class="row"  [style.Display]="show_offer">
+                                    <table>
+                                        <tr>
+                                            <td class="showPriceDetails">Property Price : </td>
+                                            <td class="showamt">₹ {{Property_price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="showPriceDetails">Offer Discount Price : </td>
+                                            <td class="showamt">₹ {{totalDiscount}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="showPriceDetails">Final Price : </td>
+                                            <td class="showamt">₹ {{getFinalPrice?productGiveaway?getFinalPrice+'+'+productGiveaway:getFinalPrice:Property_price}}</td>
+                                        </tr>
+                                    </table>
+                                   </div>
+                                <button type="submit" class="mt-1 btn btn-primary"
+                                    [style.display]="ShowNowBookLeadavaialble" (click)="saveData()"
+                                    routerLink="/layout/customer/add-customer/{{leadId}}" style="float: right;">Now 
+                                    Booking </button>
+
+                                <button type="submit" class="mt-1 btn btn-primary"
+                                    [style.display]="ShowsaveforlaterBookLeadavaialble" (click)="saveData()"
+                                    style="margin: 0rem 1rem;float: right;">Save for later</button>
+
+                                <button type="submit" class="mt-1 btn btn-primary" [style.display]="ShowNotLead"
+                                    (click)="ProceedtoBooking()" style="float: right;"
+                                    style="margin: 0rem 1rem;float: right;">Proceed to Booking
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

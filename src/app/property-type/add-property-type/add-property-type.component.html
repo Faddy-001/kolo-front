@@ -1,0 +1,48 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Add PropertyType
+            </div>
+            <!-- <i (click)="close()" class="pe-7s-close close-icon"></i> -->
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <form [formGroup]="addPropertyTypeForm" (ngSubmit)="submit(addPropertyTypeForm.value)">
+                                <mat-form-field appearance="outline" id="NameField">
+                                    <mat-label>Name<span class="starmandatory">*</span></mat-label>
+                                    <input matInput placeholder="" formControlName="name">
+                                    <mat-error>Name is required!</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Area Type<span class="starmandatory">*</span></mat-label>
+                                    <mat-select formControlName="area_type" >
+                                        <mat-option value="">Select</mat-option>
+                                        
+                                        <mat-option value="Saleable" >Saleable
+                                        </mat-option>
+                                        <mat-option value="Non-Saleable">Non-Saleable
+                                        </mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Description</mat-label>
+                                    <textarea matInput placeholder=" " formControlName="description"></textarea>
+                                </mat-form-field>
+                                <button type="submit" class="mt-1 btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

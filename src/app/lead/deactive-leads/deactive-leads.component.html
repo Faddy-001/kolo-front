@@ -1,0 +1,400 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <!-- <i class="fas fa-arrow-alt-circle-right"></i> -->
+                    <mat-icon class="deactive_icon"style="font-size: larger;position: relative;bottom: 10px;
+                    right: 3px;">person_off</mat-icon>
+                </div>
+                <div>Deactive Leads
+                    <div class="page-title-subheading">Tables are the backbone of almost all web applications.
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="page-title-actions">
+                <div class="d-inline-block dropdown">
+                    <button type="button" routerLink="add-lead" aria-haspopup="true" aria-expanded="false" class="btn-shadow btn btn-info new-button">
+                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                             <i class="fa fa-business-time fa-w-20"></i> 
+                            <mat-icon style="background-color: transparent;color:white;position: relative;top:2px">business_center</mat-icon>
+                        </span>
+                        New Lead
+                    </button>
+                </div>
+            
+            </div> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+
+                    <!-- <button *ngIf="">show</button>
+                    <button>hide</button>
+                    <p>hello</p> -->
+                    <div class="filters">
+                        <button type="button" (click)="openFilter()" aria-haspopup="true" aria-expanded="false" class="btn-shadow btn btn-info filter-buttons">
+                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                                <!-- <i class="fa fa-filter"></i> -->
+                                <mat-icon style="position: relative;top:4px;font-size: 20px;">filter_list</mat-icon>
+                            </span>
+                            Filters
+                        </button>
+                        <button type="button" (click)="exportLead()" aria-haspopup="true" aria-expanded="false" class="btn-shadow btn btn-info export-buttons">
+                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                                <!-- <i class="fa fa-download"></i> -->
+                                <mat-icon style="position: relative;top:4px;font-size: 20px;"> import_export</mat-icon>
+                            </span>
+                            Export
+                        </button>
+                        <button mat-icon-button class="more-options" [matMenuTriggerFor]="menu" aria-label="Example
+                            icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+
+
+
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="$event.stopPropagation()">
+                                <mat-checkbox (keydown)="$event.stopPropagation()" (change)="showName($event)"
+                                    name="first_name" class="example-margin" [(ngModel)]="checkedName">First Name
+                                </mat-checkbox>
+                            </button>
+                            <button mat-menu-item (click)="$event.stopPropagation()">
+                                <mat-checkbox (keydown)="$event.stopPropagation()" (change)="showPhone($event)"
+                                    name="phone" class="example-margin" [(ngModel)]="checkedPhone">Phone</mat-checkbox>
+                            </button>
+                            <button mat-menu-item (click)="$event.stopPropagation()">
+                                <mat-checkbox (keydown)="$event.stopPropagation()" (change)="showContactibility($event)"
+                                    name="contactability" class="example-margin" [(ngModel)]="checkedCont">
+                                    Contactibility</mat-checkbox>
+                            </button>
+                            <button mat-menu-item (click)="$event.stopPropagation()">
+                                <mat-checkbox (keydown)="$event.stopPropagation()" (change)="showModeofInt($event)"
+                                    name="mode_of_interest" class="example-margin" [(ngModel)]="checkedMOI">Mode of
+                                    Interest</mat-checkbox>
+                            </button>
+                            <button mat-menu-item (click)="$event.stopPropagation()">
+                                <mat-checkbox (keydown)="$event.stopPropagation()" (change)="showStatus($event)"
+                                    name="status" class="example-margin" [(ngModel)]="checkedStat">Status</mat-checkbox>
+                            </button>
+                            <button mat-menu-item (click)="$event.stopPropagation()">
+                                <mat-checkbox (keydown)="$event.stopPropagation()" (change)="showCategory($event)"
+                                    name="category" class="example-margin" [(ngModel)]="checkedCat">Category
+                                </mat-checkbox>
+                            </button>
+
+                        </mat-menu>
+                        <input type="text" class="searchBox" placeholder="Search..." (keyup.enter)="search_lead($event)">
+                    </div>
+
+                    <table id="example" role="table" class="table-margin">
+                        <p *ngIf="noRecords">No records found!</p>
+                        <thead class="tableHead" role="rowgroup">
+                            <tr class="headRow" role="row">
+                                <!-- <th class="header" *ngIf="shwHeader" class="details-control sorting_disabled
+                                    showHeader"></th> -->
+
+                                <th class="header first_name" role="columnheader"> Name
+                                    <mat-icon class="SortIcon" (click)="sortName(ascIcon)" *ngIf = "showLead">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortName(desIcon)" *ngIf = "showLead== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th class="header phone" role="columnheader">Phone
+                                    <mat-icon class="SortIcon" (click)="sortPhone(ascIcon)" *ngIf = "showPhn">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortPhone(desIcon)" *ngIf = "showPhn== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th class="header contactability" role="columnheader">Contactability
+                                    <mat-icon class="SortIcon" (click)="sortContact(ascIcon)" *ngIf = "showContact">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortContact(desIcon)" *ngIf = "showContact== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th class="header mode_of_interest" role="columnheader">Mode of Interest
+                                    <mat-icon class="SortIconMOI" (click)="sortMOI(ascIcon)" *ngIf = "showMOI">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIconMOI" (click)="sortMOI(desIcon)" *ngIf = "showMOI== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th class="header status" role="columnheader">Status
+                                    <mat-icon class="SortIcon" (click)="sortStatus(ascIcon)" *ngIf = "shwStatus">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortStatus(desIcon)" *ngIf = "shwStatus== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th class="header category" role="columnheader">Category
+                                    <mat-icon class="SortIcon" (click)="sortCategory(ascIcon)" *ngIf = "showCtgry">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortCategory(desIcon)" *ngIf = "showCtgry== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th class="header" *ngIf="shwFooter" class="details-control sorting_disabled
+                                    showFooter"></th>
+                                    <th></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf ="value == false">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                
+                                <td colspan="3">
+                                    <div class="error_mg">
+                                        <p>Wrong Input</p>
+                                    </div>
+                                </td>
+                                <td></td>
+                                
+                            </tr>
+                        </tbody>
+                        <tbody *ngFor="let lead of newLeads" class="tableBody" role="rowgroup">
+                            <tr class="headRow hoverable_row" [ngClass]="isClass" role="row">
+
+                                <!-- <td (click)="expandRow(lead.id)" *ngIf="showOpen" ><img src="/assets/images/details_open.png" alt=""></td> 
+                               <td (click)="expandRow(lead.id)" *ngIf="lead.id == leadid" ><img src="/assets/images/details_close.png" alt=""></td> 
+                                <td (click)="closeRow(lead.id)" *ngIf="showClose && lead.id == leadid"><img  src="/assets/images/details_close.png"  alt=""></td>  -->
+                                <div *ngIf="showCrossicon" class="td-cross" style="margin-bottom: 20px;">
+                                    <mat-icon class="material-icons-outlined close-btn"
+                                        (click)="Activate(lead.id)">
+                                        check
+                                    </mat-icon>
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit i_edit-btn "  matTooltip="Edit" matTooltipClass="example-tooltip-red" matTooltip="Edit" matTooltipClass="example-tooltip-red" routerLink="edit-lead/{{lead.id}}"></i>
+                                    </div> 
+                                </div>
+                                <!-- <ng-container *ngIf="Image_Icon">
+                                    <td class="tableData" (click)="collapse(lead.id)" *ngIf="lead.id == leadid" [ngStyle]="{'display':hideBtn}" class="showHeader "><img src="/assets/images/details_close.png" alt=""></td>
+
+                                    <td class="tableData" (click)="expandRow(lead.id)" *ngIf="lead.id != leadid || showbtn" class="showHeader"><img src="/assets/images/details_open.png" alt=""></td>
+
+                                </ng-container> -->
+                                <ng-container *ngIf = "showCrossicon == false">
+                                    <td class="tableData first_name showHeader" (click)="collapse(lead.id)" *ngIf="lead.id == leadid" [ngStyle]="{'display':hideBtn}">{{lead.firstName}} {{lead.middleName}} {{lead.lastName}}</td>
+
+                                    <td class="tableData first_name showHeader" (click)="expandRow(lead.id)" *ngIf="lead.id != leadid || showbtn">{{lead.firstName}} {{lead.middleName}} {{lead.lastName}}</td>
+
+                                </ng-container>
+
+                             
+                                <td class="tableData first_name" role="cell" *ngIf = "showCrossicon">
+                                    {{lead.firstName}}{{lead.middleName}}{{lead.lastName}}</td>
+                                <td class="tableData phone" role="cell"><a href="tel:{{lead.Phone}}">{{lead.Phone?lead.Phone:'-'}}</a>
+                                </td>
+                                <td class="tableData contactability" role="cell">{{lead.Contactability?lead.Contactability:'-'}}</td>
+                                <td class="tableData mode_of_interest" role="cell">{{lead.modeofInterest?lead.modeofInterest:'-'}}</td>
+                                <td class="tableData status" role="cell">{{lead.Status?lead.Status:'-'}}</td>
+                                <td class="tableData category" role="cell">{{lead.Category?lead.Category:'-'}}</td>
+                                <td class="tableData" (click)="expandRow(lead.id)" *ngIf="shwFooter" class="details-control showFooter"></td>
+
+                                <ng-container *ngIf="Show_ICon">
+                                    <td class="tableData" (click)="collapse(lead.id)" *ngIf="lead.id == leadid" [ngStyle]="{'display':hideBtn}" class="showHeader "><img src="/assets/images/details_close.png" alt=""></td>
+
+                                    <td class="tableData" (click)="expandRow(lead.id)" *ngIf="lead.id != leadid || showbtn" class="showHeader"><img src="/assets/images/details_open.png" alt="">
+                                    </td>
+                                </ng-container>
+
+                                <td *ngIf="showCrossicon==false" class="close-td"> 
+                                    <!-- <div class="edit-div">
+                                        <mat-icon class="material-icons-outlined close-btn" style="background-color:#3F6AD8;" matTooltip="Edit" matTooltipClass="example-tooltip-red" routerLink="edit-lead/{{lead.id}}">edit
+                                        </mat-icon>
+                                    </div>    -->
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit i_edit-btn "  matTooltip="Edit" matTooltipClass="example-tooltip-red" matTooltip="Edit" matTooltipClass="example-tooltip-red" routerLink="edit-lead/{{lead.id}}"></i>
+                                    </div> 
+                                    <mat-icon (click)="Activate(lead.id)" class="material-icons-outlined close-btn" matTooltip="Activate"
+                                    aria-label="Button that displays a tooltip when focused or hovered over" matTooltipClass="example-tooltip-red" >check
+                                    </mat-icon>
+                                </td> 
+
+                            </tr>
+
+                            <tr *ngIf="lead.id == leadid" [ngStyle]="{'display':isHide}">
+                                <td colspan="7">
+                                    <table id="newtable" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="font-weight: 500;">Call Duration:
+                                                </td>
+                                                <td>{{lead.callDuration}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Alternative No:
+                                                </td>
+                                                <td>{{lead.alternate_contact_no}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Call Date:
+                                                </td>
+                                                <td>{{lead.call_dateTime}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Area of Interest:</td>
+                                                <td>
+                                                    <span class="multi_data" *ngFor="let intrest of lead.areaOfIntrest">
+                                                        {{intrest?intrest.name:"-"}}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">buyingPurpose:</td>
+                                                <td>{{lead.buyingPurpose}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Budget:</td>
+                                                <td>{{lead.Budget}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Living Mode:
+                                                </td>
+                                                <td>{{lead.livingmode}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Lead Source:
+                                                </td>
+                                                <td>{{lead.leadsource}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Current Location:
+                                                </td>
+                                                <td>{{lead.currentLocation}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Expected Visit Date:</td>
+                                                <td>{{lead.expectedVdate}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Follow Up Date:</td>
+                                                <td>{{lead.followUpDate}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Living Mode:
+                                                </td>
+                                                <td>{{lead.livingmode}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Project:</td>
+                                                <td>{{lead.projectName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Required Plot Size:</td>
+                                                <td>{{lead.requiredPlotSize}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">CRE:</td>
+                                                <td>{{lead.cre}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Sales Executive:</td>
+                                                <td>{{lead.salesExecutive}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: 500;">Activity Log:</td>
+                                                <td>
+                                                    <button type="button" aria-haspopup="true" (click)="openDialog(lead.id)" aria-expanded="false" class="btn-shadow btn btn-info ">
+                                                    <span class="btn-icon-wrapper pr-2 opacity-7">
+                                                        <i class="fa fa-business-time fa-w-20"></i>
+                                                    </span>
+                                                    Activity Log
+                                                    </button>
+                                                 </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr> 
+
+                        </tbody>
+                    </table>
+                    <div class="container">
+                       <div class="row">
+                           <div class="col-sm-12 col-md-5 d-flex justify-content-start">
+                                <div class="deactive_record rounded-pill" *ngIf = "totalLeads > 0">
+                                    
+                                    <span *ngIf = "totalLeads <= 10; else elseBlock">
+                                       1 - {{totalLeads}} of {{totalLeads}}
+                                    </span>
+                                    <ng-template  #elseBlock>
+                                        <span *ngIf = "totalLeads > 10 && (totalLeads % 10) == 0; else nestedOne">
+                                            {{page == 1 ? page : ((page-1)*10)+1}} - {{page == 1 ? page*10 : page*10}} of {{totalLeads}}
+                                            greater 
+                                         </span>
+                                         <ng-template #nestedOne>
+                                            <span *ngIf="(totalLeads > (page*10)); else nestedBlock">
+                                                {{page == 1 ? page : ((page-1)*10)+1}} - {{page == 1 ? page*10 : page*10}} of {{totalLeads}}
+                                                
+                                           </span>
+
+                                         </ng-template>
+                                            <ng-template #nestedBlock>
+                                                {{page == 1 ? page : ((page-1)*10)+1}} - {{page == 1 ? page*10 : totalLeads}} of {{totalLeads}}
+                                            </ng-template>
+                                    </ng-template>
+                                   
+                                </div>
+                           </div>
+                         
+                           <div class=" col-sm-12 col-md-7 d-flex justify-content-end " >
+                              
+                                   
+                                    <ul class="nav sm_margin">
+                                       
+                                        <li id="prev" class=" nav-item prev_page" style="cursor: pointer;" (click)="getNextData(page-1)" *ngIf="(page > 1 && activePage <= pageCount); else disableElse">
+                                              
+                                                    <mat-icon class="prev-icon ">arrow_back_ios</mat-icon><span  class="d-none d-sm-block prev_align">Prev</span>
+                                                  
+                                            
+                                        </li>
+                                        <ng-template #disableElse>
+                                            <li id="prev" class=" nav-item prev_page">
+                                                <mat-icon class="prev-icon " style="color: #D6D8D9;">arrow_back_ios</mat-icon><span  class="d-none d-sm-block prev_align" style="color: #D6D8D9;">Prev</span>
+                                            </li>
+                                        </ng-template>
+                                       
+                                    
+                                    
+                                        <li class="nav-item">
+                                            <input type="text"  class="search_pagination" placeholder="{{page}}" (keyup.enter)="getNextDeactiveData($event)">
+                                        </li>
+                                   
+                                        <li id="next" class=" nav-item next_page" style="cursor: pointer;" (click)="getNextData(page+1)" *ngIf="(page < pageCount && pageCount >= activePage && activePage != 0); else disableNext"> 
+                                            <span class="d-none d-sm-block next_align">Next </span>
+                                            <mat-icon class="next-icon" >arrow_forward_ios</mat-icon>
+                                             
+                                         </li>
+                                         <ng-template #disableNext>
+                                            <li id="next" class=" nav-item next_page"> 
+                                                <span class="d-none d-sm-block next_align" style="color: #D6D8D9;">Next </span>
+                                                <mat-icon class="next-icon" style="color: #D6D8D9;">arrow_forward_ios</mat-icon>
+                                                 
+                                             </li>
+                                         </ng-template>
+                                         
+                                    </ul>
+                                
+                           </div>
+                       </div>
+                   </div>
+                    <!--<div class="row pagination">
+                        <div class="col-md-12">
+                            <ul class="nav justify-content-end">
+                                <li *ngIf="page != 1" id="prev" class="nav-item">
+                                    <span style="cursor: pointer;" (click)="getNextData(page-1)">
+                                        <mat-icon class="prev-icon">arrow_back_ios</mat-icon>Prev
+                                    </span>
+                                </li>
+                                <li *ngFor="let pageNo of pageCounts" class="nav-item numbers">
+                                    <span style="cursor:pointer;" (click)="getNextData(pageNo)">
+                                        <span *ngIf="pageNo == page; else elseBlock" class="active-design">
+                                            {{pageNo}}
+                                        </span>
+                                    <ng-template #elseBlock>
+                                        {{pageNo}}
+                                    </ng-template>
+                                    </span>
+                                </li>
+                                <li *ngIf="page != pageCount" id="next" class="nav-item">
+                                    <span style="cursor: pointer;" (click)="getNextData(page+1)">Next</span>
+                                    <mat-icon class="next-icon">arrow_forward_ios</mat-icon>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>---->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

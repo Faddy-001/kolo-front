@@ -1,0 +1,137 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Edit Property
+            </div>
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline" id="Project_name">
+                                            <mat-label>Project</mat-label>
+                                            <mat-select (selectionChange)="GetProject($event)">
+                                                <mat-option *ngFor="let project of projects" value="{{project.id}}">
+                                                    {{project.name}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline" id="Property_type">
+                                            <mat-label>Property Type</mat-label>
+                                            <mat-select>
+                                                <mat-option>Select</mat-option>
+                                                <mat-option *ngFor="let type of new1p" [value]="type.id">
+                                                    {{type.name}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Property Number</mat-label>
+                                            <input matInput placeholder="Property Number">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Property Name</mat-label>
+                                            <input matInput placeholder="Property Name">
+                                        </mat-form-field>
+                                    </div> -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Length</mat-label>
+                                            <input matInput placeholder="Length" [(ngModel)]="LengthValue" name="length"
+                                                (ngModelChange)="getArea();" id="length">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Breadth</mat-label>
+                                            <input matInput placeholder="Breadth" [(ngModel)]="BreadthValue"
+                                                name="breadth" (ngModelChange)="getArea();" id="breadth">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Total Area</mat-label>
+                                            <input matInput placeholder="" id="area" value={{area}} readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Rate</mat-label>
+                                            <input matInput placeholder="Enter Rate" id="rate" [(ngModel)]="AmountValue"
+                                                name="rate" value={{persqft}} (ngModelChange)="getAmount();">
+                                            
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Total Amount</mat-label>
+                                            <input readonly matInput placeholder="" value={{Total}} id="amount"
+                                                [(ngModel)]="RateValue" name="amount" (ngModelChange)="getRate();">
+                                            <!-- <mat-error *ngIf="addPropertyForm.get('price')?.touched">Amount is required!
+                                            </mat-error> -->
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Description</mat-label>
+                                            <!-- <textarea matInput class="textarea1" formControlName="remark"></textarea> -->
+                                            <textarea matInput rows="1"></textarea>
+                                            <!-- <input type="file" style="display: none;" multiple (change)="offerImage($event)" #file /> -->
+                                            <input type="file" style="display: none;" (change)="offerImage($event)"
+                                                class="form-control-file" id="exampleFormControlFile1" #file>
+                                            <span class="material-icons" (click)="file.click()"
+                                                style="float: right; position: relative;bottom:10px;right: 20px;;font-size: 20px;color:#68bfbb">
+                                                attach_file
+                                            </span>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="col-md-12">
+                                        <div class="img-wrap" *ngFor="let url of urls">
+                                            <img [src]="url" id="blah" width="60" height="60">
+                                            <span class="close-icon1" style="cursor: pointer;color: red;" (click)="deleteImage(url)">X</span>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-2 doc-img-col" *ngFor='let url of images; let i = index'>
+                                        <img class="doc-img" [src]="url.url" title="{{url.name}}" alt="" width="60"
+                                            height="60">
+                                        <span>
+                                            <mat-icon (click)="deleteImg(i)" class="close-btn">close</mat-icon>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="mt-1 btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

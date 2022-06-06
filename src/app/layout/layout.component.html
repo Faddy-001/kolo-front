@@ -1,0 +1,360 @@
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-header header-shadow">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <!-- <h3>CRM</h3> -->
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" (click) = "toggleDisplay()"  class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner" ></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner" ></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                </button>
+                </span>
+            </div>
+            <div class="app-header__content">
+               
+                <div class="app-header-right">
+                    <div class="header-btn-lg pr-0">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <!-- <div class="btn-group"> -->
+                                            <img style="height: 35px; width: 35px;" class=" img__profile-picture rounded-circle" src="{{image?image:DefaultImg}}" alt="profile-pic">
+                                            <mat-icon class="arrow_icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+                                            <mat-menu #menu="matMenu">
+                                              <button mat-menu-item (click)="openDialog()">View Profile</button>
+                                              <button mat-menu-item (click)="Logout()">Logout</button>
+                                            </mat-menu>
+                                    <!-- </div> -->
+                                </div>
+                                <div class="widget-content-left  ml-3 header-user-info">
+                                    <div class="widget-heading">
+                                        {{showName}}
+                                    </div>
+                                    <div class="widget-subheading">
+                                        {{Role}}
+                                    </div>
+                                </div>
+                                <div class="widget-content-right header-user-info ml-3">
+                                    <!-- <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                    </button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-theme-settings">
+            <!-- <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
+                <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+            </button> -->
+            <div class="theme-settings__inner">
+                <div class="scrollbar-container">
+                    <div class="theme-settings__options-wrapper">
+                        <h3 class="themeoptions-heading">Layout Options
+                        </h3>
+                        <div class="p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="switch has-switch switch-container-class" data-class="fixed-header">
+                                                    <div class="switch-animate switch-on">
+                                                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Fixed Header
+                                                </div>
+                                                <div class="widget-subheading">Makes the header top fixed, always visible!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="switch has-switch switch-container-class" data-class="fixed-sidebar">
+                                                    <div class="switch-animate switch-on">
+                                                        <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Fixed Sidebar
+                                                </div>
+                                                <div class="widget-subheading">Makes the sidebar left fixed, always visible!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="switch has-switch switch-container-class" data-class="fixed-footer">
+                                                    <div class="switch-animate switch-off">
+                                                        <input type="checkbox" data-toggle="toggle" data-onstyle="success">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left">
+                                                <div class="widget-heading">Fixed Footer
+                                                </div>
+                                                <div class="widget-subheading">Makes the app footer bottom fixed, always visible!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                                        
+                        
+                        <h3 class="themeoptions-heading">
+                            <div>Main Content Options</div>
+                            <button type="button" class="btn-pill btn-shadow btn-wide ml-auto active btn btn-focus btn-sm">Restore Default
+                            </button>
+                        </h3>
+                        <div class="p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <h5 class="pb-2">Page Section Tabs
+                                    </h5>
+                                    <div class="theme-settings-swatches">
+                                        <div role="group" class="mt-2 btn-group">
+                                            <button type="button" class="btn-wide btn-shadow btn-primary btn btn-secondary switch-theme-class" data-class="body-tabs-line">
+                                                Line
+                                            </button>
+                                            <button type="button" class="btn-wide btn-shadow btn-primary active btn btn-secondary switch-theme-class" data-class="body-tabs-shadow">
+                                                Shadow
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-main">
+            <div class="app-sidebar sidebar-shadow">
+                <div class="app-header__logo">
+                    <div class="logo-src" ></div>
+                    <div class="header__pane ml-auto">
+                        <div>
+                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-header__mobile-menu">
+                    <div>
+                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="app-header__menu">
+                    <span>
+                        <button type="button"
+                            class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                    </button>
+                    </span>
+                </div>
+                <div class="scrollbar-sidebar">
+                    <div class="app-sidebar__inner">
+                        <ul class="vertical-nav-menu">
+                          
+                            <li >
+                                <a routerLink="dashboard" class="mm-active">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                            right: 1rem;top: 8px">dashboard</mat-icon>
+                                        </div>
+                                        <div class="col-md-10 mm-active">
+                                            Dashboard
+                                        </div>
+                                    </div>                                    
+                                </a>                                
+                            </li>
+                            <!-- <li >
+                                <a routerLink="customer" class="mm-active">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                            right: 1rem;top: 8px">Collection</mat-icon>
+                                        </div>
+                                        <div class="col-md-10 mm-active">
+                                            Collection
+                                        </div>
+                                    </div>                                    
+                                </a>                                
+                            </li> -->
+                                 <ng-container *ngFor="let feature of features">
+                                <ng-container *ngFor="let module of feature.Feature.Modules" >
+                                <li (click)="activateClass(module)"   [class.phase-active]="activeButton === module" *ngIf="feature.read == true">
+                                    <a routerLink="{{module.Module_Feature.path}}" *ngIf="feature.Feature.name!='Pre Bookings'">
+                                        <!-- <i class="metismenu-icon pe-7s-display2"></i> -->
+                                        <!-- <mat-icon style="opacity: 0.5;">input</mat-icon> -->
+                                        <div class="row">
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Leads'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">trending_up</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Professions'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">business_center</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Projects'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">assignment</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Departments'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">location_city</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Roles'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">supervisor_account</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Users';"  >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">person</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Offers'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">local_offer</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Property Types'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">domain</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Project Property Types'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">domain</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Properties'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">domain</mat-icon>
+                                       </div>
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Customers'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">person_add</mat-icon>
+                                       </div>
+
+                                       <!-- <div class="col-md-2" *ngIf="feature.Feature.name!='Pre Bookings'" display="none"  >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">book</mat-icon>
+                                       </div> -->
+
+                                       <div class="col-md-2" *ngIf="feature.Feature.name=='Payment Via'" >
+                                        <mat-icon class="metismenu-icon" style="opacity: 0.2;position: relative;
+                                        right: 1rem;top: 8px">money</mat-icon>
+                                       </div>
+                                       
+
+
+                                       <div class="col-md-10" *ngIf="feature.Feature.name !== 'Property Types'" >
+                                        {{feature.Feature.name}}
+                                       </div>
+                                       <div class="col-md-10" *ngIf="feature.Feature.name == 'Property Types'" >
+                                        Product Type
+                                       </div>
+
+                                       
+
+                                    </div>
+
+                                    </a>
+                                    <ul *ngIf="feature.Feature.name == 'Leads'">
+                                        <li (click)="activateClass(module)" [class.phase-active]="activeButton === module">
+                                            <a routerLink="{{module.Module_Feature.path}}">
+                                                <i class="metismenu-icon">
+                                                </i>Active Leads
+                                            </a>
+                                            <a routerLink="{{module.Module_Feature.path}}/deactive-leads">
+                                                <i class="metismenu-icon">
+                                                </i>Deactive Leads
+                                            </a>
+                                            <a routerLink="{{module.Module_Feature.path}}/uncalled-leads">
+                                                <i class="metismenu-icon">
+                                                </i>Uncalled Leads
+                                            </a>
+                                            <a routerLink="{{module.Module_Feature.path}}/todays-follow-up">
+                                                <i class="metismenu-icon">
+                                                </i>Todays Follow Up
+                                            </a>
+                                        </li>
+                                </ul>
+                                </li>
+                                </ng-container>
+                            </ng-container>
+                            <!-- [style.display] = "!isShow ? 'block' : 'none'" -->
+                            <li  [className]="isShow ? 'mediaCheckVersion1' : 'mediaCheckVersion2'" >
+                                <span style="font-size: small;color:black;margin-left: 3.5rem;">Developed by</span>
+                                 <br>
+                            <span style="font-size: x-small;color:black;margin-left: 20px; ">
+                                    Kolonizer Real Business Solutions</span>
+                                    <br/>
+                                    <span style="font-size: x-small;color:black;margin-left: 5rem;"> (V.1.4)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="app-main__outer">
+                <router-outlet></router-outlet>
+                
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,68 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Edit Project
+            </div>
+            <!-- <i class="pe-7s-close close-icon" (click)="close()"></i> -->
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <form [formGroup]="editProjectForm" (ngSubmit)="submit(editProjectForm.value)">
+                                <mat-form-field appearance="outline" id="NameField">
+                                    <mat-label>Name<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="name" placeholder=" ">
+                                    <mat-error *ngIf="editProjectForm.get('name')?.touched">Name is required!</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" id="">
+                                    <mat-label>Total Area<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="total_area"  placeholder="Enter Total Area">
+                                    <mat-error *ngIf="editProjectForm.get('total_area')?.touched">Sector/Type is required!</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" id="">
+                                    <mat-label>Saleable Area <span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="saleable" placeholder="Enter Total Saleable Area">
+                                    <mat-error *ngIf="editProjectForm.get('saleable')?.touched">Sector/Type is required!</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" id="">
+                                    <mat-label>Non-Saleable Area<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="nonsaleable"  placeholder="Enter Total Non-Saleable Area">
+                                    <!-- <mat-error *ngIf="editProjectForm.get('nonsaleable')?.touched">Sector/Type is required!</mat-error> -->
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" id="NameField">
+                                    <mat-label>Sector/Type<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="sector" placeholder=" ">
+                                    <mat-error *ngIf="editProjectForm.get('sector')?.touched">Sector/Type is required!</mat-error>
+                                </mat-form-field>
+                                <!-- <mat-form-field appearance="outline"> -->
+                                <mat-label>Description</mat-label> 
+                                <!-- <textarea matInput formControlName="description" innerHTML="{{desc}}" placeholder=""></textarea> -->
+                                <ckeditor formControlName="description" [editor]="editor" [config]="config"></ckeditor>
+                                <!-- <mat-error *ngIf="editProjectForm.get('name')?.touched">Description is required!</mat-error> -->
+                                <!-- </mat-form-field> -->
+                                <mat-form-field appearance="outline" id="NameField">
+                                    <mat-label>Address<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="address" placeholder=" ">
+                                    <mat-error *ngIf="editProjectForm.get('address')?.touched">Address is required!</mat-error>
+                                </mat-form-field>
+                                <ng-container *ngFor="let feature of projectFeature">
+                                    <button *ngIf="feature.update == true" type="submit" [disabled]="!editProjectForm.valid" class="mt-1 btn btn-primary">Save</button>
+                                </ng-container>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

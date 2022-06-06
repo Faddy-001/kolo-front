@@ -1,0 +1,310 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-display1 icon-gradient bg-premium-dark">
+                    </i>
+                </div>
+                <div>EDIT LEAD
+                    <div class="page-title-subheading">Wide selection of forms controls, using the Bootstrap 4 code base, but built with React.
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-block dropdown">
+                <button type="button" aria-haspopup="true" (click)="openDialog()" aria-expanded="false" class="btn-shadow btn btn-info ">
+                    <span class="btn-icon-wrapper pr-2 opacity-7">
+                        <i class="fa fa-business-time fa-w-20"></i>
+                    </span>
+                    Activity Log
+                </button>
+                <button type="button" aria-haspopup="true" (click)="viewPreBookings()" style="margin-left: 10px;" class="btn-shadow btn btn-info ">
+                   PreBookings
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+        <div class="row">
+            <div class="col col-xl-12 col-md-12">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form [formGroup]="EditLeadForm" (ngSubmit)="submit(EditLeadForm.value)">
+                            <div class="row">
+                                <div class="col-lg-{{colSize}} col-md-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Contactibility</mat-label>
+                                        <mat-select (selectionChange)="Contactibility($event)" formControlName="contactability">
+                                            <mat-option>Clear</mat-option>
+                                            <mat-option value="Conversation" (click)="file.click()">Conversation</mat-option>
+                                            <mat-option value="Not Connected">Not Connected</mat-option>
+                                            <mat-option value="Not Matched">Not Matched</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-4 col-md-6 hideshow2" [style.display]="Call_Duration">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Call Duration</mat-label>
+                                        <div class="none" style="display: flex;">
+                                            <input matInput placeholder="conversation" #file value="{{callDuration}}" readonly [style.display]="callDuration">
+                                            <cd-timer #basicTimer class="bootstrap-timer" [autoStart]="startTimer" format="hms" (onStop)="onStop($event)"></cd-timer>
+                                        </div>
+
+                                    </mat-form-field>
+                                    <div class="display-icon">
+                                        <i class="fas fa-play " (click)="doActionBasicTimer('resume')" *ngIf=startbtn></i>
+                                        <i class="fas fa-pause " *ngIf=resumebtn (click)="doActionBasicTimer('stop')"></i>
+                                        <i class="fas fa-redo-alt" (click)="doActionBasicTimer('reset')"></i>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-{{row2Col}} col-md-6" [style.display]="mode_of_intrestClass">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Mode of Interest</mat-label>
+                                        <mat-select (selectionChange)="MOI($event)" formControlName="mode_of_interest">
+                                            <mat-option>Clear</mat-option>
+                                            <mat-option value="Interested">Interested</mat-option>
+                                            <mat-option value="Not Interested">Not Interested
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-{{colSize}} col-md-6
+                                hideshow2" [style.display]="Catagory">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Category</mat-label>
+                                        <mat-select formControlName="category">
+                                            <mat-option>Clear</mat-option>
+                                            <mat-option value="A+(Hot)">A+(Hot)</mat-option>
+                                            <mat-option value="A(Warm)">A(Warm)</mat-option>
+                                            <mat-option value="B+(Cold)">B+(Cold)</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{colSize}} col-md-6" [style.display]="Status">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Status</mat-label>
+                                        <mat-select (selectionChange)="status($event)" formControlName="status">
+                                            <mat-option value="Lead">Lead</mat-option>
+                                            <mat-option value="Call">Call</mat-option>
+                                            <mat-option value="Meet">Meet</mat-option>
+                                            <mat-option value="Visit">Visit</mat-option>
+                                            <mat-option value="Booked">Booked</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{followUpCol}} col-md-6" [style.display]="Follow_Up_Date">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Follow Up Date</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="follow_up_date">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-{{col7size}} col-md-6" [style.display]="Expected_Visit_Date">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Expected Visit Date</mat-label>
+                                        <input matInput [matDatepicker]="picker2" formControlName="expected_visit_date">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{col6size}} col-md-{{remarkmdsize}}">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Remark</mat-label>
+                                        <textarea matInput rows="1" formControlName="remark"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <mat-accordion class="example-headers-align">
+                                        <mat-expansion-panel [expanded]="step=== 0" hideToggle>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Company Data
+                                                </mat-panel-title>
+                                                <!-- <mat-icon>account_circle</mat-icon> -->
+                                            </mat-expansion-panel-header>
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Project</mat-label>
+                                                        <mat-select formControlName="project_id" (selectionChange)="GetProject($event)">
+                                                            <mat-option value="">Clear</mat-option>
+                                                            <mat-option *ngFor="let project of projects" [value]="project.id">{{project.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <!-- <mat-error *ngIf="EditLeadForm.get('project_id')?.touched"> Project name is required!</mat-error> -->
+                                                    </mat-form-field>
+                                                    <button type="button" mat-raised-button class="submit-btn Projectbtn" (click)="OpenProject($event)"></button>
+
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>CRE</mat-label>
+                                                        <mat-select formControlName="cre_user_id">
+                                                            <mat-option>Clear</mat-option>
+                                                            <mat-option *ngFor="let cre of CreUser" [value]="cre.id">{{cre.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <!-- <mat-error *ngIf="EditLeadForm.get('cre_user_id')?.touched"> Cre name is required!</mat-error> -->
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Sales Manager</mat-label>
+                                                        <mat-select formControlName="sales_exec_user_id">
+                                                            <mat-option>Clear</mat-option>
+                                                            <mat-option *ngFor="let salesman of salesManager" [value]="salesman.id"> {{salesman.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <!-- <mat-error *ngIf="EditLeadForm.get('sales_exec_user_id')?.touched">Sales manager name is required!</mat-error> -->
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Lead Source</mat-label>
+                                                        <mat-select formControlName="lead_source">
+                                                            <mat-option value="">Select</mat-option>
+                                                            <mat-option value="Website">Website</mat-option>
+                                                            <mat-option value="Walkin">Walkin</mat-option>
+                                                            <mat-option value="Print Media">Print Media</mat-option>
+                                                            <mat-option value="Social Media">Social Media</mat-option>
+                                                            <mat-option value="Others">Others</mat-option>
+                                                        </mat-select>
+
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </mat-expansion-panel>
+                                        <mat-expansion-panel [expanded]="step === 1" hideToggle>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Lead's personal Data
+                                                </mat-panel-title>
+
+                                                <!-- <mat-icon>map</mat-icon> -->
+                                            </mat-expansion-panel-header>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Name</mat-label>
+                                                        <input matInput id="showFields" value="{{fName}} {{mName}} {{lName}}" (click)="openEditNameField()" readonly>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Phone</mat-label>
+                                                        <input matInput formControlName="phone">
+                                                        <!-- <mat-error *ngIf="EditLeadForm.get('phone')?.touched">Phone is required!</mat-error> -->
+
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Profession</mat-label>
+                                                        <mat-select formControlName="profession_id">
+                                                            <mat-option>Clear</mat-option>
+                                                            <mat-option *ngFor="let profession of professions" [value]="profession.id">{{profession.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Current Location
+                                                        </mat-label>
+                                                        <input matInput formControlName="current_location">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Living Mode</mat-label>
+                                                        <mat-select formControlName="living_mode">
+                                                            <mat-option>Clear</mat-option>
+                                                            <mat-option value="Own House">Own House
+                                                            </mat-option>
+                                                            <mat-option value="Rented">Rented</mat-option>
+                                                            <mat-option value="Family Property">Family Property
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </mat-expansion-panel>
+                                        <mat-expansion-panel [expanded]="step === 2" hideToggle>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Lead's Requirement
+                                                </mat-panel-title>
+                                                <!-- <mat-icon>map</mat-icon> -->
+                                            </mat-expansion-panel-header>
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline" (click)="showMsg()">
+                                                        <mat-label>Area of Interest</mat-label>
+                                                        <mat-select [disabled]="disableAreaOfIntrest" multiple formControlName="area_of_interest">
+                                                            <mat-option *ngFor="let propertyType of new1p" [value]="propertyType.id">{{propertyType.name}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span id="areaOfIntrestErr" style="display: none;">please select project first !</span>
+                                                    <span id="emptyErr" style="display: none;">No property available in this project !</span>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Buying Purpose
+                                                        </mat-label>
+                                                        <mat-select formControlName="buying_purpose">
+                                                            <mat-option>Clear</mat-option>
+                                                            <mat-option value="Personal">Personal</mat-option>
+                                                            <mat-option value="Investment">Investment</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Required Plot Size
+                                                        </mat-label>
+                                                        <input matInput formControlName="required_plot_size">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Budget</mat-label>
+                                                        <input matInput formControlName="budget">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled" formControlName="video_sent">
+                                                Video to be sent?
+                                            </mat-slide-toggle>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+
+                            </div>
+                            <button style="float: right ;background-color: #68bfbb; color:white; margin-left: 1rem;" [style.display]="true" mat-raised-button (click)="openPrebooking()">Proceed to Pre-Booking</button>
+
+                            <button style="float: right ;background-color: #68bfbb; color:white;" mat-raised-button class="submit-btn" (click)="doActionBasicTimer('stop')">Update</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

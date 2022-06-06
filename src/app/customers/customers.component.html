@@ -1,0 +1,145 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <!-- <i class="fas fa-user-check"></i> -->
+                    <mat-icon style=" background: white;color: #68bfbb;font-size: larger;position: relative;bottom: 10px;
+                    right: 5px;">person_add</mat-icon>
+
+                </div>
+                <div>Customers
+                    <div class="page-title-subheading">Customers are the backbone of all the Organizations.
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+
+                <div class="d-inline-block dropdown">
+                    <button type="button" routerLink="add-customer" aria-haspopup="true" aria-expanded="false"
+                        class="btn-shadow btn btn-info">
+                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <!-- <i class="fa fa-business-time fa-w-20"></i> -->
+                            <mat-icon style="background-color: transparent;color:white;position: relative;top:1px">business_center</mat-icon>
+                        </span>
+                        Add Customers
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-1 card">
+                <div class="card-body">
+                    <table role="table">
+                        <thead role="rowgroup">
+                            <tr role="row">
+                                <th role="columnheader"> Name</th>
+                                <th role="columnheader">Mobile</th>
+                                <th role="columnheader">Property No.</th>
+                                <th role="columnheader">Payment Type</th>
+                                <th role="columnheader">Updated Property Price</th>
+                                <th role="columnheader">Received till date </th>
+                                <th role="columnheader">Balance </th>
+                                <th role="columnheader">Overdue </th>
+                                <th role="columnheader">Percentage </th>
+                                <!-- <th role="columnheader">Remark </th>
+                                <th role="columnheader">Action </th> -->
+
+                            </tr>
+                        </thead>
+
+                        <tbody role="rowgroup">
+                            <tr role="row" *ngFor="let customer of cusList;let i=index">
+                                <td role="cell" routerLink="edit-customer/{{customer.id}}">{{customer.fName}}
+                                    {{customer.mName?customer.mName:''}}
+                                    {{customer.lName?customer.lName:''}} </td>
+                                    
+                                <td class="phone" role="cell" ><a
+                                        href="tel:{{customer.Phone}} {{customer.alternatephone}}}">{{customer.phone}}
+                                        <br>{{customer.alternatePhone}}</a> </td>
+                                <!-- <td role="cell" routerLink="view-customer/{{customer.id}}"
+                                    *ngFor="let custom of customer.Customer_Properties">
+                                    {{custom.Property_number}}</td> -->
+                                <!-- <td role="cell" *ngFor="let PropNumber of customer.Property" routerLink="view-customer" routerLink="view-customer">{{PropNumber.number}} </td> -->
+                                <td role="cell"  routerLink="view-customer/{{customer.id}}"
+                                    *ngFor="let Prop of customer.AllProperty">
+                                    {{Prop.Property.number}}</td>
+                                <td role="cell" 
+                                    *ngFor="let Prop of customer.AllProperty">{{Prop.payment_type}}</td>
+                                <td role="cell"
+                                    *ngFor="let Prop of customer.AllProperty">
+                                    {{Prop.finalized_property_price | currency:'INR':'symbol':'4.0-2'}}</td>
+                                <td role="cell" 
+                                    *ngFor="let Prop of customer.AllProperty">
+                                    <ng-container *ngFor="let Payment of Prop.Payments">
+                                        {{Payment.received_amount | currency:'INR'}}
+                                    </ng-container>
+                                </td>
+                                <td role="cell" 
+                                    *ngFor="let Prop of customer.AllProperty">
+                                    <ng-container *ngFor="let Payment of Prop.Payments">
+                                        {{Payment.receiving_amount | currency:'INR':'symbol':'4.0-2':'en-IN'}}
+
+                                    </ng-container>
+                                </td>
+                                <td role="cell"
+                                    *ngFor="let Prop of customer.AllProperty">
+                                    <ng-container *ngFor="let Payment of Prop.Payments">
+                                        {{Payment.remaining_amount | currency:'INR':'symbol':'4.0-2':'en-IN'}}
+
+                                    </ng-container>
+                                </td>
+
+                                <!-- <td role="cell" routerLink="view-customer/{{customer.id}}" *ngFor="let PropNumber of customer.AllProperty">{{customer.Property.number}}</td> -->
+                                <!-- <td role="cell" class="percentage" routerLink="view-customer/{{customer.id}}">
+                                    <div class="perc">
+                                        {{customer.percentage}} %
+                                    </div>                                   
+                                    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode"
+                                        [value]="customer.percentage">
+                                    </mat-progress-spinner>
+                                </td> -->
+                                <ng-container>
+                                    <td role="cell" mat-cell  class="percentage">
+                                        <div class="perc">
+                                          
+                                            {{customer.percentage}} %
+                                            
+                                        </div>
+                                        <!-- <mat-progress-spinner class="example-margin" [mode]="mode" color="primary"
+                                        [value]="formattedData.percentage" *ngIf="formattedData.percentage >= 51 ">
+                                      </mat-progress-spinner>
+                                                    
+                                      <mat-progress-spinner class="example-margin" [mode]="mode" color="warn" [value]="formattedData.percentage"
+                                        *ngIf="formattedData.percentage >= 31 && formattedData.percentage <= 50 ">
+                                      </mat-progress-spinner>
+                          
+                          
+                                      <mat-progress-spinner class="example-margin" [mode]="mode" color="accent" [value]="formattedData.percentage"
+                                        *ngIf="formattedData.percentage  <= 30">
+                                      </mat-progress-spinner> -->
+                                        <mat-progress-spinner class="example-margin" color="primary"
+                                            [mode]="mode" [value]="customer.percentage"  *ngIf="customer.percentage >= 51 " >
+                                        </mat-progress-spinner>
+
+                                        <mat-progress-spinner class="example-margin" color="warn"
+                                        [mode]="mode" [value]="customer.percentage"  *ngIf="customer.percentage  <= 50">
+                                    </mat-progress-spinner>
+
+                                    <mat-progress-spinner class="example-margin" color="accent"
+                                    [mode]="mode" [value]="customer.percentage"  *ngIf="customer.percentage  <= 30">
+                                </mat-progress-spinner>
+                                    </td>
+                                </ng-container>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

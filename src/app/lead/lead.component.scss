@@ -1,0 +1,555 @@
+
+
+.clickable_row {
+    cursor: pointer;
+}
+
+// td.details-control {
+//     background: url("/assets/images/details_open.png") no-repeat center center; /*Plus Image easily find on intent and I have stored this image into my scr/assets folder*/
+//     cursor: pointer;
+// }
+// tr.shown td.details-control {
+//     background: url("/assets/images/details_close.png") no-repeat center center; /*Minus Image easily find on intent and I have stored this image into my scr/assets folder*/
+// }
+ 
+.new-button:hover {
+    background-color: #68bfbb !important;
+    border-color: #68bfbb;
+}
+.filter-buttons:hover {
+    background-color: #68bfbb !important;
+    border-color: #68bfbb;
+}
+.edit-div
+{
+    margin-right:20px;
+}
+@media only screen and (min-width: 200px) and (max-width: 1024px) 
+{
+    .edit-div
+    {
+        margin-right:0px;
+    }
+    .i_edit
+    {
+        color: #68BFBB;
+         margin-top: 5px !important;
+        font-size: 18px;
+    }
+}
+.upload-btn{
+    color:#fff;
+}
+.error-msg{
+    color:rgb(148, 0, 0);
+    padding-left: 218px;
+}
+
+.export-buttons{
+    margin-left: 20px;  
+}
+
+#example {
+    .details-control {
+        padding: 0rem 1rem !important;
+    }
+    table-layout: fixed;
+    // width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    thead {
+        background: #a1a1a1;
+        th {
+            color: #fff;
+            font-weight: 300;
+            // padding: 7px 7px 7px 7px;
+            padding: 7px 0px 8px 35px;
+        }
+    }
+    tbody {
+        .first_name {
+            color: #529a97;
+            text-decoration: underline;
+        }
+        .phone a {
+            color: #529a97;
+        }
+
+        background-color: #fff;
+
+        .headRow {
+            box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 25%);
+            cursor: pointer;
+            border-radius: 6px 6px 6px 6px;
+            td {
+              
+                // padding: 7px 7px 7px 7px;
+                padding: 7px 0px 8px 36px;
+                .first_name{
+                    width:2%;
+                }
+            }
+        }
+    }
+}
+
+th:first-child{
+    // width: 68px;
+    width:150px;
+}
+
+.showHeader{
+    padding-left:20px !important;
+}
+
+
+tfoot,
+th:first-child,
+td:first-child,
+.showNew,
+thead {
+    border-radius: 6px 0px 0px 6px;
+}
+
+tfoot,
+th:last-child,
+td:last-child,
+.showNew,
+tr,
+thead {
+    border-radius: 0px 6px 6px 0px;
+}
+
+// td, th {  min-width: 170px; }
+// tr { display: block; }
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    #example,
+    .tableHead,
+    .tableBody,
+    .header,
+    .tableData,
+    .headRow {
+        display: block;
+        margin-top: 1rem;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .tableHead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .headRow {
+        margin: 0 0 1rem 0;
+    }
+
+    .headRow:nth-child(odd) {
+        background: #ccc;
+    }
+
+    .tableData {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50% !important;
+        padding-top: 7px !important;
+        padding-right: 0px !important;
+        padding-bottom: 7px !important;
+        @media only screen and (max-width: 384px) {
+            padding-left: 55% !important;
+        }
+        @media only screen and (max-width: 340px) {
+            padding-left: 60% !important;
+        }
+        @media only screen and (max-width: 314px) {
+            padding-left: 65% !important;
+        }
+        @media only screen and (max-width: 296px) {
+            padding-left: 69% !important;
+        }
+        @media only screen and (max-width: 242px) {
+            padding-left: 78% !important;
+        }
+    }
+
+    .tableData:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        left: 20px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+      Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+      */
+    // td:nth-of-type(1):before { content: ""; }
+    .tableData:nth-of-type(1):before {
+        content: "Name";
+    }
+    .tableData:nth-of-type(2):before {
+        content: "Phone";
+    }
+    .tableData:nth-of-type(3):before {
+        content: "Contactability";
+    }
+    .tableData:nth-of-type(4):before {
+        content: "Mode of Interest";
+    }
+    .tableData:nth-of-type(5):before {
+        content: "Status";
+    }
+    .tableData:nth-of-type(6):before {
+        content: "Category";
+    }
+    // td:nth-of-type(7):before { content: "Date of Birth"; }
+    // td:nth-of-type(8):before { content: "Dream Vacation City"; }
+    // td:nth-of-type(9):before { content: "GPA"; }
+    // td:nth-of-type(10):before { content: "Arbitrary Data"; }
+    .tableData:nth-of-type(11):before {
+        content: " ";
+    }
+}
+
+.more-options {
+    float: right;
+    position: relative;
+    bottom: 5px;
+}
+
+.searchBox {
+    float: right;
+    position: relative;
+    left: 0.3rem;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1.9px solid #68bfbb;
+    height: 33px;
+    width: 190px;
+    margin-top: 6px;
+}
+
+.pagination {
+    text-align: right;
+    li {
+        color: #63b6b3;
+    }
+    .active-design {
+        padding-left: 5px;
+        padding-right: 5px;
+        color: white;
+        border: 1px solid;
+        border-radius: 16px;
+        background-color: #68bfbb;
+        cursor: pointer;
+    }
+    .numbers {
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+}
+
+.prev-icon {
+    font-size: 11px;
+    cursor: pointer;
+    
+    
+}
+
+.next-icon {
+    font-size: 11px;
+     position: absolute;
+     top: 10px;
+     right: 0px;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 1000px) {
+    // .new-table-data {
+    //     visibility: hidden !important;
+    // }
+    .first_name {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 280px) and (max-width: 684px) {
+    .searchBox {
+        left: 0rem;
+        width: 100%;
+
+    }
+    .table-margin {
+        margin-top: 3rem !important;
+    }
+    .more-options {
+        bottom: 0px;
+    }
+}
+@media only screen and (min-width: 200px) and (max-width: 1024px) 
+{
+    #example 
+    {
+       border-spacing: 0 0px;
+    }
+}
+.btn {
+    color: #fff;
+    background-color: #68BFBC;
+    border-color: #68bfbb;
+    margin-top: 2px;
+}
+.multi_data{
+    padding-right: 16px;
+}
+
+.leads_icon{
+    color:#68bfbb;
+}
+
+.close-btn {
+    font-size: 18px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    color: white;
+    height: 18px;
+    width: 18px;
+    background-color: #d21212;
+    border-radius: 50px;
+    margin-left: -9px;
+    margin-top: -12px;
+    display: none !important;
+}
+.i_edit-btn {
+    font-size: 18px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-left: -9px;
+    margin-top: -1px;
+    display: none !important;
+}
+
+.close-td{
+    display: flex;
+    justify-content: right;
+}
+.i_edit
+{
+    
+    color: #68BFBB;
+    margin-top: -11px;
+    font-size: 18px;
+}
+.hoverable_row:hover {
+
+    box-shadow: 0px 2px 12px #bfbfbf!important;
+
+    .close-btn {
+        display: block !important;
+    }
+    .i_edit-btn
+    {
+        display: block !important;
+    }
+}
+
+.example-tooltip-red {
+    background: #858585;
+    color:#fff;
+  }
+
+  @media only screen and (min-width: 200px) and (max-width: 1024px) {
+    .td-cross {
+        z-index:1;
+        float: right;
+        position: relative;
+        top: 3px;
+        left: 6px;
+        z-index:1;
+    }
+    .table-margin {
+        margin-top: 4rem;
+    }
+}
+.deactive_record
+{
+    border: 1px solid #BECED9;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:5px;
+    padding-right:5px;
+}
+.search_pagination
+{
+    padding: 8px;
+    border-radius: 10px;
+    border: 1.9px solid #68bfbb;
+    height: 33px;
+    width:80px;
+    text-align:center;
+}
+.prev_page
+{
+    display: flex;
+    align-items: center;
+    margin-right:10px;
+    margin-top:7px;
+}
+
+.next_page
+{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top:7px;
+}
+
+.error_mg
+{
+    border: 1px solid rgb(148, 0, 0);
+    text-align: center;
+    color:rgb(148, 0, 0);
+    padding-top:5px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:5px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+.back_arrow
+{
+    padding-left:12px;
+    padding-top:1px;
+}
+.next_arrow
+{
+    padding-left:7px;
+}
+@media only screen and (min-width: 200px) and (max-width: 575px)
+ {
+    .next_page
+    {
+       margin-left:8px;
+    }
+    .search_pagination
+    {
+        padding: 8px;
+        border-radius: 10px;
+        border: 1.9px solid #68bfbb;
+        height: 33px;
+        width:50px;
+        text-align:center;
+    }
+    .sm_margin
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .prev_page
+    {
+        display: flex;
+        align-items: center;
+        margin-right: 3px;
+        margin-top: 11px;
+    }
+
+    
+  
+ }
+ @media only screen and (min-width: 200px) and (max-width: 358px)
+ {
+    .next_arrow
+    {
+        padding-left:7px;
+        padding-top:10px;
+    }
+ }
+
+ @media only screen and (min-width: 359px) and (max-width: 378px)
+ {
+    .next_arrow
+    {
+        padding-left:7px;
+        padding-top:0px;
+    }
+ }
+ @media only screen and (min-width: 576px) 
+ {
+   .prev_align
+   {
+       margin-top: -9px;;
+   }
+    .next_align
+   {
+       margin-top: -9px;
+       padding-right: 5px;
+   }
+  
+
+ }
+ @media only screen and (min-width: 1200px) 
+ {
+    .back_arrow
+    {
+        padding-top:3px;
+    }
+    .next_arrow
+    {
+        padding-top: 2px;
+         padding-left: 10px;
+    }
+ }
+
+// @media only screen and (min-width: 350px) and (max-width: 1024px) {
+//     .btn {
+//         color: #fff;
+//         background-color: #68BFBC;
+//         border-color: #68bfbb;
+//     }
+// }
+@media only screen and (min-width: 280px) and (max-width: 440px) 
+{
+    .button 
+    {
+      width: 100%;
+     
+      }
+}
+
+.SortIcon
+{
+    position: absolute;
+    background-color: #a1a1a1 !important;
+    justify-content: center;
+    margin-top: 1px;
+    cursor: pointer;
+    margin-left: 3px;
+    font-size:17px;
+    //  display:none;
+}
+.SortIconMOI
+{
+    position: absolute;
+    background-color: #a1a1a1 !important;
+    justify-content: center;
+    // margin-top: -10px;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size:17px;
+    //  display:none;
+}
+

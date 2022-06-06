@@ -1,0 +1,401 @@
+.add-project-title {
+    padding-bottom: 0px !important;
+    color: #616161;
+}
+
+::ng-deep .mat-dialog-container {
+    background: #fff;
+    overflow-x: hidden;
+    border-radius: 6px;
+}
+
+.close-icon {
+    position: absolute;
+    right: 0px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+#hidden_content {
+    display: none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: #68bfbb;
+    color: #00000070;
+}
+
+.Intrest-cls {
+    display: none;
+}
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #68bfbb !important;
+}
+
+// input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #68bfbb !important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #68bfbb !important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: red !important;
+    opacity: 0.8 !important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: #68bfbb !important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    caret-color: red !important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: #68bfbb !important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #68bfbb !important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: red !important;
+}
+
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #68bfbb;
+}
+
+::ng-deep .mat-select-arrow {
+    color: #68bfbb !important;
+}
+
+//datepicker customization
+mat-datepicker-toggle {
+    color: #68bfbb !important;
+}
+
+::ng-deep.mat-calendar-body-selected {
+    background-color: #68bfbb !important;
+}
+
+::ng-deep.mat-expansion-panel {
+    margin: 16px 0 !important;
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #68bfbb;
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #b3dfdc;
+}
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}
+
+.example-container .mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}
+
+.example-right-align {
+    text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.example-right-align {
+    -moz-appearance: textfield;
+}
+
+.profile-col {
+    padding: 0rem 3rem 0rem 3rem;
+}
+
+.fa-user-circle {
+    font-size: 9rem;
+    color: #a9a9a94f;
+}
+
+.camera-icon {
+    background: #68bfbb;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 0.3rem;
+    font-size: 20px;
+    position: relative;
+    top: 3rem;
+    right: 1.5rem;
+    color: white;
+}
+.highlight {
+    position: relative;
+    top: -31px;
+    left: 130px;
+    opacity: 0.6;
+    border-radius: 50px;
+}
+
+.profile-div {
+    text-align: center;
+}
+
+img {
+    height: 150px;
+    width: 150px;
+    // position: relative;
+    // bottom: 9rem;
+    border-radius: 50%;
+}
+
+.column-center {
+    text-align: center;
+    color: slategrey;
+    position: relative;
+    bottom: 2rem;
+}
+
+.column-color {
+    color: slategrey;
+}
+
+.profile-margin {
+    margin-bottom: 1rem;
+}
+
+.content-center {
+    position: relative;
+    top: 2rem;
+}
+
+.small-image {
+    height: 95px;
+    width: 95px;
+}
+
+.edit-button {
+    text-align: right;
+    background: transparent;
+    border: none;
+    color: #35c5be;
+    position: relative;
+    bottom: 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    left:15rem;
+}
+
+.width-row {
+    width: 100%;
+    margin-left: 0px;
+}
+
+hr {
+    margin: 1rem 4rem;
+}
+
+.color-name {
+    color: #585757;
+    font-size: 18px;
+}
+
+// adding css in .mat-form-field by kanchan
+::ng-deep.mat-form-field-infix {
+    padding: 0.8em !important;
+}
+
+::ng-deep.mat-form-field-wrapper {
+    padding-bottom: 0.6em !important;
+}
+
+.first-row-height {
+    height: 160px;
+}
+
+.address-line-height {
+    line-height: 0.6;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 991px) {
+    .row {
+        flex-direction: column;
+    }
+    .form-group {
+        max-width: 100%;
+    }
+    .col-md-8 {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .col-lg-4 {
+        max-width: 100%;
+    }
+    .col-md-9 {
+        max-width: 100%;
+    }
+    .first-row-height {
+        height: 100%;
+    }
+    .profile-col {
+        padding: 0rem 1rem;
+        max-width: 100%;
+    }
+    img {
+        height: 130px;
+        width: 130px;
+    }
+    .camera-icon {
+        height: 25px;
+        width: 25px;
+        font-size: 16px;
+        top: 2.6rem;
+        right: 1.3rem;
+    }
+    .profile-div {
+        margin: 0rem 0rem 0rem 1rem;
+    }
+    .edit-button {
+        left: 1rem;
+    }
+    .button-width {
+        width: 100%;
+    }
+    .row-bottom-1 {
+        position: relative;
+        bottom: 2rem;
+    }
+    .row-bottom-2 {
+        position: relative;
+        bottom: 4rem;
+    }
+    .row-bottom-3 {
+        position: relative;
+        bottom: 6rem;
+    }
+    .row-bottom-4 {
+        position: relative;
+        bottom: 8rem;
+    }
+    hr {
+        margin: 1rem 0rem;
+    }
+     ::ng-deep.mat-dialog-container {
+        height: 80vh;
+    }
+}
+
+@media only screen and (min-width: 1038px) and (max-width: 1800px) {
+    .profile-col {
+        padding: 0rem 1rem;
+    }
+    img {
+        height: 130px;
+        width: 130px;
+    }
+    .profile-div {
+        margin: 0rem 0rem 0rem 1rem;
+    }
+    .camera-icon {
+        height: 25px;
+        width: 25px;
+        font-size: 15px;
+        top: 3rem;
+        right: 1.7rem;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1037px) {
+    .profile-col {
+        padding: 0rem 1rem;
+    }
+    .profile-div {
+        margin-left: 1rem;
+    }
+    img {
+        height: 120px;
+        width: 120px;
+    }
+    .camera-icon {
+        height: 25px;
+        width: 25px;
+        font-size: 12px;
+        top: 2rem;
+        right: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .form-group {
+        font-size: 12px;
+    }
+}
+@media only screen and (min-width: 1px) and (max-width: 236px) {
+    .profile-div {
+    margin: 0rem 0rem 0rem 1rem;
+    }
+    
+    img {
+    height: 100px;
+    width: 100px;
+    }
+    .camera-icon {
+    top: 2rem;
+    }
+    }
+
+#deptErr {
+    color: #bb373b;
+    font-size: 12px;
+    position: relative;
+    bottom: 14px;
+    left: 6px;
+}
+
+.mat-dialog-container {
+    background: #fff;
+    overflow-x: hidden;
+    border-radius: 9px;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 991px) {
+img {
+height: 90px;
+width: 90px;
+}
+}
+
+.mat-error {
+    display: block;
+    margin-top: 7px;
+}

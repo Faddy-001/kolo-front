@@ -1,0 +1,346 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-display1 icon-gradient bg-premium-dark">
+                    </i>
+                </div>
+                <div>ADD LEAD
+                    <div class="page-title-subheading">Wide selection of forms controls, using the Bootstrap 4 code
+                        base, but built with React.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane tabs-animation fade show active">
+        <div class="row">
+            <div class=" col col-xl-12 col-md-12">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form [formGroup]="AddLeadForm" (ngSubmit)="submit(AddLeadForm.value)">
+                            <div class="row">
+                                <div class="col-lg-{{colSize}}">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Project<span class="starmandatory">*</span></mat-label>
+                                        <mat-select matNativeControl formControlName="project_id"
+                                            (selectionChange)="GetProject($event)">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option *ngFor="let project of projects" value="{{project.id}}">
+                                                {{project.name}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="AddLeadForm.get('project_id')?.touched">Project Name is
+                                            required!
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button type="button" mat-raised-button class="submit-btn Projectbtn "
+                                        (click)="OpenProject($event)" hidden="true"></button>
+                                </div>
+                                <div class="col-lg-{{colSize}}">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Cre<span class="starmandatory">*</span></mat-label>
+                                        <mat-select [disabled]="true" matNativeControl formControlName="cre_user_id">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option *ngFor="let cre of CreUser" [value]="cre.id">{{cre.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="AddLeadForm.get('cre_user_id')?.touched">Cre Name is required!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{colSize}}">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Sales Manager<span class="starmandatory">*</span></mat-label>
+                                        <mat-select matNativeControl formControlName="sales_exec_user_id">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option *ngFor="let salesman of salesManager" [value]="salesman.id">
+                                                {{salesman.name}}</mat-option>
+
+                                        </mat-select>
+                                        <mat-error *ngIf="AddLeadForm.get('sales_exec_user_id')?.touched">Sales Manager
+                                            Name is required!</mat-error>
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{colSizeDuration}} col-md-9 col-xs-9 col-sm-9"
+                                    [style.display]="calldClass">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Call Duration</mat-label>
+                                        <div class="none" style="display: flex;">
+                                            <input matInput placeholder="conversation" class="cursor" #file
+                                                value="{{callDuration}}" readonly formControlName="call_duration">
+                                            <cd-timer #basicTimer class="bootstrap-timer" [autoStart]="startTimer"
+                                                format="hms" (onStop)="onStop($event)" [style.display]="autoTimer">
+                                            </cd-timer>
+
+                                            <input type="text" matInput placeholder="conversation" #file
+                                                [style.display]="callManually" formControlName="call_duration">
+                                            <!-- <cd-timer (onStop)="manuallyTime($event)" [style.display]="callManually">
+                                            </cd-timer> -->
+
+                                        </div>
+
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-lg-{{colSizeBtn}} col-md-3 col-xs-3 col-sm-3"
+                                    [style.display]="actionBtn" class="display-icon">
+                                    <i class="fas fa-edit" (click)="manuallyTime($event)" matTooltip="Enter Manually"
+                                        matTooltipClass="example-tooltip-red"></i>
+
+
+                                    <i class="fas fa-play " (click)="doActionBasicTimer('start')" *ngIf=startbtn></i>
+                                    <i class="fas fa-pause " *ngIf=resumebtn (click)="doActionBasicTimer('stop')"></i>
+                                    <i class="fas fa-redo-alt" (click)="doActionBasicTimer('reset')"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-{{row2Col}}  col-md-12  col-xs-12">
+                                    <mat-form-field appearance="outline" id="NameField">
+                                        <mat-label>Name<span class="starmandatory">*</span></mat-label>
+                                        <input matInput formControlName="first_name" placeholder="Name"
+                                            value={{FullName}} (click)="openNameField()" readonly>
+                                        <mat-error *ngIf="AddLeadForm.get('first_name')?.touched">Name is required!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{row2Col}} col-md-12 col-sm-12 col-xs-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Phone<span class="starmandatory">*</span></mat-label>
+                                        <input matInput placeholder=" " maxlength="10" formControlName="phone">
+                                        <mat-error *ngIf="AddLeadForm.get('phone')?.touched">Phone Number is required!
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                </div>
+
+                                <!-- <div class="col-lg-{{row2Col}}  col-md-12  col-xs-12">
+                                    <mat-form-field appearance="outline" id="NameField">
+                                        <mat-label>Name<span class="starmandatory">*</span></mat-label>
+                                        <input matInput formControlName="first_name" placeholder="Name" value={{FullName}} (click)="openNameField()" readonly>
+                                        <mat-error *ngIf="AddLeadForm.get('first_name')?.touched">Name is required!</mat-error>
+                                    </mat-form-field>
+                                </div> -->
+                                <div class="col-lg-{{row2Col}}  col-md-12  col-xs-12">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Contactibility<span class="starmandatory">*</span></mat-label>
+                                        <mat-select matNativeControl formControlName="contactability"
+                                            (selectionChange)="Contactibility($event)">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option value="Conversation" (click)="file.click()">Conversation
+                                            </mat-option>
+                                            <mat-option value="Not Connected">Not Connected</mat-option>
+                                            <mat-option value="Not Matched">Not Matched</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="AddLeadForm.get('contactability')?.touched">contactability is
+                                            required!</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div class="col-lg-{{row2Col}} col-md-12 col-sm-12 col-xs-12" [style.display]="">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Profession</mat-label>
+                                        <mat-select matNativeControl formControlName="profession_id">
+                                            <mat-option *ngFor="let profession of professions"
+                                                value="{{profession.id}}">
+                                                {{profession.name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{row2Col}} col-md-12 col-sm-12 col-xs-12" [style.display]="">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Current Address</mat-label>
+                                        <input matInput placeholder=" " formControlName="current_location">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{row2Col}} col-md-12 col-sm-12 col-xs-12" [style.display]="">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Living Mode</mat-label>
+                                        <mat-select matNativeControl formControlName="living_mode">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option value="Own House">Own House</mat-option>
+                                            <mat-option value="Rented">Rented</mat-option>
+                                            <mat-option value="Family Property">Family Property</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-{{row2Col}} col-md-12 col-xs-12 hideshow"
+                                [style.display]="mode_of_intrestClass">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Mode Of Interest <span class="starmandatory">*</span></mat-label>
+                                    <mat-select matNativeControl formControlName="mode_of_interest"
+                                        (selectionChange)="ModeOfI($event)">
+                                        <mat-option value="">Select</mat-option>
+                                        <mat-option value="Interested">Interested</mat-option>
+                                        <mat-option value="Not Interested">Not Interested</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                                <div class="col-lg-1 col-md-12 col-xs-12" [style.display]="">
+                                    <mat-icon aria-hidden="false" (click)="addProfession()" class="add-profession"
+                                        aria-label="Example home icon">add_circle</mat-icon>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                    <mat-form-field appearance="outline" (click)="showMsg()">
+                                        <mat-label>Area Of Interest</mat-label>
+                                        <mat-select matNativeControl multiple formControlName="area_of_interest"
+                                            [disabled]="disableAreaOfIntrest">
+                                            <mat-option *ngFor="let propertyType of new1p" value="{{propertyType.id}}">
+                                                {{propertyType.name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <span id="areaOfIntrestErr" style="display: none;">please select project first
+                                        !</span>
+                                    <span id="emptyErr" style="display: none;">No property available in this project
+                                        !</span>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Buying Purpose</mat-label>
+                                        <mat-select matNativeControl formControlName="buying_purpose">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option value="Personal">Personal</mat-option>
+                                            <mat-option value="Investment">Investment</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Required Plot Size</mat-label>
+                                        <input matInput placeholder=" " formControlName="required_plot_size">
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Budget</mat-label>
+
+
+                                        <input matInput placeholder=" " formControlName="budget">
+
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                               
+                                <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Alternative No</mat-label>
+                                        <input matInput placeholder=" " maxlength="10"
+                                            formControlName="alternate_contact_no">
+                                    </mat-form-field>
+
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Category<span class="starmandatory">*</span></mat-label>
+                                        <mat-select matNativeControl formControlName="category">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option value="A+(Hot)">A+(Hot)</mat-option>
+                                            <mat-option value="A(Warm)">A(Warm)</mat-option>
+                                            <mat-option value="B+(Cold)">B+(Cold)</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                         
+                            <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Status</mat-label>
+                                    <mat-select [(value)]="selectedval" formControlName="status">
+                                        <mat-option *ngFor="let sta of status" [value]="sta.value">{{sta.value}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-xs-12 Follow_u_date"
+                                [style.display]="selectedval != 'Visit' ? M_O_I: 'none'">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Follow Up Date<span class="starmandatory">*</span></mat-label>
+                                    <input matInput [min]="date" [matDatepicker]="fpicker"
+                                        placeholder="Choose a date" formControlName="follow_up_date">
+                                    <mat-datepicker-toggle matSuffix [for]="fpicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #fpicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-xs-12 Expected_v_date"
+                                [style.display]="selectedval == 'Visit' ? M_O_I: 'none'">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Expected Visit Date<span class="starmandatory">*</span></mat-label>
+                                    <input matInput [min]="date" [matDatepicker]="picker"
+                                        placeholder="Choose a date" formControlName="expected_visit_date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12 col-xs-12" [style.display]="M_O_I">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Lead Source</mat-label>
+                                        <mat-select matNativeControl formControlName="lead_source"
+                                            (selectionChange)="Others($event)">
+                                            <mat-option value="">Select</mat-option>
+                                            <mat-option value="Website">Website</mat-option>
+                                            <mat-option value="Walkin">Walkin</mat-option>
+                                            <mat-option value="Print Media">Print Media</mat-option>
+                                            <mat-option value="Social Media">Social Media</mat-option>
+                                            <mat-option value="Others">Others</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-6" [style.display]="Callothers">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>other<span class="starmandatory">*</span></mat-label>
+                                        <input matInput formControlName="lead_source" maxlength="25"
+                                            placeholder="Other Description">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-6" [style.display]="M_O_I">
+                                    <mat-slide-toggle class="example-margin" formControlName="video_sent">
+                                        Whatsapp Notification?
+                                    </mat-slide-toggle>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-lg-12 col-md-12  col-xs-12">
+                                    <mat-form-field appearance="outline">
+
+                                        <mat-label>Remark<span class="starmandatory">*</span></mat-label>
+                                        <textarea matInput placeholder=" " formControlName="remark"></textarea>
+                                        <mat-error *ngIf="AddLeadForm.get('remark')?.touched">Remark is required!
+                                        </mat-error>
+
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button mat-raised-button class="submit-btn" *ngIf="manually; else elseSave"
+                                (click)="doActionBasicTimer('stop')">Save</button>
+                            <ng-template #elseSave>
+                                <button mat-raised-button class="submit-btn">Save</button>
+                            </ng-template>
+                            <!-- <button mat-raised-button class="submit-btn"  (click)="doActionBasicTimer('stop')">Save</button> -->
+                        </form>
+
+
+                        <!-- <button type="button" (click)="doActionBasicTimer('start')" *ngIf=startbtn>Start</button>
+                        <button type="button" (click)="doActionBasicTimer('stop')" *ngIf=stopbtn>Stop</button>
+                        <button type="button" (click)="doActionBasicTimer('reset')">Reset</button>  -->
+                        <!-- </div>
+                        </div> -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

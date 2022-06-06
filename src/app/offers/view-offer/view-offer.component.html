@@ -1,0 +1,217 @@
+<div class="app-main__inner">
+    <div class="page-title-wrapper">
+        <div style="float: left;">
+            <!-- <i class="pe-7s-close close-icon" (click)="close()"></i> -->
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+        </div>
+
+        <div>
+            <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+                <ng-container *ngFor="let feature of offerFeature">
+                <!-- <i *ngIf="feature.update == true" class="fas fa-edit edit-button" style="float: right;" routerLink="layout/master/offer/edit-offer/{{ID}}"
+                    (click)="close()"></i> -->
+                    <mat-icon *ngIf="feature.update == true"  style="float: right;cursor: pointer;color: #35c5be" 
+                        routerLink="layout/master/offer/edit-offer/{{ID}}" (click)="close()" >edit</mat-icon>
+                    </ng-container>
+                <div class="col-lg-12 col-sm-12 profile-col column-center ">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row font_color" style="margin-bottom: 15px;">
+                <h1 style="text-align: center;">{{Number?Number:'NA'}}</h1>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title"> Name : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p>{{Name?Name:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title"> Type : </h3>
+                    </div>
+                    <div class="col-md-5 font_color">
+                        <p>{{Type?Type:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Benefit : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p>{{Benefit?Benefit:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf = productOffer>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Product Description : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p>{{ProductDesc}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf = productOffer>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Product Price : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p>{{ProductPrice}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Start Date : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p>{{Start_date?Start_date:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">End Date : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p>{{End_date?End_date:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Counts : </h3>
+                    </div>
+                    <div class="col-md-5 font_color">
+                        <p>{{Counts?Counts:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                        <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Payment Type : </h3>
+                    </div>
+                    <div class="col-md-5 font_color">
+                        <p>{{Applicable_on_payment_type?Applicable_on_payment_type:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Projects : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p>{{Applicable_on_project?Applicable_on_project:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Property Type: </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <p *ngFor="let types of Applicable_on_property_type">{{types.name?types.name:'NA'}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <h3 class="title">Property : </h3>
+                    </div>
+                    <div class="col-md-5  font_color">
+                        <!-- <p *ngFor="let property of Applicable_on_property">{{Applicable_on_property?Applicable_on_property:'NA'}}</p> -->
+                        <p *ngFor="let property of Applicable_on_property">{{property.number?property.number:showProperty}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

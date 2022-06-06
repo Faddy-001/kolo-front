@@ -1,0 +1,158 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <!-- <i class="fas fa-gifts"></i> -->
+                    <mat-icon style=" background: white;color: #68bfbb;font-size: larger;position: relative;left: 5px;bottom: 5px;">local_offer</mat-icon>
+                </div>
+                <div>Offers
+                    <div class="page-title-subheading">Offers are the backbone of almost all Companies.
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+
+                <div class="d-inline-block dropdown">
+                    <ng-container *ngFor="let feature of offerFeature"> 
+                    <button *ngIf="feature.create == true" type="button" routerLink="add-offer" aria-haspopup="true" aria-expanded="false"
+                        class="btn-shadow btn btn-info">
+                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <!-- <i class="fa fa-business-time fa-w-20"></i> -->
+                            <mat-icon style="background-color: transparent;color:white;position: relative;top:4px">business_center</mat-icon>
+                        </span>
+                        Add Offers
+                    </button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-1 card">
+                <div class="card-body">
+                    <input type="text" class="searchBox" name="projectS" [(ngModel)]="valueToSearch" (ngModelChange)="Search()"  placeholder="Search...">
+                    <table id="example" role="table" class="table-margin">
+                        <thead role="rowgroup">
+                            <tr role="row">
+                                <th role="columnheader">Number
+                                    <mat-icon class="SortIcon" (click)="sortNum(ascIcon)" *ngIf = "showNum">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortNum(desIcon)" *ngIf = "showNum== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th role="columnheader">Name
+                                    <mat-icon class="SortIcon" (click)="sortName(ascIcon)" *ngIf = "showName">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortName(desIcon)" *ngIf = "showName== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th role="columnheader" style="width: 300px;">Type
+                                    <mat-icon class="SortIcon" (click)="sortType(ascIcon)" *ngIf = "showType">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortType(desIcon)" *ngIf = "showType== false" >arrow_upward</mat-icon></th>
+                                <th role="columnheader">Benefit
+                                    <mat-icon class="SortIcon" (click)="sortBenefit(ascIcon)" *ngIf = "showBenefit">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortBenefit(desIcon)" *ngIf = "showBenefit== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th role="columnheader">Counts
+                                    <mat-icon class="SortIcon" (click)="sortCounts(ascIcon)" *ngIf = "showCounts">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortCounts(desIcon)" *ngIf = "showCounts== false" >arrow_upward</mat-icon> </th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody role="rowgroup">
+                            <tr *ngFor="let offers of offerDetail | paginate: { itemsPerPage: 10, currentPage: p }" role="row" class="off">
+
+                                <!-- <div *ngIf="showCrossicon" class="td-cross" style="margin-bottom: 20px;">
+                                    <mat-icon class="material-icons-outlined close-btn td-cross" (click)="openDelete(offers.id)">clear</mat-icon>
+                                </div> -->
+                                <div *ngIf="showCrossicon" class="td-cross" style="margin-bottom: 20px;">
+                                    
+                                    <mat-icon class="material-icons-outlined close-btn cut-icon"
+                                        (click)="openDelete(offers.id)">
+                                        clear
+                                    </mat-icon>
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit close-btn " (click)="openViewForm(offers.id)"></i>
+                                    </div>
+                                </div>
+                                <td role="cell">{{offers.number}} </td>
+                                <td role="cell">{{offers.name}} </td>
+                                <td role="cell">{{offers.type}}</td>
+                                <td role="cell">{{offers.benefit}}</td>
+
+                                <td role="cell" >{{offers.counts?offers.counts:'-'}}
+                                </td>
+
+                                <td *ngIf="showCrossicon==false" class="close-td"> 
+                                    <!-- <div class="edit-div">
+                                        <mat-icon class="material-icons-outlined close-btn" style="background-color:#3F6AD8;" (click)="openViewForm(offers.id)">edit
+                                        </mat-icon>
+                                        
+                                    </div>     -->
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit close-btn " (click)="openViewForm(offers.id)"></i>
+                                    </div> 
+                                    <mat-icon class="material-icons-outlined close-btn"  style="position: relative;left:10px" (click)="openDelete(offers.id)">clear
+                                    </mat-icon>
+                                </td>  
+                              <!-- <mat-icon class="material-icons-outlined close-btn" (click)="openDelete(offers.id)">
+                                    clear</mat-icon> -->
+
+                                 <!-- <td role="cell" (click)="openViewForm(offers.id)">{{offers.counts?offers.counts:''}}</td>  -->
+
+                                <!-- <td role="cell" (click)="openViewForm(offers.id)">{{offers.counts?offers.counts:'NA'}}</td> -->
+
+                                <!-- <td role="cell" (click)="openViewForm(offers.id)">{{offers.counts?offers.counts:''}}</td> -->
+
+                                 <!-- <div *ngIf="showCrossicon==false" style="margin-bottom: 20px;">
+                                    <mat-icon class=" material-icons-outlined close-btn " (click)="openDelete(offers.id) ">clear</mat-icon>
+                                </div>  -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div class="pagination-part" style="float: right;">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div> -->
+                    <div class="container">
+                        <div class="row">
+                           
+                            <div class="col-sm-12 col-md-5 d-flex justify-content-start">
+                                 <div class="deactive_record rounded-pill" *ngIf = "totalRecords > 0">
+                                   
+                                     <span *ngIf = "totalRecords > 0 && totalRecords <= 10; else elseBlock">
+                                        1 - {{totalRecords}} Of {{totalRecords}}
+                                       
+                                     </span>
+                                     <ng-template  #elseBlock>
+                                         <span *ngIf = "totalRecords > 10 && (totalRecords % 10) == 0; else nestedOne">
+                                             {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : p*10}} Of {{totalRecords}}
+                                            
+                                          </span>
+                                          <ng-template #nestedOne>
+                                             <span *ngIf="(totalRecords > (p*10)); else nestedBlock">
+                                                 {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : p*10}} Of {{totalRecords}}
+                                                
+                                            </span>
+ 
+                                          </ng-template>
+                                             <ng-template #nestedBlock>
+                                                 {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : totalRecords}} Of {{totalRecords}}
+                                                 
+                                             </ng-template>
+                                     </ng-template>
+                                    
+                                 </div>
+                            </div>
+                          
+                            <div class=" col-sm-12 col-md-7 d-flex justify-content-end " > 
+                                <div class="pagination-part" style="float: right;">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                </div> 
+                                     
+                             </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

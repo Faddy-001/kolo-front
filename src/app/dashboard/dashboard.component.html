@@ -1,0 +1,361 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-car icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div>Dashboard
+                    <div class="page-title-subheading">Dashboards and Reports are the backbone of all the Organizations.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <mat-accordion class="example-headers-align">
+                <mat-expansion-panel [expanded]="" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span> 
+                            </button>        
+                            <!-- adadadwdgit -->
+                        </mat-panel-title>
+                        <!-- <mat-icon>account_circle</mat-icon> -->
+                    </mat-expansion-panel-header>
+                    <div class="row">
+                        <div style="cursor: pointer;" class="col-lg-3 col-sm-12 col-md-12" (click)="GoToActiveLeads()">
+                            <div class="card mb-3 widget-content bg-grow-early">
+                                <div class="widget-content-wrapper text-white">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Active Leads</div>
+                                        <div class="widget-subheading text-white"
+                                            style="font-size: large;opacity: 10;">{{activeLeadsPercentage}}%</div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-white"><span>{{activeLeads}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="cursor: pointer;" class="col-lg-3 col-sm-12 col-md-12" (click)="GoToUncalledLeads()">
+                            <div class="card mb-3 widget-content bg-sunny-morning">
+                                <div class="widget-content-wrapper text-white">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Uncalled Leads</div>
+                                        <div class="widget-subheading text-white"
+                                            style="font-size: large;opacity: 10;">{{unCalledLeadsPercentage}}%</div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-white"><span>{{unCalledLeads}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="cursor: pointer;" class="col-lg-3 col-sm-12 col-md-12" (click)="GoToTodaysFollowUp()">
+                            <div class="card mb-3 widget-content bg-deep-blue">
+                                <div class="widget-content-wrapper text-white">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Todays FollowUp</div>
+                                        <div class="widget-subheading text-white"
+                                            style="font-size: large;opacity: 10;">{{todaysFollowUpLeadsPercentage}}%
+                                        </div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-white"><span>{{todaysFollowUpLeads}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="cursor: pointer;" class="col-lg-3 col-sm-12 col-md-12" (click)="GoToDeActiveLeads()">
+                            <div class="card mb-3 widget-content bg-love-kiss">
+                                <div class="widget-content-wrapper text-white">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Deactivate Leads</div>
+                                        <div class="widget-subheading" style="font-size: large;opacity: 10;">
+                                            {{dectiveLeadsPercentage}}%</div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-white"><span>{{dectiveLeads}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </mat-expansion-panel>
+                
+            </mat-accordion>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-card mb-1 card">
+                    <div class="card-body">
+                        
+
+                        <div class="col-lg-12 col-sm-12 col-md-12">
+                            <div class="profile-center">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+                                    <div class="carousel-inner">
+                                        <ng-container *ngFor="let projects of projectStatus">
+                                            <div  *ngIf="projects.name==firstProjectIndex" class="carousel-item active">
+                                                <canvas class="col-lg-12 col-sm-12 col-md-12 col-12 chart-legend"  baseChart
+                                                    [data]="projects.doughnutChartData"
+                                                    [labels]="projects.doughnutChartLabels"
+                                                    [chartType]="projects.doughnutChartType"
+                                                    [options]="projects.doughnutChartOptions"
+                                                    [plugins]="projects.doughnutChartPlugins"
+                                                    [legend]="projects.doughnutChartLegend" [colors]="pieChartColor">
+                                                </canvas>
+                                            </div>
+                                            <div *ngIf="projects.name!=firstProjectIndex" class="carousel-item">
+                                                <canvas class="col-lg-12 col-sm-12 col-md-12" style="border:1px solid grey;border-radius: 10px;" baseChart
+                                                    [data]="projects.doughnutChartData"
+                                                    [labels]="projects.doughnutChartLabels"
+                                                    [chartType]="projects.doughnutChartType"
+                                                    [options]="projects.doughnutChartOptions"
+                                                    [plugins]="projects.doughnutChartPlugins"
+                                                    [legend]="projects.doughnutChartLegend" [colors]="pieChartColor">
+                                                </canvas>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                        data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <mat-icon class="arrowprevious"
+                                            aria-hidden="false" aria-label="Example home icon">navigate_before
+                                        </mat-icon>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                        data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <mat-icon class="arrownext"
+                                            aria-hidden="false" aria-label="Example home icon">navigate_next</mat-icon>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height: 1.5rem;"></div>
+
+
+                
+
+
+                <div style="height: 1.5rem;"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <button type="button" aria-haspopup="true" aria-expanded="false"
+                                            (click)="showStatusChart()" class="btn-width btn"
+                                            [style.background]="StatusColor">Status</button>
+                                    </div>
+
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <button type="button" aria-haspopup="true" aria-expanded="false"
+                                            (click)="showCategoryChart()" class="btn-width btn"
+                                            [style.background]="CategoryColor">Category</button>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Project</mat-label>
+                                            <mat-select (selectionChange)="GetProject($event)">
+                                                <mat-option value="">All</mat-option>
+                                                <mat-option *ngFor="let project of projectData" value="{{project.id}}">
+                                                    {{project.name}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Year</mat-label>
+                                            <mat-select matNativeControl (selectionChange)="GetSelectedYear($event)">
+                                                <mat-option value="">Select</mat-option>
+                                                <mat-option value="2020">2020</mat-option>
+                                                <mat-option value="2021">2021</mat-option>
+                                                <mat-option value="2022">2022</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div style="height: 1rem;"></div>
+
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10" [style.display]="CategoryChart">
+                                        <div style="border-radius: 10px;box-shadow:2px 5px 5px 6px;margin-top: 15px;">
+                                            <canvas baseChart [chartType]="'bar'" [datasets]="chartData_Category"
+                                                [labels]="labels_Category" [options]="chartOptions_Category"
+                                                [legend]="true" [colors]="colors_category"
+                                                (chartClick)="onChartClick($event)">
+                                            </canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10" [style.display]="StatusChart">
+                                        <div style="border-radius: 10px;box-shadow:2px 5px 5px 6px;margin-top: 15px;">
+                                            <canvas baseChart [chartType]="'bar'" [datasets]="chartData_Status"
+                                                [labels]="labels_Status" [options]="chartOptions_Status" [legend]="true"
+                                                [colors]="colors_Status" (chartClick)="onChartClick_Status($event)">
+                                            </canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height: 0.5rem;"></div>
+
+                <div class="container-fluid">
+                  <div class="row" *ngIf="showDashboard3">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+                            <div class="card-body">
+                               
+                                <div class="row">
+                                    
+                                    <div>
+                                        <div style="height: 0.1rem;"></div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="main-card mb-3 card">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-sm-12 col-md-12">
+                                                                <button type="button" aria-haspopup="true"
+                                                                    aria-expanded="false"
+                                                                    (click)="showStatusChart_UserWise()"
+                                                                    class="btn-width btn "
+                                                                    [style.background]="StatusColor_UserWise">Status</button>
+                                                            </div>
+                                                        
+
+                                                            <div class="col-lg-3 col-sm-12 col-md-12">
+                                                                <button type="button" aria-haspopup="true"
+                                                                    aria-expanded="false"
+                                                                    (click)="showCategoryChart_UserWise()"
+                                                                    class="btn-width btn "
+                                                                    [style.background]="CategoryColor_UserWise">Category</button>
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-md-12">
+                                                                <mat-form-field appearance="outline">
+                                                                    <mat-label>Project</mat-label>
+                                                                    <mat-select
+                                                                        (selectionChange)="GetProject_UserWise($event)">
+                                                                        <mat-option value="">All</mat-option>
+                                                                        <mat-option *ngFor="let project of projectData"
+                                                                            value="{{project.id}}">
+                                                                            {{project.name}}</mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-md-12">
+                                                                <mat-form-field appearance="outline">
+                                                                    <mat-label>Year</mat-label>
+                                                                    <mat-select matNativeControl
+                                                                        (selectionChange)="GetSelectedYearUser($event)">
+                                                                        <mat-option value="">Select</mat-option>
+                                                                        <mat-option value="2020">2020</mat-option>
+                                                                        <mat-option value="2021">2021</mat-option>
+                                                                        <mat-option value="2022">2022</mat-option>
+                                                                    </mat-select>
+                                                                </mat-form-field>
+                                                            </div>
+                                                        </div>
+                                                        <div style="height: 1rem;"></div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12"
+                                                                [style.display]="CategoryChart_UserWise">
+                                                                <div
+                                                                    style="border-radius: 10px;box-shadow:2px 5px 5px 6px;margin-top: 15px;">
+                                                                    <canvas baseChart [chartType]="'bar'"
+                                                                        [datasets]="chartData_Category_UserWise"
+                                                                        [labels]="labels_Category_UserWise"
+                                                                        [options]="chartOptions_Category_UserWise"
+                                                                        [legend]="true" [colors]="colors_category">
+                                                                    </canvas>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12"
+                                                                [style.display]="StatusChart_UserWise">
+                                                                <div
+                                                                    style="border-radius: 10px;box-shadow:2px 5px 5px 6px;margin-top: 15px;">
+                                                                    <canvas baseChart [chartType]="'bar'"
+                                                                        [datasets]="chartData_Status_UserWise"
+                                                                        [labels]="labels_Status_UserWise"
+                                                                        [options]="chartOptions_Status" [legend]="true"
+                                                                        [colors]="colors_Status">
+                                                                    </canvas>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-lg-12 col-sm-6 col-md-6"> <h2 class="col col-lg-12 col-sm-6 col-md-6" class="text-center">Active Users</h2></div>
+                                          
+                                            <div class="col col-lg-12 col-sm-6 col-md-6"> <h2 class="col col-lg-12 col-sm-6 col-md-6">{{selectedUserName}}</h2></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="table-responsive" style="height: 450px;">
+                                            <table
+                                                class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                                <tbody>
+                                                    <tr *ngFor="let User of CreUser">
+                                                        <td (click)="getuserWiseData(User)">
+                                                            <div class="widget-content p-0">
+                                                                <div class="widget-content-wrapper">
+                                                                    <div class="widget-content-left flex2">
+                                                                        <div  class="widget-heading">{{User.name}}</div>
+                                                                        <div class="widget-subheading opacity-7" >
+                                                                            {{User.role}}</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

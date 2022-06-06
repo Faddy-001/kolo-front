@@ -1,0 +1,324 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                View Customer
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-12 card">
+                <div class="tab-content">
+                    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+                        <div class="card-body">
+                            <div class="set-icon">
+                                <!-- <i class="pe-7s-close close-icon"></i>
+                                <i class="fas fa-edit edit-button" style="float: right;" -->
+                                   <i routerLink="/layout/customers/edit-customer/9"></i>
+                            </div>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+
+                                        Customer Details
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <ng-container>
+                                    <!-- <ng-container *ngIf="Image_Icon">
+                                        <td class="tableData" (click)="collapse(Customer.Id)" *ngIf="Customer.Id == Customer.id" [ngStyle]="{'display':hideBtn}" class="showHeader "><img src="assets/images/details_close.png" alt=""></td>
+    
+                                        <td class="tableData" (click)="expandRow(Customer.id)" *ngIf="Customer.id != Customer || showbtn" class="showHeader"><img src="assets/images/details_open.png" alt=""></td>
+    
+                                    </ng-container> -->
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class=" profile-col column-left ">
+                                    <div class="content">
+                                        <section class=" titled">
+                                            <h4 class="title col-xl-4  col-lg-4 ">Full Name : </h4>
+                                            <span class="tag col-xl-8 col-lg-8">{{firstname}} {{middlename}} {{lastname}}</span>
+                                        </section>
+                                        <section class="titled">
+                                            <h4 class="title col-xl-4  col-lg-4"> Gender :</h4>
+                                            <span class="tag col-xl-8 col-lg-8 ">{{gender}}</span>
+                                        </section>
+                                        <section class="titled">
+                                            <h4 class="title col-xl-4  col-lg-4">Email:</h4>
+                                            <span class="tag col-xl-8 col-lg-8 ">{{email}}</span>
+                                        </section>
+                                        <section class="titled">
+                                            <h4 class="title col-xl-4  col-lg-4 ">Phone :</h4>
+                                            <span class="tag col-xl-8 col-lg-8  ">{{phone}}</span>
+                                        </section>
+                                        <section class="titled">
+                                            <h4 class="title col-xl-4  col-lg-4">Current Address: </h4>
+                                            <span class="tag  col-xl-8 col-lg-8">{{currentaddress}} {{currentpincode}}
+                                                {{currentcity}} {{currentstate}} {{currentcountry}}</span>
+                                        </section>
+                                        <section class="titled">
+                                            <h4 class="title col-xl-4  col-lg-4">Permanent Address:</h4>
+                                            <span class="tag col-xl-8 col-lg-8 ">{{permanentaddress}} {{permanentpincode}}
+                                                {{permanentcity}} {{permanentstate}} {{permanentcountry}}</span>
+                                        </section>
+                                        <section class="titled">
+
+                                            <h4 class="title col-xl-4  col-lg-4">Documents : </h4>
+                                            <span class="tag  col-xl-8 col-lg-8">{{documentstype}}</span>
+                                        </section>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="">
+                                    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                                        [chartType]="doughnutChartType" [options]="doughnutChartOptions"
+                                        [plugins]="doughnutChartPlugins" [legend]="doughnutChartLegend">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                                </ng-container>
+
+                                <mat-expansion-panel hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <div class="">
+                                            <mat-panel-title>
+                                                <div>
+                                                    <!-- <div class="col-lg-6 col-sm-6 profile-col column-center "></div> -->
+                                                    Secondary Contact Information
+                                                </div>
+                                            </mat-panel-title>
+                                        </div>
+
+                                    </mat-expansion-panel-header>
+
+                                    <!-- <div class="col-lg-12 col-sm-12 profile-col column-center "> -->
+
+                                    <div class="content">
+                                        <section class=" titled">
+                                            <h4 class="title col-xl-6 col-lg-6 ">Full Name : </h4>
+                                            <span class="tag col-xl-6 col-lg-6 ">{{sfirstname}}{{smiddlename}}
+                                                {{slastname}}</span>
+                                        </section>
+                                        
+                                        <!-- <section class="titled">
+                                            <h4 class="title col-md-6"> Gender :</h4>
+                                            <span class="tag  col-md-6">{{gender}}</span>
+                                        </section> -->
+                                        <section class="titled">
+                                            <h4 class="title col-xl-6 col-lg-6 ">Relation With Customer :</h4>
+                                            <span class="tag col-xl-6 col-lg-6  ">{{srelation?srelation:'-'}}</span>
+                                        </section>
+                                        <section class="titled">
+                                            <h4 class="title col-xl-6 col-lg-6 ">Email : </h4>
+                                            <span class="tag  col-xl-6 col-lg-6 ">{{semail}}</span>
+                                        </section>
+                                        <section class="titled">
+                                            <h4 class="title col-xl-6 col-lg-6 ">Phone :</h4>
+                                            <span class="tag col-xl-6 col-lg-6  ">{{sphone}}</span>
+                                        </section>
+
+                                        <!-- <section class="titled">
+                                            <h4 class="title col-md-6">Alternate phone: </h4>
+                                            <span class="tag  col-md-6">{{sphone}}</span>
+                                        </section> -->
+
+                                        <section class="titled">
+                                            <h4 class=" title col-xl-6 col-lg-6 ">Current Address: </h4>
+                                            <span class=" tag   col-xl-6 col-lg-6 ">{{scurrentaddress?scurrentaddress:'-'}} {{scurrentcity}} {{scurrentstate}} {{scurrentcountry}}</span>
+                                        </section>
+                                     
+                                        <section class="titled">
+                                            <h4 class="title col-xl-6 col-lg-6 ">Permanent Address:</h4>
+                                            <span class="tag  col-xl-6 col-lg-6 ">{{spermanentaddress?spermanentaddress:'-'}}{{spermanentpincode}} 
+                                                {{spermanentcity}}{{spermanentstate}}{{spermanentcountry}}
+                                            </span>
+                                        </section>
+
+                                        <section class="titled">
+
+                                            <h4 class="title col-xl-6 col-lg-6  ">Documents : </h4>
+                                            <span class="tag col-xl-6 col-lg-6 ">{{sdocumentstype?sdocumentstype:'-'}}</span>
+                                        </section>
+                                    </div>
+
+                                    <!-- </div> -->
+                                </mat-expansion-panel>
+                            </mat-expansion-panel>
+
+                            <div>
+                                <mat-expansion-panel hideToggle  *ngFor="let view of newPT">
+                                    <mat-expansion-panel-header>
+                                        <div class="">
+                                            <mat-panel-title>
+                                                <div>
+                                                    <!-- <div class="col-lg-6 col-sm-6 profile-col column-center "></div> -->
+                                                    Customer Property Details
+                                                </div>
+                                            </mat-panel-title>
+                                        </div>
+
+                                    </mat-expansion-panel-header>
+                                     <div class="row">
+                                            <div class="content">
+                                                
+                                                <section class="titled">
+                                                    <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6"> Property No :</h4>
+                                                    <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{view.number}}</span>
+                                                </section>
+                                                <section class="titled">
+                                                    <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6"> Property Name :</h4>
+                                                    <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{view.name}}</span>
+                                                </section>
+                                                <section class="titled">
+                                                    <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6"> Payment Type :</h4>
+                                                    <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{view.paytype}}</span>
+                                                </section>
+
+                                                <section class="titled">
+                                                    <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6">Commitment :</h4>
+                                                    <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{view.commitment}}</span>
+                                                </section>
+                                            </div>
+
+
+
+                                            <section class="titled">
+                                                <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6">Offer Applied :</h4>
+                                                <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6"
+                                                    *ngFor="let offers of view.offer">{{offers.name}}</span>
+                                            </section>
+                                            <section class="titled">
+                                                <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6">Property Price :</h4>
+                                                <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{view.price}}</span>
+                                            </section>
+
+                                            <section class="titled">
+                                                <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6">Finalized Property Price After Offer:</h4>
+                                                <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{view.final}}</span>
+                                            </section>
+                                            
+                                            <section class="titled" >
+                                                <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6"> Total Received Amount :</h4>
+                                                <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{payament}}</span>
+                                            </section>
+                                            
+                                            <section class="titled" >
+                                                <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6"> Total Remaining Amount :</h4>
+                                                <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6"
+                                                    *ngFor="let amount of view.payments">{{amount.remaining_amount}}</span>
+                                            </section>
+
+                                            <section class="titled" >
+                                                <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6">Overvdue :</h4>
+                                                <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6"></span>
+                                            </section>
+
+                                            <section class="titled">
+                                                <h4 class="title col-xl-4 col-lg-4 col-md-12 col-sm-6 col-xs-6">Sales Executive Details :</h4>
+                                                <span class="tag  col-xl-8 col-lg-8 col-md-12 col-sm-6 col-xs-6">{{user}}</span>
+                                            </section>
+                                            <mat-expansion-panel>
+                                                <mat-expansion-panel-header>
+                                                    <div class="col-lg-12 col-sm-12 profile-col column-center"
+                                                        style="display: flex;">
+
+                                                        Customer Project Details
+
+                                                    </div>
+                                                </mat-expansion-panel-header>
+                                                    
+                                                <div class="col-lg-12 col-sm-12 profile-col column-center ">
+
+                                                    <div class="content">
+
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6"> Project Name :</h4>
+                                                            <span class="tag  col-md-6">{{view.project}}</span>
+                                                        </section>
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6">Property Type :</h4>
+                                                            <span class="tag  col-md-6">{{view.type}}</span>
+                                                        </section>
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6">Description :</h4>
+                                                            <span class="tag  col-md-6">{{view.description}}</span>
+                                                        </section>
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6">Length :</h4>
+                                                            <span class="tag  col-md-6">{{view.length}}</span>
+                                                        </section>
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6">Breadth :</h4>
+                                                            <span class="tag  col-md-6">{{view.breadth}}</span>
+                                                        </section>
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6">Total Area :</h4>
+                                                            <span class="tag  col-md-6">{{view.area}}</span>
+                                                        </section>
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6">Rate (Sq/Ft) :</h4>
+                                                            <span class="tag  col-md-6">{{view.rate}}</span>
+                                                        </section>
+
+                                                        <section class="titled">
+                                                            <h4 class="title col-md-6">Price :</h4>
+                                                            <span class="tag  col-md-6">{{view.final}}</span>
+                                                        </section>
+
+                                                    </div>
+                                                </div>
+                                          
+
+                                            <!-- <div class="pie">
+                                                <canvas style="display: block;" width="400" height="100" id="canvas"
+                                                    baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                                                    [chartType]="doughnutChartType" [options]="doughnutChartOptions"
+                                                    [plugins]="doughnutChartPlugins" [legend]="doughnutChartLegend">
+                                                </canvas>
+                                            </div> -->
+
+                                        
+                                            
+
+
+                                        
+
+                                    
+                                </mat-expansion-panel>
+                                <div>
+                                    
+    
+    
+    
+                                                
+    
+    
+    
+    
+                                            </div>
+    
+                                       
+                                </div>
+                                
+
+                            
+                            </mat-expansion-panel>
+                        </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

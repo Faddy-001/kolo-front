@@ -1,0 +1,479 @@
+.clickable_row {
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    thead {
+        background: #a1a1a1;
+        th {
+            color: #fff;
+            font-weight: 300;
+            padding: 7px 7px 7px 7px;
+        }
+    }
+    tbody {
+        background-color: #fff;
+        tr {
+            box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 25%);
+            cursor: pointer;
+            border-radius: 6px 6px 6px 6px;
+            td {
+                padding: 7px 7px 7px 7px;
+            }
+        }
+    }
+}
+
+tfoot,
+th:first-child,
+thead {
+    border-radius: 6px 0px 0px 6px;
+}
+
+tfoot,
+th:last-child,
+tr,
+thead {
+    border-radius: 0px 6px 6px 0px;
+}
+
+// td, th {  min-width: 170px; }
+// tr { display: block; }
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        margin: 0 0 1rem 0;
+    }
+    tr:nth-child(odd) {
+        background: #ccc;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50% !important;
+        padding-top: 7px !important;
+        padding-right: 0px !important;
+        padding-bottom: 7px !important;
+        @media only screen and (max-width: 384px) {
+            padding-left: 55% !important;
+        }
+        @media only screen and (max-width: 340px) {
+            padding-left: 60% !important;
+        }
+        @media only screen and (max-width: 314px) {
+            padding-left: 65% !important;
+        }
+        @media only screen and (max-width: 296px) {
+            padding-left: 69% !important;
+        }
+        @media only screen and (max-width: 242px) {
+            padding-left: 78% !important;
+        }
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        left: 20px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    /*
+      Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+      */
+    td:nth-of-type(1):before {
+        content: "First Name";
+    }
+    td:nth-of-type(2):before {
+        content: "Email";
+    }
+    td:nth-of-type(3):before {
+        content: "Gender";
+    }
+    td:nth-of-type(4):before {
+        content: "Phone";
+    }
+    td:nth-of-type(5):before {
+        content: "Alternate Phone";
+    }
+    td:nth-of-type(6):before {
+        content: "Project";
+    }
+    td:nth-of-type(7):before {
+        content: "Department";
+    }
+    td:nth-of-type(8):before {
+        content: "Role";
+    }
+    td:nth-of-type(9):before {
+        content: "Password";
+    }
+    td:nth-of-type(10):before {
+        content: "Address";
+    }
+}
+
+.font_color {
+    color: grey;
+}
+
+.line {
+    height: 3px;
+    background-color: whitesmoke;
+    margin-bottom: 5px;
+}
+
+.add-project-title {
+    padding-bottom: 0px !important;
+    color: #616161;
+}
+
+::ng-deep .mat-dialog-container {
+    background: #fff;
+    overflow-x: hidden;
+}
+
+.close-icon {
+    position: absolute;
+    right: 0px;
+    font-size: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+#hidden_content {
+    display: none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: #68bfbb;
+    color: #00000070;
+}
+
+.Intrest-cls {
+    display: none;
+}
+
+.doc-img-col {
+    padding-top: 3px;
+    .doc-img {
+        border-radius: 4px;
+        box-shadow: 0px 0px 6px rgb(0 0 0 / 55%);
+    }
+    .close-btn {
+        background: #68bfbb;
+        width: 18px;
+        height: 18px;
+        padding: 2px;
+        border-radius: 42px;
+        color: white;
+        font-size: 14px;
+        position: absolute;
+        bottom: 49px;
+        left: 65px;
+        cursor: pointer;
+    }
+}
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #68bfbb !important;
+}
+
+// input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #68bfbb !important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #68bfbb !important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: red !important;
+    opacity: 0.8 !important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: #68bfbb !important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    caret-color: red !important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: #68bfbb !important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #68bfbb !important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: red !important;
+}
+
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #68bfbb;
+}
+
+::ng-deep .mat-select-arrow {
+    color: #68bfbb !important;
+}
+
+//datepicker customization
+mat-datepicker-toggle {
+    color: #68bfbb !important;
+}
+
+::ng-deep.mat-calendar-body-selected {
+    background-color: #68bfbb !important;
+}
+
+::ng-deep.mat-expansion-panel {
+    margin: 16px 0 !important;
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #68bfbb;
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #b3dfdc;
+}
+
+// adding css in .mat-form-field by kanchan
+::ng-deep.mat-form-field-infix {
+    padding: 0.8em !important;
+}
+
+.textarea1 {
+    min-height: 20px !important;
+    padding: 1rem 0rem;
+    position: relative;
+    bottom: 0.5rem;
+}
+
+.img-wrap {
+    position: relative;
+    display: inline-block;
+    border: 1px #68bfbb solid;
+    font-size: 0;
+    padding: 5px 10px;
+}
+
+.img-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #fff;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+
+.img-wrap:hover .close {
+    opacity: 1;
+}
+
+.close-icon {
+    position: relative;
+    right: 0px;
+    font-size: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+    color: #585656bf;
+}
+
+.close-icon2 {
+    position: relative;
+    left: 0px;
+    font-size: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+    bottom: 1.5rem;
+}
+
+.close-icon1 {
+    position: absolute;
+    right: 5px;
+    margin-top: 5px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.xyz {
+    width: 44%;
+    position: relative;
+    left: 18.1rem;
+}
+
+.width-row {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.edit-button {
+    background: transparent;
+    border: none;
+    color: #35c5be;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.edit-display {
+    width: 600px;
+}
+
+.open-display {
+    width: 100%;
+    max-width: 700px;
+    //  height: 570px;
+}
+
+.set-icon {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+.material-icons {
+    cursor: pointer;
+}
+
+.profile-center {
+    text-align: center;
+    box-shadow: 1px 1px 3px grey;
+    width: 60%;
+    height: 180px;
+    margin: 0rem auto;
+}
+
+.image-view {
+    width: 300px;
+    border-radius: 2%;
+    margin: 0.5rem;
+    height: 160px;
+    max-width: 100%;
+}
+
+.titled {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    max-width: 100%;
+}
+
+.title {
+    font-size: 15px;
+    color: #46a29d;
+}
+
+::ng-deep.mat-dialog-container {
+    width: 620px;
+    max-width: 100%;
+}
+
+.tag {
+    font-size: 13px;
+    color: #6b5e5e;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 1024px) {
+     ::ng-deep.mat-dialog-container {
+        height: 95vh;
+    }
+    .image-view {
+        width: 90%;
+        height: 120px;
+    }
+    .profile-center {
+        width: 100%;
+        height: 100%;
+    }
+    .tag {
+        color: #6b5e5e;
+      //  text-align: right;
+    }
+    .title {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 300px) {
+    .titled {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .row {
+        display: block;
+    }
+}
+
+#emptyErr {
+    color: #bb373b;
+    font-size: 12px;
+    position: relative;
+    bottom: 22px;
+    left: 6px;
+}

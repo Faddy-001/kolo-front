@@ -1,0 +1,170 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <!-- <i class="fas fa-building"></i> -->
+                    <mat-icon style=" background: white;color: #68bfbb;font-size: larger;position: relative;left: 5px;bottom: 5px;" >location_city</mat-icon>
+                </div>
+                <div>
+                    Department
+                    <div class="page-title-subheading">Tables are the backbone of almost all web applications.
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-actions">
+
+                <div class="d-inline-block dropdown">
+                    <ng-container *ngFor="let feature of deptFeature"> 
+                    <button *ngIf="feature.create == true" (click)="addDeptModal()" type="button" aria-haspopup="true" aria-expanded="false"
+                        class="btn-shadow btn btn-info">
+                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <!-- <i class="fa fa-business-time fa-w-20"></i> -->
+                            <mat-icon style="background-color: transparent;color:white;position: relative;top:4px">business_center</mat-icon>
+                        </span>
+                        New Department
+                    </button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <input type="text" class="searchBox" name="projectS" [(ngModel)]="valueToSearch"
+                        (ngModelChange)="Search()" placeholder="Search...">
+                    <table id="example" role="table" class="xyz table-margin">
+                        <thead role="row-group">
+                            <tr role="row">
+                                <th colspan="2"   role="columnheader">
+                                    Name
+                                    <mat-icon class="SortIcon" (click)="sortName(ascIcon)" *ngIf = "showName">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortName(desIcon)" *ngIf = "showName== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th colspan="2" role="columnheader">Project Name
+                                    <mat-icon class="SortIcon" (click)="sortProject(ascIcon)" *ngIf = "showProject">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortProject(desIcon)" *ngIf = "showProject== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th role="columnheader">Description
+                                    <mat-icon class="SortIcon" (click)="sortDesc(ascIcon)" *ngIf = "showDesc">arrow_downward</mat-icon>
+                                    <mat-icon class="SortIcon" (click)="sortDesc(desIcon)" *ngIf = "showDesc== false" >arrow_upward</mat-icon>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody role="rowgroup">
+
+                            <tr role="row"
+                                *ngFor="let dept of deptDetail | sort:reverse | paginate: { itemsPerPage: 10, currentPage: p }"
+                                class="dep">
+                                <div *ngIf="showCrossicon" class="td-cross" style="margin-bottom: 20px;">
+                                    <mat-icon class="material-icons-outlined close-btn" (click)="openDelete(dept.id)">
+                                        clear
+                                    </mat-icon>
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit close-btn " (click)="editDeptModal(dept.id)"></i>
+                                    </div>
+                                </div>
+                                <td colspan="2" role="cell" >{{dept.name}}</td>
+                                <td colspan="2" role="cell" >{{dept.project}}</td>
+                                <td role="cell" >
+                                    {{dept.description?dept.description:'-'}}
+                                     </td>
+                                
+                                 <td class="close-td" *ngIf="showCrossicon==false">
+                                    <!-- <div class="edit-div">
+                                        <mat-icon class="material-icons-outlined close-btn" style="background-color:#3F6AD8;" (click)="editDeptModal(dept.id)">edit
+                                        </mat-icon>
+                                    </div>  -->
+                                    <div class="edit-div i_edit">
+                                        <i class="fas fa-edit close-btn " (click)="editDeptModal(dept.id)"></i>
+                                    </div>
+                                    <mat-icon class="material-icons-outlined close-btn" (click)="openDelete(dept.id)">
+                                        clear
+                                    </mat-icon>
+                                </td>
+                           
+                               
+                            </tr>
+
+
+                            <!-- </ng-container> -->
+                        </tbody>
+                        
+                    </table>
+                    <!-- <div class="pagination-part" style="float: right;">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div> -->
+                    <div class="container">
+                        <div class="row">
+                           
+                            <div class="col-sm-12 col-md-5 d-flex justify-content-start">
+                                 <div class="deactive_record rounded-pill" *ngIf = "totalRecords > 0">
+                                   
+                                     <span *ngIf = "totalRecords > 0 && totalRecords <= 10; else elseBlock">
+                                        1 - {{totalRecords}} of {{totalRecords}}
+                                       
+                                     </span>
+                                     <ng-template  #elseBlock>
+                                         <span *ngIf = "totalRecords > 10 && (totalRecords % 10) == 0; else nestedOne">
+                                             {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : p*10}} of {{totalRecords}}
+                                            
+                                          </span>
+                                          <ng-template #nestedOne>
+                                             <span *ngIf="(totalRecords > (p*10)); else nestedBlock">
+                                                 {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : p*10}} of {{totalRecords}}
+                                                
+                                            </span>
+ 
+                                          </ng-template>
+                                             <ng-template #nestedBlock>
+                                                 {{p == 1 ? p : ((p-1)*10)+1}} - {{p == 1 ? p*10 : totalRecords}} of {{totalRecords}}
+                                                 
+                                             </ng-template>
+                                     </ng-template>
+                                    
+                                 </div>
+                            </div>
+                          
+                            <div class=" col-sm-12 col-md-7 d-flex justify-content-end " > 
+                                <div class="pagination-part" style="float: right;">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                </div> 
+                                     
+                             </div> 
+                        </div>
+                    </div>
+
+                    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="false">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Do you really want to delete ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

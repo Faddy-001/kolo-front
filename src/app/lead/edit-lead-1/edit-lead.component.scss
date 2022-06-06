@@ -1,0 +1,235 @@
+mat-form-field {
+    width: 100%;
+}
+textarea:focus,
+input:focus {
+    outline: none !important;
+}
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #68bfbb !important;
+}
+
+// input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #68bfbb !important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #68bfbb !important;
+}
+
+// mat-input error outline color
+::ng-deep
+    .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+    .mat-form-field-outline-thick {
+    color: red !important;
+    opacity: 0.8 !important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: #68bfbb !important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    caret-color: red !important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: #68bfbb !important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #68bfbb !important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: red !important;
+}
+
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #68bfbb;
+}
+
+::ng-deep .mat-select-arrow {
+    color: #68bfbb !important;
+}
+
+//datepicker customization
+mat-datepicker-toggle {
+    color: #68bfbb !important;
+}
+
+::ng-deep.mat-calendar-body-selected {
+    background-color: #68bfbb !important;
+}
+
+::ng-deep.mat-expansion-panel {
+    margin: 16px 0 !important;
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #68bfbb;
+}
+
+::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #b3dfdc;
+}
+
+.app-page-title .page-title-wrapper {
+    justify-content: space-between;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.8em 0em;
+    height: 50px;
+}
+
+.cursor {
+    height: 0px;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.8em 0em;
+    height: 50px;
+}
+
+.fa-play {
+    background-color: #68bfbb;
+    width: 13%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: white;
+    position: relative;
+    top: 16px;
+    margin: 2px;
+    font-size: 11px;
+}
+
+.display {
+    display: flex !important;
+}
+
+.fa-redo-alt {
+    background-color: #68bfbb;
+    width: 13%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: white;
+    position: relative;
+    top: 16px;
+    margin: 2px;
+    font-size: 11px;
+}
+
+.display-icon {
+    display: contents;
+}
+
+.fa-pause {
+    background-color: #68bfbb;
+    width: 13%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: white;
+    position: relative;
+    top: 16px;
+    margin: 2px;
+    font-size: 11px;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .display {
+        flex-direction: column-reverse;
+        display: flex !important;
+    }
+    .display-icon {
+        display: flex;
+        height: 25px;
+        margin-bottom: 0.4rem;
+    }
+    .width-btun {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .fa-play {
+        height: 98%;
+        top: 0px;
+    }
+    .fa-redo-alt {
+        height: 98%;
+        top: 0px;
+    }
+    .fa-pause {
+        height: 98%;
+        top: 0px;
+    }
+}
+
+@media only screen and (min-width: 990px) and (max-width: 1050px) {
+    .display-icon {
+        display: block;
+        position: relative;
+        top: 5px;
+        width: 13%;
+    }
+    .fa-play {
+        width: 100%;
+        top: 0px;
+        margin: 0px 2px;
+    }
+    .fa-redo-alt {
+        width: 100%;
+        top: 0px;
+        margin: 2px 2px;
+    }
+    .fa-pause {
+        width: 100%;
+        top: 0px;
+        margin: 0px 2px;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 769px) {
+    .fa-play {
+        width: 8% !important;
+    }
+    .fa-redo-alt {
+        width: 8% !important;
+    }
+    .fa-pause {
+        width: 8% !important;
+    }
+}
+
+#areaOfIntrestErr,
+#emptyErr {
+    color: #bb373b;
+    font-size: 12px;
+    position: relative;
+    bottom: 22px;
+    left: 6px;
+}

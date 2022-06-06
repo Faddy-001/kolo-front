@@ -1,0 +1,111 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                View Project Property Type  
+            </div>
+            <!-- <i class="pe-7s-close close-icon" (click)="close()"></i> -->
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+          </div>
+    </div>        
+   
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <form [formGroup]="EditProjectPropertyTypeForm" (ngSubmit)="submit(EditProjectPropertyTypeForm.value)">
+                                <mat-form-field appearance="outline" >
+                                    <mat-label>Project<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="project" placeholder=" " readonly >  
+                                    <mat-error *ngIf="EditProjectPropertyTypeForm.get('project')?.touched">Project is required!</mat-error>
+                                </mat-form-field>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Property Type<span class="starmandatory">*</span></mat-label>
+                                    
+                                    <input matInput formControlName="propertytype" placeholder=" " readonly>
+                                    <mat-error *ngIf="EditProjectPropertyTypeForm.get('propertytype')?.touched">PropertyType is required!</mat-error>
+                                </mat-form-field>
+                            </div>
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Area Type<span class="starmandatory">*</span></mat-label>
+                                        <mat-select formControlName="area_type" >
+                                            <mat-option value="">Select</mat-option>
+                                            
+                                            <mat-option value="Saleable" >Saleable
+                                            </mat-option>
+                                            <mat-option value="Non-Saleable">Non-Saleable
+                                            </mat-option>
+                                        </mat-select>
+                                        
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                
+                                        <mat-form-field appearance="outline" >
+                                            <mat-label>Lenght(sq.ft)<span class="starmandatory">*</span></mat-label>
+                                            <input matInput  formControlName="area_length" >
+                                            <mat-error *ngIf="EditProjectPropertyTypeForm.get('area_length')?.touched">PropertyType is required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-3">
+                                    
+                                        <mat-form-field appearance="outline" >
+                                            <mat-label>Width(sq.ft)<span class="starmandatory">*</span></mat-label>
+                                            <input matInput  formControlName="area_breadth" >
+                                            <mat-error *ngIf="EditProjectPropertyTypeForm.get('area_breadth')?.touched">PropertyType is required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                   
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Area(sq/ft)<span class="starmandatory">*</span></mat-label>
+                                            <input formControlName="unit_area" matInput >
+                                            <mat-error *ngIf="EditProjectPropertyTypeForm.get('unit_area')?.touched">Total area is required!
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                
+                            </div>
+                            <div class="row">
+                           
+                            <div class="col-md-6">
+                                
+                                <mat-form-field appearance="outline" >
+                                    <mat-label>No.of Property<span class="starmandatory">*</span></mat-label>
+                                    <input matInput formControlName="units"   placeholder="Enter Rate" >
+                                    <mat-error *ngIf="EditProjectPropertyTypeForm.get('units')?.touched">PropertyType is required!</mat-error>
+
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                    <mat-form-field appearance="outline" >
+                                        <mat-label>Total Area<span class="starmandatory">*</span></mat-label>
+                                        <input matInput formControlName="total_area"  >
+                                    <mat-error *ngIf="EditProjectPropertyTypeForm.get('total_area')?.touched">PropertyType is required!</mat-error>
+
+                                    
+                                    </mat-form-field>
+                                </div>
+                                </div>
+                                <ng-container *ngFor="let feature of projectPropertyTypeFeature"> 
+                                <button *ngIf="feature.update==true" type="submit"  [disabled]="!EditProjectPropertyTypeForm.valid" class="mt-1 btn btn-primary">Save</button>
+                                
+                            </ng-container>
+                            
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

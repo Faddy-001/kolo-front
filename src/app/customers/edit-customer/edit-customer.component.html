@@ -1,0 +1,460 @@
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-display1 icon-gradient bg-premium-dark">
+                    </i>
+                </div>
+                <div>EDIT CUSTOMER
+                    <div class="page-title-subheading">Wide selection of forms controls, using the Bootstrap 4 code base, but built with React.
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-block dropdown">
+            </div>
+
+        </div>
+
+    </div>
+    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+        <div class="row">
+            <div class="col col-xl-12 col-md-12">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form [formGroup]="editCustomerForm" (ngSubmit)="submit(editCustomerForm.value)">
+                            <mat-accordion>
+                                <ng-container formGroupName="customer">
+                                    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                Primary Contact Information
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <div class="row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4"></div>
+                                            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
+                                                <mat-form-field appearance="outline" id="Leadid">
+                                                    <mat-label>Lead Reference Id</mat-label>
+                                                    <input matInput formControlName="lead_id" type="text" class="searchBox" placeholder="Lead" value="{{LeadName}} , {{Phone}}" (keyup)="search_Lead($event)">
+                                                </mat-form-field>
+                                                <div *ngIf="isLead" class="existing-token-dropdown">
+                                                    <ul class="nav" *ngFor="let lead of LeadData">
+                                                        <li class="nav-item exist-token-list" (click)="GetLead(lead.id)"> {{lead.first_name}} {{lead.middle_name}} {{lead.last_name}} <br /> {{lead.phone}}</li>
+                                                    </ul>
+                                                </div>
+                                                <p class="no_record" *ngIf="noRecords">No record found!</p>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                <mat-form-field appearance="outline" id="first_name">
+                                                    <mat-label>Name*</mat-label>
+                                                    <input matInput placeholder="Name" value="{{fName}} {{mName}} {{lName}}" (click)="openNameField()" readonly>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Gender*</mat-label>
+                                                    <mat-select formControlName="gender">
+                                                        <mat-option value="Male">Male</mat-option>
+                                                        <mat-option value="Female">Female</mat-option>
+                                                        <mat-option value="Others">Others </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                                <mat-form-field appearance="outline" id="e_mail">
+                                                    <mat-label>E-mail</mat-label>
+                                                    <input matInput formControlName="email" placeholder="E-mail" value="">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                                                <mat-form-field appearance="outline" id="ph_no">
+                                                    <mat-label>Phone*</mat-label>
+                                                    <input (keypress)="numberOnly($event)" matInput formControlName="phone" maxlength="10" placeholder="Phone" type="text">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                                                <mat-form-field appearance="outline" id="ph_no">
+                                                    <mat-label>Alternate Phone*</mat-label>
+                                                    <input (keypress)="numberOnly($event)" matInput formControlName="alternate_phone" maxlength="10" placeholder="Alternate Phone" type="text">
+                                                </mat-form-field>
+                                            </div>
+
+                                        </div>
+                                        <!-- add current address -->
+                                        <mat-expansion-panel hideToggle>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Current Address
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <ng-container formGroupName="current_address">
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Current Address*</mat-label>
+
+                                                            <textarea formControlName="address" rows="1" matInput [(ngModel)]="Address" placeholder="Current Address"></textarea>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline" id="PinField1">
+                                                            <mat-label>Pin Code</mat-label>
+                                                            <input matInput formControlName="postal_code" #pinCode (keypress)="numberOnly($event)" maxlength="6" [(ngModel)]="PostalCode" (ngModelChange)="onChange($event)" placeholder="">
+                                                        </mat-form-field>
+                                                        <p *ngIf="postalError">{{postalMsg}}</p>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>City</mat-label>
+
+                                                            <input matInput formControlName="city" [(ngModel)]="City" placeholder="City" type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>State</mat-label>
+                                                            <input matInput formControlName="state" [(ngModel)]="State" placeholder="State" type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Country</mat-label>
+                                                            <input matInput formControlName="country" [(ngModel)]="Country" placeholder="Country" type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </mat-expansion-panel>
+                                        <!-- add permanent address -->
+                                        <mat-expansion-panel hideToggle>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    Permanent Address
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <mat-checkbox name="checkAddress" class="example-margin" (change)="selectAddress($event);">Same as current address
+                                            </mat-checkbox>
+                                            <ng-container formGroupName="permanent_address">
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Permanent Address</mat-label>
+                                                            <textarea formControlName="address" rows="1" matInput value="{{P_Address}}" placeholder="Permanent Address"></textarea>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline" id="PinField1">
+                                                            <mat-label>Pin Code</mat-label>
+                                                            <input matInput formControlName="postal_code" #pinCode1 [(ngModel)]="P_pinValue" value="{{P_PostalCode}}" placeholder="" (keypress)="numberOnly($event)" maxlength="6">
+                                                        </mat-form-field>
+                                                        <p *ngIf="postalError">{{postalMsg}}</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>City</mat-label>
+                                                            <input matInput formControlName="city" value="{{P_City}}" placeholder="City" type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>State</mat-label>
+                                                            <input matInput formControlName="state" value="{{P_State}}" placeholder="State" type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Country</mat-label>
+                                                            <input matInput formControlName="country" value="{{P_Country}}" placeholder="State" type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </mat-expansion-panel>
+
+                                        <!-- add document field -->
+                                        <mat-expansion-panel>
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title> Documents </mat-panel-title>
+                                            </mat-expansion-panel-header>
+                                            <ng-container formGroupName="document">
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Type</mat-label>
+                                                            <mat-select formControlName="type" (selectionChange)="GetValue($event)">
+                                                                <mat-option value="Adhaar Card">Aadhar-card
+                                                                </mat-option>
+                                                                <mat-option value="Driving License">Driving License
+                                                                </mat-option>
+                                                                <mat-option value="Pan Card">Pan Card </mat-option>
+                                                                <mat-option value="Passport">Passport </mat-option>
+                                                                <mat-option value="Passsbook">Passsbook
+                                                                </mat-option>
+                                                                <mat-option value="Ration Card">Ration Card
+                                                                </mat-option>
+                                                                <mat-option value="Voter Id">Voter Id Card
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <mat-form-field appearance="outline" id="doc_type">
+                                                            <mat-label>Document Number</mat-label>
+                                                            <input matInput maxlength="{{docLength}}" formControlName="number" placeholder="" type="text">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="form-group">
+                                                            <input type="file" style="display: none;" (change)="readURL($event)" class="form-control-file" id="exampleFormControlFile1" #file>
+                                                            <i class="fas fa-upload" (click)="file.click()"></i> Choose Document Image
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-2 doc-img-col" *ngFor='let url of images; let i = index'>
+                                                                <img class="doc-img" [src]="url.url" title="{{url.name}}" alt="" width="60px" height="60px">
+                                                                <span>
+                                                                    <mat-icon (click)="deleteImg(i)"
+                                                                        class="close-btn">close
+                                                                    </mat-icon>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </ng-container>
+                                        </mat-expansion-panel>
+                                    </mat-expansion-panel>
+                                </ng-container>
+                            </mat-accordion>
+                            <!-- <mat-accordian> -->
+                            <ng-container formGroupName="secondaryContact">
+                                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Secondary Contact Information
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <mat-form-field appearance="outline" id="first_name">
+                                                <mat-label>Name*</mat-label>
+                                                <input matInput placeholder="Name" value="{{fName}} {{mName}} {{lName}}" (click)="openSecondaryNameField()" readonly>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Gender*</mat-label>
+                                                <mat-select formControlName="gender">
+                                                    <mat-option value="Male">Male</mat-option>
+                                                    <mat-option value="Female">Female</mat-option>
+                                                    <mat-option value="Others">Others </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <mat-form-field appearance="outline" id="e_mail">
+                                                <mat-label>Relation with Customer</mat-label>
+                                                <input formControlName="relation_with_customer" matInput placeholder="Relation with Custome" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <mat-form-field appearance="outline" id="e_mail">
+                                                <mat-label>E-mail</mat-label>
+                                                <input formControlName="email" matInput placeholder="E-mail" type="email">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <mat-form-field appearance="outline" id="ph_no">
+                                                <mat-label>Phone*</mat-label>
+                                                <input formControlName="phone" matInput maxlength="10" placeholder="Phone" type="text" (keypress)="numberOnly($event)">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <mat-form-field appearance="outline" id="ph_no">
+                                                <mat-label>Alternate Phone*</mat-label>
+                                                <input formControlName="alternate_phone" matInput maxlength="10" placeholder="Alternate Phone" type="text" (keypress)="numberOnly($event)">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <!-- add current address -->
+                                    <mat-expansion-panel hideToggle>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                Current Address
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <ng-container formGroupName="current_address">
+                                            <div class="row">
+                                                <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Current Address*</mat-label>
+                                                        <textarea formControlName="address" rows="1" matInput [(ngModel)]="Address1" placeholder="Current Address"></textarea>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Pincode</mat-label>
+                                                        <input matInput formControlName="postal_code" #pinCode [(ngModel)]="PostalCode1" (keypress)="numberOnly($event)" (ngModelChange)="onChangeSecondaryCustomer($event)" maxlength="6" placeholder="">
+                                                    </mat-form-field>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>City</mat-label>
+                                                        <input matInput placeholder="City" [(ngModel)]="City1" formControlName="city" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>State</mat-label>
+                                                        <input matInput placeholder="State" [(ngModel)]="State1" formControlName="state" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Country</mat-label>
+                                                        <input matInput placeholder="Country" [(ngModel)]="Country1" formControlName="country" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </mat-expansion-panel>
+                                    <!-- add permanent address -->
+                                    <mat-expansion-panel hideToggle>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                Permanent Address
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <ng-container formGroupName="permanent_address">
+                                            <mat-checkbox class="example-margin">Same as current address
+                                            </mat-checkbox>
+                                            <div class="row">
+                                                <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Permanent Address</mat-label>
+                                                        <textarea formControlName="address" rows="1" matInput value="{{S_Address}}" placeholder="Permanent Address"></textarea>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Pincode</mat-label>
+                                                        <!-- <input formControlName="postal_code" matInput
+                                                            value="{{S_PostalCode}}" placeholder="Pincode"
+                                                            type="text"> -->
+                                                        <input matInput formControlName="postal_code" #pinCode [(ngModel)]="SP_pinValue" value="{{S_PostalCode}}" (keypress)="numberOnly($event)" maxlength="6" placeholder="" (ngModelChange)="onChangeSecondaryCustomerPermanent($event)">
+                                                    </mat-form-field>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>City</mat-label>
+                                                        <input formControlName="city" matInput value="{{S_City}}" placeholder="City" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>State</mat-label>
+                                                        <input formControlName="state" matInput value="{{S_State}}" placeholder="State" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Country</mat-label>
+                                                        <input formControlName="country" matInput value="{{S_Country}}" placeholder="Country" type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                    </mat-expansion-panel>
+                                    <mat-expansion-panel hideToggle>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                Documents
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <ng-container formGroupName="document">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Type</mat-label>
+                                                        <mat-select formControlName="type" (selectionChange)="GetValue($event)">
+                                                            <mat-option value="Adhaar Card">Aadhar-card
+                                                            </mat-option>
+                                                            <mat-option value="Driving License">Driving License
+                                                            </mat-option>
+                                                            <mat-option value="Pan Card">Pan Card </mat-option>
+                                                            <mat-option value="Passport">Passport </mat-option>
+                                                            <mat-option value="Passsbook">Passsbook
+                                                            </mat-option>
+                                                            <mat-option value="Ration Card">Ration Card
+                                                            </mat-option>
+                                                            <mat-option value="Voter Id">Voter Id Card
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <mat-form-field appearance="outline" id="doc_type">
+                                                        <mat-label>Document Number</mat-label>
+                                                        <input maxlength="{{docLength}}" formControlName="number" matInput placeholder="" type="text">
+                                                    </mat-form-field>
+                                                </div>
+
+                                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="file" style="display: none;" (change)="readURLSecondaryCustomer($event)" class="form-control-file" id="exampleFormControlFile1" #file1>
+                                                        <i class="fas fa-upload" (click)="file1.click()"></i> Choose Document Image
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-2 doc-img-col" *ngFor='let url of imagesSecondary; let i = index'>
+                                                            <img class="doc-img" [src]="url.url" title="{{url.name}}" alt="" width="60px" height="60px">
+                                                            <span>
+                                                                <mat-icon (click)="deleteImgSecondary(i)"
+                                                                    class="close-btn">close
+                                                                </mat-icon>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </ng-container>
+                                    </mat-expansion-panel>
+
+                                </mat-expansion-panel>
+                            </ng-container>
+                            
+                            <button type="submit" style="float: right;" class="mt-1 btn btn-primary button-width">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

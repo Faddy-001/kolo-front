@@ -1,0 +1,103 @@
+<div class="container" style="overflow-y: auto;">
+    
+    <div id="main-content">
+       
+        <div  class="content">
+            
+            <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+                <mat-tab label="Project">
+                    <div *ngFor="let project of projectArr">
+                        <input type="checkbox" #checkboxes [(ngModel)]="project.isSelected" (change)="getProject($event)" value="{{project.id}}" class="input-class regular-checkbox">{{project.name}} <br>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Call Date Between">
+                    <!-- <p>asdfyatvsdfsdfsefsrewsrtwerdsfsdsdyfiuisdufsyduifysui dfuiysidfuisudf isdufio</p> -->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input (dateChange)="getStartDate($event)" id="start_date" [(ngModel)]="strtDate" matStartDate placeholder="Start date" [formControl]="OfferSdate">
+                            <input (dateChange)="getEndDate($event)" id="end_date" [(ngModel)]="enDate" matEndDate placeholder="End date" [formControl]="OfferEdate">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                </mat-tab>
+                <mat-tab label="CRE">
+                    <div *ngFor="let cre of creData">
+                        <input type="checkbox" #checkboxes id="getCheck" [(ngModel)]="cre.isSelected" (change)="getCre($event)" value="{{cre.id}}" class="input-class regular-checkbox">{{cre.name}} <br>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Sales Executive">
+                    <div *ngFor="let salesExc of salesExcData" class="col-md-12">
+                        <input type="checkbox" #checkboxes id="getCheck" [(ngModel)]="salesExc.isSelected" (change)="getSalesExc($event)" value="{{salesExc.id}}" class="input-class regular-checkbox"> {{salesExc.name}} <br>
+                    </div>
+
+                </mat-tab>
+                <mat-tab label="Contactability">
+
+                    <input type="checkbox" #checkboxes [(ngModel)]="checkedConv" (click)="conv($event)" value="Conversation" class="input-class regular-checkbox">Conversation
+                    <br>
+                    <input type="checkbox" #checkboxes [(ngModel)]="checkedMatch" (click)="notMatched($event)" value="Not Matched" class="input-class regular-checkbox">Not Matched
+                    <br>
+                    <input type="checkbox" #checkboxes [(ngModel)]="checkedConnected" (click)="notConnected($event)" value="Not Contacted" class="input-class regular-checkbox">Not Connected <br>
+
+                </mat-tab>
+                <mat-tab label="Mode of Interest">
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+                        <input type="checkbox" #checkboxes [(ngModel)]="checkedInt" (click)="Interested($event)" value="Interested" class="input-class regular-checkbox">Interested
+                        <br>
+                        <input type="checkbox" #checkboxes [(ngModel)]="checkednotInt" (click)="notInterested($event)" value="Not Interested" class="input-class regular-checkbox">Not Interested
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Category">
+                    <div class="col-md-12 ">
+                        <input type="checkbox" #checkboxes [(ngModel)]="hot" (change)="Category1($event)" value="A+(Hot)" class="input-class regular-checkbox">A+(Hot) <br>
+                        <input type="checkbox" #checkboxes [(ngModel)]="warm" (change)="Category2($event)" value="A(Warm)" class="input-class regular-checkbox">A(Warm)<br>
+                        <input type="checkbox" #checkboxes [(ngModel)]="cold" (change)="Category3($event)" value="B(Cold)" class="input-class regular-checkbox">B(Cold)<br>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Status">
+                    <div class="col-md-12 ">
+                        <input type="checkbox" #checkboxes [(ngModel)]="lead" (change)="getLead($event)" value="Lead" class="input-class regular-checkbox">Lead<br>
+                        <input type="checkbox" #checkboxes [(ngModel)]="call" (change)="getCall($event)" value="Call" class="input-class regular-checkbox">Call<br>
+                        <input type="checkbox" #checkboxes [(ngModel)]="meet" (change)="getMeet($event)" value="Meet" class="input-class regular-checkbox">Meet<br>
+                        <input type="checkbox" #checkboxes [(ngModel)]="visit" (change)="getVisit($event)" value="Visit" class="input-class regular-checkbox">Visit<br>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Area of Interest">
+                    <div *ngFor="let data of PropertyData" class="col-md-12 col-xs-12 col-sm-12">
+                        <input type="checkbox" #checkboxes [(ngModel)]="data.isSelected" (change)="getAOI($event)" class="input-class regular-checkbox" value="{{data.id}}">{{data.name}}<br>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Buying Purpose">
+                    <div class="col-md-12 col-xs-12 col-sm-12">
+                        <input type="checkbox" #checkboxes [(ngModel)]="personal" (change)="getBuyingPurpose1($event)" value="Personal" class="input-class regular-checkbox">Personal<br>
+                        <input type="checkbox" #checkboxes [(ngModel)]="investment" (change)="getBuyingPurpose2($event)" value="Investment" class="input-class regular-checkbox">Investment
+                    </div>
+                </mat-tab>
+                <mat-tab label="Visit Date">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput id="dateVal" (dateChange)="getvisitDate($event)" [matDatepicker]="visitpicker" [value]="vDate" [(ngModel)]="visDate" [formControl]="date">
+                        <mat-datepicker-toggle matSuffix [for]="visitpicker"></mat-datepicker-toggle>
+                        <mat-datepicker #visitpicker></mat-datepicker>
+                    </mat-form-field>
+                </mat-tab>
+                <mat-tab label="Follow Up Date">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput id="followDateVal" (dateChange)="getFollowDate($event)" [matDatepicker]="followPicker" [(ngModel)]="follDate" [formControl]="followUpdate">
+                        <mat-datepicker-toggle matSuffix [for]="followPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #followPicker></mat-datepicker>
+                    </mat-form-field>
+                </mat-tab>
+            </mat-tab-group>
+            </div>
+        </div>
+    </div>
+
+<button (click)="applyFilter($event)" style="float:right; position: relative; bottom: 1rem;" type="submit" class="applyBtn mt-1 btn btn-primary">Apply</button>
+<button style="float:right;position: relative; bottom: 1rem;" (click)="clearAll($event)" type="submit" class="clearBtn mt-1 btn btn-primary">Clear All</button>

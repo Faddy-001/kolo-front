@@ -1,0 +1,227 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Edit Offers
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <form [formGroup]="editOfferForm" (ngSubmit)="submit(editOfferForm.value)">
+                                <div class="row">
+                                    <div class="col-lg-{{colSize}} col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline" id="name">
+                                            <mat-label>Offer Name<span class="starmandatory">*</span></mat-label>
+                                            <input matInput formControlName="name" placeholder="Offer Name" type="text">
+                                            <mat-error *ngIf="editOfferForm.get('name')?.touched">Offer Name is
+                                                required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="form-group col-lg-{{colSize}} col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline" id="OfferType">
+                                            <mat-label>Offer Type<span class="starmandatory">*</span></mat-label>
+                                            <mat-select formControlName="type" (selectionChange)="GetOfferType($event)">
+                                                <mat-option>--Select Offer Type--</mat-option>
+                                                <mat-option value="Area Wise">Area Wise</mat-option>
+                                                <mat-option value="Product Giveaway">Product Giveaway</mat-option>
+                                                <mat-option value="Direct Discount(in Rs)">Direct Discount(in Rs)
+                                                </mat-option>
+                                                <mat-option value="Direct Discount(in Percentage)">Direct Discount(in
+                                                    Percentage)
+                                                </mat-option>
+                                                <mat-option value="Lucky Draw">Lucky Draw</mat-option>
+                                            </mat-select>
+                                            <mat-error  *ngIf="editOfferForm.get('type')?.touched">Offer Type is
+                                                required!</mat-error>
+                                                
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-{{colSize}} col-sm-12 col-md-12 " [style.display]="offer_type">
+                                        <mat-form-field appearance="outline" id="Disc">
+                                            <mat-label>{{showofferlbl}}<span class="starmandatory">*</span></mat-label>
+                                            <input matInput formControlName="benefit" placeholder={{showofferlbl}}
+                                                type="text">
+                                            <mat-error *ngIf="editOfferForm.get('benefit')?.touched">Benefit is
+                                                required!</mat-error>
+                                                <mat-error  style="position: relative;left: 6rem;bottom: 1.55rem;" *ngIf="editOfferForm.get('benefit')?.hasError('pattern')">
+                                                    Enter only number.
+                                                  </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-{{colSize}} col-sm-12 col-md-12" [style.display]="offer_giveaway">
+                                        <mat-form-field appearance="outline" id="Disc">
+                                            <mat-label id="offertypelbl">Offer description<span class="starmandatory">*</span></mat-label>
+                                            <input matInput formControlName="product_description" placeholder={{showofferDesc}}
+                                                type="text">
+                                            <mat-error *ngIf="editOfferForm.get('product_description')?.touched">Product description is required!
+                                            </mat-error>
+                                            <mat-error style="position: relative;left: 6rem;bottom: 1.55rem;" *ngIf="editOfferForm.get('product_description')?.hasError('pattern')">
+                                                Enter only number.
+                                              </mat-error>
+                                        </mat-form-field>
+                                        
+                                    </div>
+                                    
+                                    <div class="col-lg-{{colSize}} col-sm-12 col-md-12" [style.display]="offer_giveaway">
+                                        <mat-form-field appearance="outline" id="Disc">
+                                            <mat-label id="offertypelbl">Price (in Rs)<span class="starmandatory">*</span></mat-label>
+                                            <input matInput formControlName="product_price" placeholder={{showofferPrice}}
+                                                type="text">
+                                            <mat-error *ngIf="editOfferForm.get('product_price')?.touched">Price is required!
+                                            </mat-error>
+                                            <mat-error style="position: relative;left: 6rem;bottom: 1.55rem;" *ngIf="editOfferForm.get('product_price')?.hasError('pattern')">
+                                                Enter only number.
+                                              </mat-error>
+                                        </mat-form-field>
+                                        
+                                    </div>
+                                    <div class="col-lg-{{colSize}} col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline" id="sdate">
+                                            <mat-label>Offer Start Date</mat-label>
+                                            <!-- <input matInput formControlName="start_date" [matDatepicker]="picker">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker> -->
+                                            <input matInput id="dateVal" (dateChange)="getStartDate($event)" [matDatepicker]="startDatepicker"
+                                                 [value]="sDate"  formControlName="start_date">
+                                            <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+                                            <mat-datepicker #startDatepicker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline" id="edate">
+                                            <mat-label>Offer End Date</mat-label>
+                                            <input matInput [min]="startDate" [disabled]="getEndDate" formControlName="end_date" [matDatepicker]="pickerend">
+                                            <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
+                                            <mat-datepicker #pickerend></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline" id="offercount">
+                                            <mat-label>Offer Counts*</mat-label>
+                                            <input matInput placeholder="Offer Counts" type="number"
+                                            min="0" (keypress)="numberOnly($event)" formControlName="counts">
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="form-group col-lg-3 col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline" id="OfferType">
+                                            <mat-label>Applicable for Payment Type</mat-label>
+                                            <mat-select formControlName="applicable_on_payment_type">
+                                                <mat-option value="Full">Full</mat-option>
+                                                <mat-option value="Installment">Installment</mat-option>
+                                                <mat-option value="">Both</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <div class="row form-check form-check-inline">
+                                            <mat-label>Is this offer applicable for particular Projects*</mat-label>
+                                            <div class="col-md-6">
+                                                <input type="radio" class="form-check-input" [checked]="selectYes"
+                                                    (change)="changeEvent($event)" name="applicable_projects"
+                                                    value="Yes" />
+                                                <label for="yes">Yes</label>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-12 col-md-12">
+                                                <input type="radio" class="form-check-input" [checked]="selectNo"
+                                                    selected (change)="changeEvent1($event)" name="applicable_projects"
+                                                    value="No" />
+                                                <label for="no">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" [style.display]="applicable_toshow_project">
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Select Project*</mat-label>
+                                            <mat-select formControlName="applicable_on_project_id"
+                                                (selectionChange)="GetProject($event)" (ngModelChange)="clearvalue($event)">
+                                                <mat-option *ngFor="let project of projects" [value]="project.id">
+                                                    {{project.name}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Select Property Type*</mat-label>
+                                            <mat-select (selectionChange)="GetPropertyDetails($event)" multiple formControlName="applicable_on_property_type">
+                                                <!-- <mat-option *ngFor="let type of properties" [value]="type.id">{{type.name}}
+                                                </mat-option>     -->
+                                                <mat-option *ngFor="let type of new1p" [value]="type.id">{{type.name}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <!-- <div class="col-md-4">
+                                        <mat-form-field appearance="outline" id="PropertyType">
+                                            <mat-label>Select Property :</mat-label>
+                                            <input  matInput placeholder="Search Property" type="text"
+                                                formControlName="applicable_on_property">
+                                        </mat-form-field>
+                                    </div> -->
+                                   
+                                  
+                                    <div class="col-lg-3 col-sm-12 col-md-12">
+                                     
+                                        <!-- <ng-container *ngFor="let ppt of applicableOnProperty"> -->
+                                        <mat-form-field appearance="outline" id="propertyid">
+                                            <mat-label>Select Property</mat-label>
+                                         
+                                            <input matInput formControlName="applicable_on_property" type="text"
+                                                class="searchBox" value={{searchData}} placeholder="Search Property" (keyup)="search_Property($event)">
+                                               
+                                        </mat-form-field>
+                                    <!-- </ng-container> -->
+                                   
+                                        <div *ngIf="isProperty" class="existing-token-dropdown">
+                                            <!-- <ul class="nav" *ngFor="let lead of LeadData"> -->
+                                            <ul class="nav"  *ngFor="let property of PropertyData" >
+                                                <!-- <li class="nav-item exist-token-list"
+                                                    (click)="GetSearchProperty(property.id)"> {{property.number}}
+                                                </li> -->
+                                                <li class="nav-item exist-token-list">
+                                                    <input #checkBox type="checkbox" multiple (onClick)="$event.stopPropagation()" (click)="GetSearchPPT($event)" value="{{property.id}}" >
+                                                         {{property.number}}
+                                                 </li>  
+                                            </ul>
+                                        </div>
+                                        <p class="no_record" *ngIf="noRecords">No record found!</p>
+                                    </div>
+                              
+                                </div>
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-md-10">
+                                       <span> Search Properties</span>
+                                       <ng-container >
+                                            <span class="selected-properties" *ngFor='let property of applicableOnProperty;let i = index'>{{property.number}}
+                                                <mat-icon (click)="deleteProperty(i)" class="close-btn close-property">close</mat-icon>
+                                            </span>
+                                            <span class="selected-properties" *ngFor='let property of selectedProperty;let j = index'>{{property.number}}
+                                                <mat-icon (click)="deleteSelectedProperty(j)" class="close-btn close-property">close</mat-icon>
+                                            </span>
+                                       </ng-container>
+             
+                                     </div>
+                               </div>
+                                <button type="submit"
+                                    class="mt-1 btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

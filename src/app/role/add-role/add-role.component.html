@@ -1,0 +1,171 @@
+<div class="app-main__inner">
+    <div class="app-page-title add-project-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                Add Role
+            </div>
+            <!-- <i class="pe-7s-close close-icon" (click)="close()"></i> -->
+            <mat-icon class="close-icon" (click)="close()">close</mat-icon>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-0"
+            role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <form [formGroup]="addRoleForm" (ngSubmit)="submit(addRoleForm.value)">
+                                <mat-form-field appearance="outline"
+                                    id="NameField">
+                                    <mat-label>Name<span class="starmandatory">*</span></mat-label>
+                                    <!-- <input matInput (change)="getName($event)" placeholder="" required> -->
+                                    <input matInput formControlName="name" placeholder="" required>
+                                    <mat-error
+                                        *ngIf="addRoleForm.get('name')?.touched">Name
+                                        is required!</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Description</mat-label>
+                                    <!-- <textarea matInput formControlName="description" (change)="getDesc($event)" placeholder=""></textarea> -->
+                                    <textarea matInput formControlName="description" placeholder=""></textarea>
+                                </mat-form-field>
+                         
+                                <h4 class="permission_head">Permissions: </h4><hr>
+                                <h4 class="permission_head">Module: </h4>
+                                <div class="row">
+                                    <div class="col-md-4" *ngFor="let module of
+                                        moduleData">
+                                        <input type="checkbox" #checkboxes
+                                            id="getCheck"
+                                            (change)="getLeadFeature(module.name,$event)"
+                                            value="{{module.id}}"
+                                            class="input-class
+                                            regular-checkbox"><span
+                                            class="module_name">{{module.name}}
+                                        </span> <br>
+                                    </div>
+                                </div>
+
+                                <div class="row feature-access-row">
+                                    <div class="col-md-12">
+                                        <h4 class="permission_head">Feature
+                                            Access:</h4>
+                                    </div>
+                                </div>
+
+                                <!-- lead features -->
+                                <div class="row">
+                                    <div class="col-md-12 ">
+                                        <div *ngFor="let feature of leadFeatureArr; let i=index" >
+                                            <ng-container *ngIf="feature.Module_id && isLead">
+                                                <div class="acess_container">
+                                                    <h4 class="feature_name">{{feature.name}}</h4><br>
+                                                    <div>
+                                                        <p class="access_permissions">Create</p>
+                                                        <mat-slide-toggle name="create" [checked]="feature.create" (change)="getCreate($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Read</p>
+                                                        <mat-slide-toggle name="read" [checked]="feature.read" (change)="getRead($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Update</p>
+                                                        <mat-slide-toggle name="update" [checked]="feature.update" (change)="getUpdate($event,feature.id)" ></mat-slide-toggle>
+                                                    </div>
+
+                                                    <div>
+                                                        <p class="access_permissions">Delete</p>
+                                                        <mat-slide-toggle name="delete" [checked]="feature.delete" (change)="getDelete($event,feature.id)" ></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Full Access</p>
+                                                        <mat-slide-toggle formControlName="full" [checked]="feature.full" (change)="getFullAccess($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                </div>
+
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- sales features -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div *ngFor="let feature of masterFeatureArr">
+                                            <ng-container
+                                                *ngIf="isMaster">
+                                                <div class="acess_container">
+                                                    <h4 class="feature_name">{{feature.name}}</h4><br>
+                                                    <div>
+                                                        <p class="access_permissions">Create</p>
+                                                        <mat-slide-toggle name="create" [checked]="feature.create" (change)="getCreate($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Read</p>
+                                                        <mat-slide-toggle [checked]="feature.read" (change)="getRead($event,feature.id)" name="read"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Update</p>
+                                                        <mat-slide-toggle [checked]="feature.update" (change)="getUpdate($event,feature.id)" name="update"></mat-slide-toggle>
+                                                    </div>
+
+                                                    <div>
+                                                        <p class="access_permissions">Delete</p>
+                                                        <mat-slide-toggle [checked]="feature.delete" (change)="getDelete($event,feature.id)" name="delete"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Full
+                                                            Access</p>
+                                                        <mat-slide-toggle [checked]="feature.full" (change)="getFullAccess($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- collection features -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div *ngFor="let feature of collectionFeatureArr">
+                                            <ng-container
+                                                *ngIf="feature.Module_id && isCollection">
+                                                <div class="acess_container">
+                                                    <h4 class="feature_name">{{feature.name}}</h4><br>
+                                                    <div>
+                                                        <p class="access_permissions">Create</p>
+                                                        <mat-slide-toggle [checked]="feature.create" (change)="getCreate($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Read</p>
+                                                        <mat-slide-toggle [checked]="feature.read" (change)="getRead($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Update</p>
+                                                        <mat-slide-toggle [checked]="feature.update" (change)="getUpdate($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+
+                                                    <div>
+                                                        <p class="access_permissions">Delete</p>
+                                                        <mat-slide-toggle [checked]="feature.delete" (change)="getDelete($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                    <div>
+                                                        <p class="access_permissions">Full Access</p>
+                                                        <mat-slide-toggle [checked]="feature.full" (change)="getFullAccess($event,feature.id)"></mat-slide-toggle>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" [disabled]="!addRoleForm.valid" class="mt-1 btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

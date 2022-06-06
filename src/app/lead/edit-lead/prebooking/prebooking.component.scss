@@ -1,0 +1,495 @@
+.add-project-title{
+    padding-bottom:0px !important;
+    color: #616161;
+  
+}
+
+::ng-deep .mat-dialog-container{
+    background:#fff;
+    overflow-x: hidden;
+}
+
+.close-icon{
+    position:absolute;
+    right:0px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+#hidden_content {
+    display: none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: #68bfbb;
+    color: #00000070;
+}
+
+.Intrest-cls {
+    display: none;
+}
+
+// mat-icon-stepper selected color change 
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #68BFBB!important;
+}
+
+// input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #68BFBB!important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #68BFBB!important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: red!important;
+    opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: #68BFBB!important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+    caret-color: red!important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: #68BFBB !important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #68BFBB!important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: red!important;
+}
+
+::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #68BFBB;
+}
+
+::ng-deep .mat-select-arrow {
+    color: #68BFBB !important;
+}
+
+//datepicker customization
+mat-datepicker-toggle {
+    color: #68BFBB !important;
+}
+
+ ::ng-deep.mat-calendar-body-selected {
+    background-color: #68BFBB !important;
+}
+
+ ::ng-deep.mat-expansion-panel {
+    margin: 16px 0 !important;
+}
+
+ ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #68BFBB;
+}
+
+ ::ng-deep.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #b3dfdc;
+}
+
+// adding css in .mat-form-field by kanchan
+
+::ng-deep.mat-form-field-infix {
+    padding: .8em !important;
+    }
+
+// for details button
+// .Btnshow
+// {
+//     height: 40%;
+//     position: relative;
+//     top:15px;
+//     margin: 0 0.4rem;
+//     padding:4px 10px;
+//     max-width: 40%;
+//     right: 2px;
+// } 
+
+// .textarea1
+// {
+//     min-height: 20px !important;
+//     padding:1rem 0rem; 
+//     position: relative;
+//     bottom: 1rem;  
+//     top: 1rem;
+// }
+.remarkField
+{
+    height: 20px !important;
+    padding:1rem 0rem; 
+    position: relative;
+    bottom: 1rem;   
+}
+// .img-wrap {
+//     position: relative;
+//     display: inline-block;
+//     border: 1px #68bfbb solid;
+//     font-size: 0;
+//     padding: 5px 10px;
+// }
+
+.img-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+
+.img-wrap:hover .close {
+    opacity: 1;
+}
+.close-icon1 {
+    position: absolute;
+    right: 5px;
+    margin-top: 5px;
+    color: #fff;
+    font-size: 12px;
+   }
+   
+   .xyz
+   {
+    width: 44%;
+    position: relative;
+    left: 18.1rem;
+   }
+   .showPrice
+{
+    width: 80%;
+    position: relative;
+    left: 18.1rem;
+}
+.showPriceDetails
+{
+    color: #499a97;
+    font-size: 15px;
+    float: right;
+}
+.showamt
+{
+    position: relative;
+    left: 1rem;
+}
+
+.showPropertytTitle
+{
+    color: #499a97;
+    font-size: 15px;
+}
+.showPropertyDetails
+{
+    position: relative;
+    left: 1.5rem;
+}
+
+
+   .nav{
+       display:list-item;
+   }
+
+   ::ng-deep.mat-form-field-wrapper{
+       padding-bottom:2px !important;
+   }
+
+   .existing-token-dropdown{
+    box-shadow: 0 1px 5px #bfb8b8;
+    padding: 10px;
+    border-radius: 4px;
+    ul{
+        li{
+            padding: 4px;
+        }
+        li:hover{
+            cursor:pointer;
+            background: #b9b9b9;
+            color: white;
+            border-radius: 3px;
+            padding: 4px;
+        }
+    }
+   }
+
+   .no_record{
+       color:#c51f1f;
+   }
+
+   .doc-img-col{
+    padding-top: 3px;
+    .doc-img {
+        border-radius: 4px;
+        box-shadow: 0px 0px 6px rgb(0 0 0 / 55%);
+    }
+    .close-btn {
+        background: #68bfbb;
+        width: 18px;
+        height: 18px;
+        padding: 2px;
+        border-radius: 42px;
+        color: white;
+        font-size: 14px;
+        position: absolute;
+        bottom: 49px;
+        left: 65px;
+        cursor: pointer;
+    }
+
+   .clickable_row{
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    thead{
+        background: #A1A1A1;
+       th{
+           color:#fff;
+           font-weight:300;
+           padding: 7px 7px 7px 7px;
+       }
+
+    }
+    tbody{
+        background-color: #fff;
+        tr{
+             box-shadow:0px 0px 8px 0px rgb(0 0 0 / 25%); cursor: pointer;
+             border-radius: 6px 6px 6px 6px; 
+             td{
+                padding: 7px 7px 7px 7px;
+             }
+          
+         }
+         
+
+    
+    }
+}
+
+
+tfoot, th:first-child, thead{
+	
+    border-radius: 6px 0px 0px 6px;
+}
+
+
+ tfoot, th:last-child, tr, thead{
+	
+    border-radius: 0px 6px 6px 0px;
+}
+
+
+// td, th {  min-width: 170px; }
+// tr { display: block; }
+
+
+  /*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+    only screen and (max-width: 760px), (min-device-width: 768px) 
+  and (max-device-width: 1024px)  {
+
+      /* Force table to not be like tables anymore */
+      table, thead, tbody, th, td, tr {
+         
+          display: block;
+      }
+
+      /* Hide table headers (but not display: none;, for accessibility) */
+      thead tr {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+      }
+
+  tr {
+    margin: 0 0 1rem 0;
+  }
+    
+  tr:nth-child(odd) {
+    background: #ccc;
+  }
+  
+      td {
+          /* Behave  like a "row" */
+          border: none;
+          border-bottom: 1px solid #eee;
+          position: relative;
+          padding-left:50% !important;
+          padding-top: 7px !important;
+          padding-right: 0px !important;
+          padding-bottom: 7px !important;
+          @media only screen and (max-width: 384px){
+            padding-left:100% !important;
+        }
+        @media only screen and (max-width: 340px){
+            padding-left:60% !important;
+        }
+        @media only screen and (max-width: 314px){
+            padding-left:65% !important;
+        }
+        @media only screen and (max-width: 296px){
+            padding-left:69% !important;
+        }
+        @media only screen and (max-width: 242px){
+            padding-left:78% !important;
+        }
+      }
+
+      td:before {
+          /* Now like a table header */
+          position: absolute;
+          /* Top/left values mimic padding */
+          left: 20px;
+          width: 45%;
+          padding-right: 10px;
+          white-space: nowrap;
+      }
+
+      /*
+      Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+      */
+
+    // td:nth-of-type(1):before { content: "First Name"; }
+    // td:nth-of-type(2):before { content: "Email"; }
+    // td:nth-of-type(3):before { content: "Gender"; }
+    // td:nth-of-type(4):before { content: "Phone"; }
+    // td:nth-of-type(5):before { content: "Alternate Phone"; }
+    // td:nth-of-type(6):before { content: "Project"; }
+    // td:nth-of-type(7):before { content: "Department"; }
+    // td:nth-of-type(8):before { content: "Role"; }
+    // td:nth-of-type(9):before { content: "Password"; }
+    // td:nth-of-type(10):before { content: "Address"; }
+  }
+  .off:hover{
+    box-shadow: 0px 2px 12px #bfbfbf!important;
+    
+ }
+ .mat-icon{
+    font-size: 18px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    color: white;
+    height: 18px;
+    width: 18px;
+    background-color: #d21212;
+    border-radius: 50px;
+    margin-right: -16px;
+    margin-top: 0px;
+    
+    
+}
+
+.doc-img-col{
+
+    padding-top:3px;
+    .doc-img{
+    border-radius: 4px;
+    box-shadow: 0px 0px 6px rgb(0 0 0 / 55%);
+}
+
+}
+.fa-upload:before {
+    content: "";
+    color: #35c5be;
+    font-size: 20px;
+    margin-top: 50px;
+    cursor:pointer;
+}
+.form-group {
+    
+    margin: 1rem 2rem;
+}
+
+.fa-upload {
+    margin: 0rem .2rem;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    width: 130px;
+}
+.viewPreBook{
+    color: #499a97;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.close-btn{
+    background: #68bfbb;
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    border-radius: 42px;
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    bottom: 49px;
+    left: 65px;
+    cursor: pointer;
+}
+
+}
+.material-icons{
+    cursor: pointer;
+}
+.toggleheight
+{
+    height: 2rem;
+    border-radius: 6px;
+}
+
+.toggleheight:hover
+{
+    background-color: whitesmoke;
+}
+
+.close-icon{
+    position:absolute;
+    right:0px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    @media (max-width: 995px) { 
+        top: 0px;
+     }
+}

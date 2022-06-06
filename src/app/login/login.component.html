@@ -1,0 +1,24 @@
+<div class="login-page row">
+    <div class="form col">
+        <div class="login">
+            <div class="login-header">
+                <h3>LOGIN</h3>
+                <p *ngIf="!LoginErr">Please enter your credentials to login.</p>
+                <p class="loginerr" *ngIf="LoginErr">{{LoginErr}}</p>
+
+            </div>
+        </div>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+            <input type="text" placeholder="username" formControlName="username" />
+            <span class="singleErr">{{userErr}}</span>
+            <input type="password" placeholder="password" formControlName="password" [type] ="hide ? 'password': 'text'" #pwd/>
+            <span class="material-icons " matSuffix (click)="hide =!hide">
+                {{hide ? 'visibility' : 'visibility_off'}}
+            </span> 
+            <span class="singleErr">{{newerr}}</span>
+            <button mat-raised-button>login</button>
+            <p class="message">forget password? <a routerLink="/forget-password">click here</a></p>
+
+        </form>
+    </div>
+</div>
